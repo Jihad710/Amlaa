@@ -4,6 +4,7 @@ import Navbar from "../ui/navbar/Navbar";
 import ConvertionF from "../ui/footer/ConvertionF";
 import Footer from "../ui/footer/Footer";
 import Offerd from "../ui/Offerd";
+import MiddleBanner from "../../page/home/MiddleBanner";
 
 const MainLayout = () => {
   return (
@@ -11,6 +12,7 @@ const MainLayout = () => {
       <TopBar></TopBar>
       <Navbar></Navbar>
       <Outlet></Outlet>
+      <MiddleBanner></MiddleBanner>
       <Offerd></Offerd>
       <ConvertionF></ConvertionF>
       <Footer></Footer>

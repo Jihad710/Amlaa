@@ -10,7 +10,7 @@ const Navbar = () => {
         <span className="text-center mx-auto">Black & White</span>
       </div>
       <div>
-        <ul className="flex gap-5">
+        <ul className="flex gap-5 text-xl font-light">
           <li>SS'24 Collection</li>
           <li>Best Deal </li>
           <li>Topwar</li>
@@ -19,8 +19,8 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex gap-5">
-        <VscAccount />
-        <VscAccount />
+        <VscAccount className="w-6 h-6" />
+        <VscAccount className="w-6 h-6" />
       </div>
     </div>
   );

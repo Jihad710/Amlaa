@@ -1,13 +1,19 @@
 import { Outlet } from "react-router-dom";
-import TopBar from "../../page/navbar/TopBar";
-import Navbar from "../../page/navbar/Navbar";
+import TopBar from "../ui/navbar/TopBar";
+import Navbar from "../ui/navbar/Navbar";
+import ConvertionF from "../ui/footer/ConvertionF";
+import Footer from "../ui/footer/Footer";
+import Offerd from "../ui/Offerd";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="bg-[#eeedeb]">
       <TopBar></TopBar>
       <Navbar></Navbar>
       <Outlet></Outlet>
+      <Offerd></Offerd>
+      <ConvertionF></ConvertionF>
+      <Footer></Footer>
     </div>
   );
 };

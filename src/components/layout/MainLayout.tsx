@@ -7,6 +7,8 @@ import Offerd from "../ui/Offerd";
 import MiddleBanner from "../../page/home/MiddleBanner";
 import Sestion from "../../page/home/Sestion";
 import Contact from "../../page/home/Contact";
+import AskQutions from "../../page/home/AskQutions";
+import MovingText from "../../page/home/MovingText";
 
 const MainLayout = () => {
   return (
@@ -17,6 +19,8 @@ const MainLayout = () => {
       <MiddleBanner></MiddleBanner>
       <Sestion></Sestion>
       <Contact></Contact>
+      <AskQutions></AskQutions>
+      <MovingText></MovingText>
       <Offerd></Offerd>
       <ConvertionF></ConvertionF>
       <Footer></Footer>

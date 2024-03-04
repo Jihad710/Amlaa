@@ -9,15 +9,17 @@ import Sestion from "../../page/home/Sestion";
 import Contact from "../../page/home/Contact";
 import AskQutions from "../../page/home/AskQutions";
 import MovingText from "../../page/home/MovingText";
+import Banner from "../../page/home/Banner";
 
 const MainLayout = () => {
   return (
     <div className="bg-[#eeedeb]">
       <TopBar></TopBar>
       <Navbar></Navbar>
+      <Banner></Banner>
       <Outlet></Outlet>
-      <MiddleBanner></MiddleBanner>
       <Sestion></Sestion>
+      <MiddleBanner></MiddleBanner>
       <Contact></Contact>
       <AskQutions></AskQutions>
       <MovingText></MovingText>

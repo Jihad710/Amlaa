@@ -1,21 +1,22 @@
 import { VscAccount } from "react-icons/vsc";
+import { NavLink } from "react-router-dom";
+import logo from "../../../../public/dm_full_1_shopify_black_ss24.avif";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center h-[110px] py-[30px]">
       <div className="">
-        <h1 className="text-8xl font-bold">
-          w<span className="ms-[-25px] text-red-500">b</span>
-        </h1>
-        <span className="text-center mx-auto">Black & White</span>
+        <div className="w-[110px] h-[88px] ">
+          <img className="w-full h-full " src={logo} alt="" />
+        </div>
       </div>
       <div>
         <ul className="flex gap-5 text-xl font-light">
-          <li>SS'24 Collection</li>
-          <li>Best Deal </li>
-          <li>Topwar</li>
-          <li>Bottomwar</li>
-          <li>Accesaris </li>
+          <NavLink to={"/collection/spring-summer"}>SS'24 Collection</NavLink>
+          <NavLink to={"/collection/best-deal"}>Best Deal </NavLink>
+          <NavLink to={""}>Topwar</NavLink>
+          <NavLink to={""}>Bottomwar</NavLink>
+          <NavLink to={""}>Accesaris </NavLink>
         </ul>
       </div>
       <div className="flex gap-5">

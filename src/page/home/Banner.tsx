@@ -5,8 +5,23 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
-
 import { Pagination, Autoplay } from "swiper/modules";
+import Marquee from "react-fast-marquee";
+
+const text = [
+  {
+    title: "it's time you get comfortable. ",
+  },
+  {
+    title: "it's time you get comfortable.",
+  },
+  {
+    title: "it's time you get comfortable. ",
+  },
+  {
+    title: "it's time you get comfortable. ",
+  },
+];
 
 const bannerData = [
   {
@@ -48,6 +63,16 @@ const Banner = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <div>
+        <Marquee className="  text-3xl py-2  text-[#3c3633]">
+          {text.map((item, index) => (
+            <p key={index} className="mx-10 font-4xl font-semibold">
+              {" "}
+              {item.title}{" "}
+            </p>
+          ))}
+        </Marquee>
+      </div>
     </div>
   );
 };

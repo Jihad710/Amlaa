@@ -21,11 +21,10 @@ const Home = () => {
       <MovingText></MovingText>
       <ShowBag></ShowBag>
       <AccecsarisCarosal></AccecsarisCarosal>
-      <MiddleBanner></MiddleBanner>
-      <Contact></Contact>
-      <AskQutions></AskQutions>
-      <MovingText></MovingText>
       <Offerd></Offerd>
+      <AskQutions></AskQutions>
+      <Contact></Contact>
+      <MiddleBanner></MiddleBanner>
       <ConvertionF></ConvertionF>
     </div>
   );

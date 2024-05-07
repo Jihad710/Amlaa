@@ -2,8 +2,21 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
+import { FC } from "react";
 
-const BestDealsCarosulCard = ({ data }) => {
+type Instructor = {
+  _id: string;
+  name: string;
+  email: string;
+  image: string;
+};
+
+// Specify the type of the 'data' prop
+type Props = {
+  data: Instructor[];
+};
+
+const BestDealsCarosulCard: FC<Props> = ({ data }) => {
   return (
     <div className="mt-10">
       <Swiper

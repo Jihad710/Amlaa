@@ -1,4 +1,3 @@
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
@@ -24,11 +23,11 @@ const BestDealsCarousel = () => {
   }
 
   if (error) {
-    return <div>Error: {error?.message}</div>;
+    return <div>Error: {(error as Error)?.message}</div>;
   }
 
   return (
-    <div className="my-24">
+    <div className="my-32">
       <div className="text-center">
         <h1 className="mb-4 font-bold text-3xl text-[#3c3633]">Deals</h1>
         <p className="font-semibold">you don't want to miss</p>

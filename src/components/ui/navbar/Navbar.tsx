@@ -7,12 +7,14 @@ const Navbar = () => {
     <div className="flex justify-between items-center h-[110px] py-[30px]">
       <div className="">
         <div className="w-[110px] h-[88px] ">
-          <img className="w-full h-full " src={logo} alt="" />
+          <NavLink to={"/"}>
+            <img className="w-full h-full " src={logo} alt="" />
+          </NavLink>
         </div>
       </div>
       <div>
         <ul className="flex gap-5 text-xl font-light">
-          <NavLink to={"/collection/spring-summer"}>SS'24 Collection</NavLink>
+          <NavLink to={"/collection/spring-summer"}>All</NavLink>
           <NavLink to={"/collection/best-deal"}>Best Deal </NavLink>
           <NavLink to={""}>Topwar</NavLink>
           <NavLink to={""}>Bottomwar</NavLink>

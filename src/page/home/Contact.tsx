@@ -1,6 +1,6 @@
 const Contact = () => {
   return (
-    <div className="w-8/12  mx-auto">
+    <div className="w-8/12  mx-auto mb-32">
       <h1 className="text-center font-bold text-4xl">Contact us</h1>
       <div>
         <form action="">
@@ -30,12 +30,12 @@ const Contact = () => {
               className="w-full block bg-transparent outline-none border-b-2 border-purple-700"
               name="message"
               id="message"
-              rows={"6"}
+              rows={6}
             ></textarea>
           </div>
           <div>
             <button
-              className="bg-[#3b3632] text-white px-8 py-3 uppercase rounded-full mt-6 tracking-widest"
+              className="bg-[#3b3632] text-white px-8 py-3 uppercase rounded-full mt-6 tracking-widest mb-10"
               type="submit"
             >
               Send
@@ -43,6 +43,10 @@ const Contact = () => {
           </div>
         </form>
       </div>
+      <span className="mt-10">
+        This site is protected by reCAPTCHA and the Google Privacy Policy and
+        Terms of Service apply.
+      </span>
     </div>
   );
 };

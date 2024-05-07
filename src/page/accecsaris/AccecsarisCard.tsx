@@ -3,7 +3,15 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 
-const AccecsarisCard = ({ data }) => {
+// Define the type for the instructor object
+type Instructor = {
+  _id: string;
+  name: string;
+  email: string;
+  image: string;
+};
+
+const AccecsarisCard = ({ data }: { data: Instructor[] }) => {
   return (
     <div className="mt-10">
       <Swiper
@@ -14,7 +22,7 @@ const AccecsarisCard = ({ data }) => {
         navigation={true}
         // modules={[Autoplay, Navigation]}
       >
-        {data.map((instructor) => (
+        {data.map((instructor: Instructor) => (
           <SwiperSlide key={instructor._id}>
             <div className="mx-3 h-96">
               <div className="shadow-xl text-center cursor-pointer h-full bg-white hover:text-[#2b666c] text-neutral-600 mx-1 rounded">

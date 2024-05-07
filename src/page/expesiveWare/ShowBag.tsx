@@ -26,7 +26,7 @@ const myobj = [
 
 const ShowBag = () => {
   return (
-    <div className="px-10 mb-52 mt-32">
+    <div className="px-10 mb-52  mt-12">
       <div className="w-full">
         {myobj.map((value, index) => (
           <div key={index} className="flex gap-5 ">

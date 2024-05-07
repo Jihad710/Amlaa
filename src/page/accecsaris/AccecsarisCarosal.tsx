@@ -1,7 +1,3 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/autoplay";
 import { useQuery } from "react-query";
 import AccecsarisCard from "./AccecsarisCard";
 
@@ -22,13 +18,15 @@ const AccecsarisCarosal = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
   if (error) {
-    return <div>Error: {error?.message}</div>;
+    return <div>Error: {(error as Error)?.message}</div>;
   }
+
   return (
     <div>
-      <h1>Explore Accessories</h1>
+      <h1 className="mb-7 font-bold text-3xl text-[#3c3633] text-center">
+        Explore Accessories
+      </h1>
       <div>
         <AccecsarisCard data={data}></AccecsarisCard>
       </div>

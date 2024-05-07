@@ -19,7 +19,7 @@ const MovingText = () => {
   ];
   return (
     <div>
-      <Marquee className=" bg-[#3c3633] text-2xl py-2 text-white">
+      <Marquee className="  text-2xl py-2 text-[#4f4a47]">
         {text.map((item, index) => (
           <p key={index} className="mx-10">
             {" "}

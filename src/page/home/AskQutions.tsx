@@ -7,16 +7,16 @@ const AskQutions = () => {
   const [secondOpen, setSecondOpen] = useState(false);
   const [thiredOpen, setThirdOpen] = useState(false);
   return (
-    <div className="py-48">
+    <div className="my-32 w-9/12 mx-auto">
       <h1 className="text-center font-bold text-4xl pb-10">FAQs</h1>
       <div>
         <div>
           <p
-            className="flex items-center"
+            className="flex items-center text-lg "
             onClick={() => setFastOpen(!fastOpen)}
           >
-            <span>{fastOpen ? <TiMinus /> : <FaPlus />}</span> Do you offer
-            returns/exchanges?
+            <span>{fastOpen ? <TiMinus /> : <FaPlus />}</span>
+            <span className="ps-4">Do you offer returns/exchanges?</span>
           </p>
           <div
             className={`${
@@ -66,11 +66,11 @@ const AskQutions = () => {
         </div>
         <div>
           <p
-            className="flex items-center"
+            className="flex items-center py-5 text-lg"
             onClick={() => setSecondOpen(!secondOpen)}
           >
-            <span>{secondOpen ? <TiMinus /> : <FaPlus />}</span> Which size
-            should I buy?
+            <span>{secondOpen ? <TiMinus /> : <FaPlus />}</span>
+            <span className="ps-4">Which size should I buy?</span>
           </p>
           <div
             className={`${
@@ -94,11 +94,11 @@ const AskQutions = () => {
         </div>
         <div>
           <p
-            className="flex items-center"
+            className="flex items-center text-lg"
             onClick={() => setThirdOpen(!thiredOpen)}
           >
-            <span>{thiredOpen ? <TiMinus /> : <FaPlus />}</span> What are the
-            shipping times and cost?
+            <span>{thiredOpen ? <TiMinus /> : <FaPlus />}</span>
+            <span className="ps-4">What are the shipping times and cost?</span>
           </p>
           <div
             className={`${

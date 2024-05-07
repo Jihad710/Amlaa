@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import CollectionSummer from "../page/collection/CollectionSummer";
 import Home from "../page/home/Home";
-import Deals from "../page/offeredItems/Deals";
+// import Deals from "../page/offeredItems/OfferedItems";
 
 const router = createBrowserRouter([
   {
@@ -19,19 +19,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/collection/best-deal",
-        element: <Deals></Deals>,
+        element: <></>,
       },
       {
         path: "/collection/best-deal",
-        element: <Deals></Deals>,
+        // element: <Deals></Deals>,
       },
       {
         path: "/collection/best-deal",
-        element: <Deals></Deals>,
+        // element: <Deals></Deals>,
       },
       {
         path: "/collection/best-deal",
-        element: <Deals></Deals>,
+        // element: <Deals></Deals>,
       },
     ],
   },

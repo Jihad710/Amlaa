@@ -4,6 +4,7 @@ import AccecsarisCarosal from "../accecsaris/AccecsarisCarosal";
 import BestDealsCarousel from "../bestdeals/BestDealsCarousel";
 import ShowBag from "../expesiveWare/ShowBag";
 import NewArrivals from "../newarrivals/NewArrivals";
+import AddSection from "./AddSection";
 import AskQutions from "./AskQutions";
 import Banner from "./Banner";
 import Category from "./Category";
@@ -17,6 +18,7 @@ const Home = () => {
       <Banner></Banner>
       <Category></Category>
       <NewArrivals></NewArrivals>
+      <AddSection></AddSection>
       <BestDealsCarousel></BestDealsCarousel>
       <MovingText></MovingText>
       <ShowBag></ShowBag>

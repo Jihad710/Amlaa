@@ -2,7 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
-import { FC } from "react";
+import "swiper/css/scrollbar";
+
+import { Keyboard, Scrollbar, Navigation } from "swiper/modules";
 
 type Instructor = {
   _id: string;
@@ -11,41 +13,58 @@ type Instructor = {
   image: string;
 };
 
-// Specify the type of the 'data' prop
-type Props = {
-  data: Instructor[];
-};
-
-const BestDealsCarosulCard: FC<Props> = ({ data }) => {
+const BestDealsCarosulCard = ({ data }: { data: Instructor[] }) => {
   return (
-    <div className="mt-10">
+    <div
+      className="mt-10 swiper-container"
+      style={{ width: "100%", overflow: "hidden" }}
+    >
+      <style>
+        {`
+          .swiper-scrollbar {
+            height: 200px;
+            background-color:#eeedeb;
+          }
+
+          .swiper-scrollbar .swiper-scrollbar-drag {
+            background-color: #c1c1c1;
+            border-radius: 0;
+            height: 100px;
+          }
+        `}
+      </style>
       <Swiper
         slidesPerView={4}
         autoplay={{ delay: 1000, disableOnInteraction: false }}
         speed={2000}
         loop={true}
+        keyboard={{
+          enabled: true,
+        }}
         navigation={true}
-        // modules={[Autoplay, Navigation]}
+        scrollbar={{
+          draggable: true,
+          hide: false,
+        }}
+        modules={[Scrollbar, Navigation, Keyboard]}
+        className="swipers"
       >
-        {data.map((instructor) => (
+        {data.map((instructor: Instructor) => (
           <SwiperSlide key={instructor._id}>
-            <div className="mx-3 h-96">
-              <div className="shadow-xl text-center cursor-pointer h-full bg-white hover:text-[#2b666c] text-neutral-600 mx-1 rounded">
+            <div className="mx-3 mb-5">
+              <div className=" text-center cursor-pointer h-full bg-[#eeedeb]  text-neutral-600 mx-1 ">
                 <figure>
                   <img
                     src={instructor.image}
                     alt="instructor"
-                    className="w-full rounded-t-md mx-auto"
+                    className="w-full h-[327px]  mx-auto"
                   />
                 </figure>
                 <div className="mt-5 items-center text-center">
                   <h2 className="font-bold uppercase text-lg">
-                    {instructor.name}
+                    {"Grow Almond — Heavy Weight T-Shirt"}
                   </h2>
-                  <h2>{instructor.email}</h2>
-                  <button className="bg-[#227179] mb-5 px-7 font-semibold hover:bg-[#153f44] py-2 my-2 uppercase text-sm text-white rounded-ss-xl rounded-ee-xl">
-                    details
-                  </button>
+                  <h2 className="pb-3">{"₹ 1,490.00 Sale price₹ 990.00"}</h2>
                 </div>
               </div>
             </div>

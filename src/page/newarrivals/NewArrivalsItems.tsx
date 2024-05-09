@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const items = [
   {
     name: "Cream — Long Sleeve Resort Shirt",
@@ -63,6 +65,13 @@ const NewArrivalsItems = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="w-32 rounded-full mt-10 mx-auto text-center">
+        <NavLink to={"/allProduct"}>
+          <button className="text-white uppercase font-semibold bg-[#3c3633] w-full py-3 px-4 text-center rounded-full">
+            Viwe All
+          </button>
+        </NavLink>
       </div>
     </div>
   );

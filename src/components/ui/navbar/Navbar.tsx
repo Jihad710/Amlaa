@@ -1,7 +1,9 @@
 import { VscAccount } from "react-icons/vsc";
 import { NavLink } from "react-router-dom";
 import logo from "../../../../public/dm_full_1_shopify_black_ss24.avif";
+import { FiShoppingCart } from "react-icons/fi";
 import { useState } from "react";
+import FormDialog from "../../FormDialog";
 
 const Navbar = () => {
   const [topwarDropdownOpen, setTopwarDropdownOpen] = useState(false);
@@ -97,9 +99,17 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex gap-5">
-        <VscAccount className="w-6 h-6" />
-        <VscAccount className="w-6 h-6" />
-        <VscAccount className="w-6 h-6" />
+        <NavLink to={"/login"}>
+          <VscAccount className="w-6 h-6" />
+        </NavLink>
+
+        <div>
+          <FormDialog></FormDialog>
+        </div>
+
+        <NavLink to={"/cart"}>
+          <FiShoppingCart className="w-6 h-6" />
+        </NavLink>
       </div>
     </div>
   );

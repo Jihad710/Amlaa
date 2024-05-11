@@ -1,5 +1,4 @@
 import Offerd from "../../components/ui/Offerd";
-import ConvertionF from "../../components/ui/footer/ConvertionF";
 import AccecsarisCarosal from "../accecsaris/AccecsarisCarosal";
 import BestDealsCarousel from "../bestdeals/BestDealsCarousel";
 import ShowBag from "../expesiveWare/ShowBag";
@@ -23,11 +22,11 @@ const Home = () => {
       <MovingText></MovingText>
       <ShowBag></ShowBag>
       <AccecsarisCarosal></AccecsarisCarosal>
+
       <Offerd></Offerd>
       <AskQutions></AskQutions>
       <Contact></Contact>
       <MiddleBanner></MiddleBanner>
-      <ConvertionF></ConvertionF>
     </div>
   );
 };

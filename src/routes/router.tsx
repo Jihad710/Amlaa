@@ -11,6 +11,15 @@ import Shirt from "../page/topOutFit/Shirt";
 import Jackets from "../page/topOutFit/Jackets";
 import Headwear from "../page/accecsaris/Headwear";
 import BagsAndWallets from "../page/accecsaris/BagsAndWallets";
+import AdminLayout from "../components/layout/AdminLayount/AdminLayout";
+import AdminDashBoard from "../components/layout/AdminLayount/AdminDashBoard";
+import AddProduct from "../components/layout/AdminLayount/AddProduct";
+import UpDateProduct from "../components/layout/AdminLayount/UpDateProduct";
+import CoustomerOder from "../components/layout/AdminLayount/CoustomerOder";
+import Login from "../page/log/Loging";
+import Registation from "../page/log/Registation";
+import Search from "../page/search&cart/Search";
+import Cart from "../page/search&cart/Cart";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +27,7 @@ const router = createBrowserRouter([
     element: <App></App>,
     children: [
       {
-        index: true,
+        path: "/",
         element: <Home></Home>,
       },
       {
@@ -56,6 +65,44 @@ const router = createBrowserRouter([
       {
         path: "/collection/bags-and-wallets",
         element: <BagsAndWallets></BagsAndWallets>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Registation></Registation>,
+      },
+      {
+        path: "/search",
+        element: <Search></Search>,
+      },
+      {
+        path: "/cart",
+        element: <Cart></Cart>,
+      },
+    ],
+  },
+  {
+    path: "/admin-dashboard",
+    element: <AdminLayout></AdminLayout>,
+    children: [
+      {
+        index: true,
+        element: <AdminDashBoard></AdminDashBoard>,
+      },
+      {
+        path: "/admin-dashboard/add-product",
+        element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "/admin-dashboard/update-product",
+        element: <UpDateProduct></UpDateProduct>,
+      },
+      {
+        path: "/admin-dashboard/update-product",
+        element: <CoustomerOder></CoustomerOder>,
       },
     ],
   },

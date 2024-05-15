@@ -1,6 +1,26 @@
+import { useQuery } from "react-query";
 import NewArrivalsItems from "./NewArrivalsItems";
 
 const NewArrivals = () => {
+  const {
+    isLoading,
+    error,
+    data: items,
+  } = useQuery("allProduct", async () => {
+    const response = await fetch(
+      "http://localhost:5000/collection/?collectionStatus=new"
+    );
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  });
+
+  if (isLoading) {
+    <div>loding...............</div>;
+  }
+
   return (
     <div>
       <div className="text-center">
@@ -9,7 +29,7 @@ const NewArrivals = () => {
         </h1>
         <p className="font-semibold">of the season</p>
       </div>
-      <NewArrivalsItems></NewArrivalsItems>
+      <NewArrivalsItems items={items}></NewArrivalsItems>
     </div>
   );
 };

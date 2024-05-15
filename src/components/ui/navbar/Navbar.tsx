@@ -11,7 +11,7 @@ const Navbar = () => {
 
   const handleTopwarMouseEnter = () => {
     setTopwarDropdownOpen(true);
-    setAccesarisDropdownOpen(false); // Close the Accesaris dropdown on hover
+    setAccesarisDropdownOpen(false);
   };
 
   const handleTopwarMouseLeave = () => {
@@ -20,7 +20,7 @@ const Navbar = () => {
 
   const handleAccesarisMouseEnter = () => {
     setAccesarisDropdownOpen(true);
-    setTopwarDropdownOpen(false); // Close the Topwar dropdown on hover
+    setTopwarDropdownOpen(false);
   };
 
   const handleAccesarisMouseLeave = () => {
@@ -28,11 +28,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center h-[110px] py-[30px]">
-      <div className="">
-        <div className="w-[110px] h-[88px] ">
+    <div className="bg-[#eeedeb] flex justify-between items-center h-[170px] px-10 py-[30px]">
+      <div className="flex-shrink-0">
+        <div className="w-[110px] h-[84px]">
           <NavLink to={"/"}>
-            <img className="w-full h-full " src={logo} alt="" />
+            <img className="w-full h-full" src={logo} alt="" />
           </NavLink>
         </div>
       </div>
@@ -98,13 +98,13 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="flex gap-5">
+      <div className="flex gap-5 items-center">
         <NavLink to={"/login"}>
           <VscAccount className="w-6 h-6" />
         </NavLink>
 
         <div>
-          <FormDialog></FormDialog>
+          <FormDialog />
         </div>
 
         <NavLink to={"/cart"}>

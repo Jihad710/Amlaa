@@ -34,7 +34,7 @@ export default function FormDialog() {
 
   return (
     <React.Fragment>
-      <IoSearch onClick={handleClickOpen} className="w-6 h-6" />;
+      <IoSearch onClick={handleClickOpen} className="w-6 h-6" />
       <Dialog
         fullScreen
         open={open}

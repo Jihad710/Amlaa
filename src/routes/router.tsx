@@ -19,7 +19,9 @@ import CoustomerOder from "../components/layout/AdminLayount/CoustomerOder";
 import Login from "../page/log/Loging";
 import Registation from "../page/log/Registation";
 import Search from "../page/search&cart/Search";
-import Cart from "../page/search&cart/Cart";
+import Cart from "../page/search&cart/SelectedProductCart";
+import { handleBuyProduct } from "../hooks/BuyProduct";
+import ProductDetails from "../page/product/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +83,11 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart></Cart>,
+      },
+      {
+        path: "productBuy/:id",
+        element: <ProductDetails />,
+        loader: ({ params }) => handleBuyProduct(params.id as string),
       },
     ],
   },

@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .hightBanner {
-  height: calc(100vh - 110px);
+  height: calc(100vh - 140px);
 }

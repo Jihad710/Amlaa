@@ -5,7 +5,7 @@ import Navbar from "../ui/navbar/Navbar";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="bg-[#eeedeb]">
       <TopBar></TopBar>
       <Navbar></Navbar>
       <Outlet></Outlet>

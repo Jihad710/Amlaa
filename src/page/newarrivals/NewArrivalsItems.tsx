@@ -19,11 +19,11 @@ const NewArrivalsItems: React.FC<Props> = ({ items = [] }) => {
     <div className="w-11/12 mx-auto py-24">
       <div className="grid grid-cols-4 gap-5">
         {items.map((item) => (
-          <Link key={item._id} to={`productBuy/${item._id}`}>
+          <Link key={item._id} to={`/product/${item._id}`}>
             <div className="">
               <div className="w-[255px] h-[271px] relative ">
                 <img className=" w-full h-full" src={item?.image} alt="" />
-                <p className="absolute top-0 right-0 bg-black text-white p-2 px-4 capitalize pt-1">
+                <p className="absolute top-0 right-0 bg-[#3c3633] text-white p-2 px-4 capitalize pt-1">
                   {item?.collectionStatus}
                 </p>
               </div>

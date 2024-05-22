@@ -1,9 +1,8 @@
 import { useQuery } from "react-query";
 import DynamicBanner from "../../components/ui/DynamicBanner";
-import ProductCard from "../../components/ui/ProductCard";
 
 const AllProduct = () => {
-  const { isLoading, error, data } = useQuery("allProduct", async () => {
+  const { isLoading, data } = useQuery("allProduct", async () => {
     const response = await fetch(
       "http://localhost:5000/collection/allProducts"
     );
@@ -15,11 +14,18 @@ const AllProduct = () => {
   if (isLoading) {
     <div>loding...............</div>;
   }
-  console.log(data);
+
   return (
     <div>
       <DynamicBanner title={"Shop All"}></DynamicBanner>
-      <ProductCard></ProductCard>
+      <div className="grid grid-cols-4">
+        {data?.map((item) => (
+          <div>
+            <img src={item?.image} alt="" />
+            <p>{item?.title}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

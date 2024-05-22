@@ -6,7 +6,7 @@ const AccecsarisCarosal = () => {
     "popularInstructors",
     async () => {
       const response = await fetch(
-        "https://serene-soul-yoga-server-mdarefineahamedjoy.vercel.app/popular/instructor"
+        "http://localhost:5000/products/category?category=accessories"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");

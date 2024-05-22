@@ -2,13 +2,9 @@ import { useQuery } from "react-query";
 import NewArrivalsItems from "./NewArrivalsItems";
 
 const NewArrivals = () => {
-  const {
-    isLoading,
-    error,
-    data: items,
-  } = useQuery("allProduct", async () => {
+  const { isLoading, data: items } = useQuery("allProduct", async () => {
     const response = await fetch(
-      "http://localhost:5000/collection/?collectionStatus=new"
+      "http://localhost:5000/products/category?category=new"
     );
 
     if (!response.ok) {
@@ -18,7 +14,7 @@ const NewArrivals = () => {
   });
 
   if (isLoading) {
-    <div>loding...............</div>;
+    return <div>Loading...</div>;
   }
 
   return (

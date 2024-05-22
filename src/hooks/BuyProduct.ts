@@ -1,10 +1,10 @@
 const fetchProductById = async (productId: string) => {
-  const response = await fetch(
-    `http://localhost:5000/collection/allProducts/${productId}`
-  );
+  const response = await fetch(`http://localhost:5000/product/${productId}`);
 
   if (!response.ok) {
-    throw new Error("Failed to fetch product data");
+    throw new Error(
+      `Failed to fetch product data: ${response.status} ${response.statusText}`
+    );
   }
 
   return await response.json();

@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../page/home/Home";
-// import Deals from "../page/offeredItems/OfferedItems";
 import AllProduct from "./../page/allProducts/AllProduct";
 import BestDeals from "../page/bestdeals/BestDeals";
 import BottomWar from "../page/bottomwar/BottomWar";
@@ -10,7 +9,6 @@ import Polo from "../page/topOutFit/Polo";
 import Shirt from "../page/topOutFit/Shirt";
 import Jackets from "../page/topOutFit/Jackets";
 import Headwear from "../page/accecsaris/Headwear";
-import BagsAndWallets from "../page/accecsaris/BagsAndWallets";
 import AdminLayout from "../components/layout/AdminLayount/AdminLayout";
 import AdminDashBoard from "../components/layout/AdminLayount/AdminDashBoard";
 import AddProduct from "../components/layout/AdminLayount/AddProduct";
@@ -21,7 +19,8 @@ import Registation from "../page/log/Registation";
 import Search from "../page/search&cart/Search";
 import Cart from "../page/search&cart/SelectedProductCart";
 import { handleBuyProduct } from "../hooks/BuyProduct";
-import ProductDetails from "../page/product/ProductDetails";
+import ProductDetails from "../page/products/ProductDetails";
+import Accessories from "../page/accecsaris/BagsAndWallets";
 
 const router = createBrowserRouter([
   {
@@ -65,8 +64,8 @@ const router = createBrowserRouter([
         element: <Headwear></Headwear>,
       },
       {
-        path: "/collection/bags-and-wallets",
-        element: <BagsAndWallets></BagsAndWallets>,
+        path: "/collection/accessories",
+        element: <Accessories></Accessories>,
       },
       {
         path: "/login",
@@ -85,7 +84,7 @@ const router = createBrowserRouter([
         element: <Cart></Cart>,
       },
       {
-        path: "productBuy/:id",
+        path: "product/:id",
         element: <ProductDetails />,
         loader: ({ params }) => handleBuyProduct(params.id as string),
       },

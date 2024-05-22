@@ -72,7 +72,7 @@ const Navbar = () => {
               </ul>
             )}
           </li>
-          <NavLink className="px-5" to={"/collection/best-deal"}>
+          <NavLink className="px-5" to={"/collection/bottomwar"}>
             Bottomwar
           </NavLink>
           <li
@@ -89,9 +89,7 @@ const Navbar = () => {
                   <NavLink to={"/collection/head-wear"}>Headwear</NavLink>
                 </li>
                 <li className="pb-3">
-                  <NavLink to={"/collection/bags-and-wallets"}>
-                    Bags/Wallets
-                  </NavLink>
+                  <NavLink to={"/collection/accessories"}>Bags/Wallets</NavLink>
                 </li>
               </ul>
             )}

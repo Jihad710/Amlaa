@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import DynamicBanner from "../../components/ui/DynamicBanner";
+import ProductCart from "../products/ProductCart";
 
 const Accessories = () => {
   const {
@@ -8,7 +9,7 @@ const Accessories = () => {
     data,
   } = useQuery("allProduct", async () => {
     const response = await fetch(
-      "http://localhost:5000/products/category?category=polos"
+      "https://black-and-white-server.vercel.app/products/category?category=accessories"
     );
     console.log(response);
 
@@ -24,6 +25,7 @@ const Accessories = () => {
   return (
     <div>
       <DynamicBanner title="Accessories"></DynamicBanner>
+      <ProductCart datas={data}></ProductCart>
     </div>
   );
 };

@@ -9,7 +9,7 @@ const Jackets = () => {
     data,
   } = useQuery("allProduct", async () => {
     const response = await fetch(
-      "http://localhost:5000/products/category?category=jackets"
+      "https://black-and-white-server.vercel.app/products/category?category=jackets"
     );
     console.log(response);
 

@@ -1,5 +1,9 @@
 const UpDateProduct = () => {
-  return <div></div>;
+  return (
+    <div>
+      <h1>this is update product route</h1>
+    </div>
+  );
 };
 
 export default UpDateProduct;

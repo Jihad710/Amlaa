@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import DynamicBanner from "../../components/ui/DynamicBanner";
+import ProductCart from "../products/ProductCart";
 
 const Headwear = () => {
   const {
@@ -8,7 +9,7 @@ const Headwear = () => {
     data,
   } = useQuery("allProduct", async () => {
     const response = await fetch(
-      "http://localhost:5000/products/category?category=headware"
+      "https://black-and-white-server.vercel.app/products/category?category=headware"
     );
     console.log(response);
 
@@ -17,13 +18,14 @@ const Headwear = () => {
     }
     return response.json();
   });
-  console.log(data);
+
   if (isLoading) {
     <div>loding...............</div>;
   }
   return (
     <div>
       <DynamicBanner title="Headwear"></DynamicBanner>
+      <ProductCart datas={data}></ProductCart>
     </div>
   );
 };

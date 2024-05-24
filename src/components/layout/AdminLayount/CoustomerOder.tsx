@@ -1,7 +1,9 @@
-import React from "react";
-
 const CoustomerOder = () => {
-  return <div></div>;
+  return (
+    <div>
+      <h1>coustomer oder</h1>
+    </div>
+  );
 };
 
 export default CoustomerOder;

@@ -6,7 +6,7 @@ const AccecsarisCarosal = () => {
     "popularInstructors",
     async () => {
       const response = await fetch(
-        "http://localhost:5000/products/category?category=accessories"
+        "https://black-and-white-server.vercel.appproducts/category?category=accessories"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");

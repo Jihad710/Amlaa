@@ -1,10 +1,28 @@
 import { useQuery } from "react-query";
 import DynamicBanner from "../../components/ui/DynamicBanner";
+import ProductCart from "../products/ProductCart";
+
+interface Product {
+  id: string;
+  title: string;
+  price: number;
+  material: string;
+  size: string[];
+  color: string[];
+  productType: string;
+  discount: number;
+  type: string;
+  detailsMaterial: string;
+  productStatus: string;
+  collectionStatus: string;
+  category: string;
+  images: string[];
+}
 
 const BestDeals = () => {
-  const { isLoading, data } = useQuery("allProduct", async () => {
+  const { isLoading, data } = useQuery<Product[]>("allProduct", async () => {
     const response = await fetch(
-      "http://localhost:5000/products/category?category=deal"
+      "https://black-and-white-server.vercel.app/products/category?category=deal"
     );
 
     if (!response.ok) {
@@ -16,16 +34,11 @@ const BestDeals = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  console.log(data);
 
   return (
     <div>
       <DynamicBanner title="Deals"></DynamicBanner>
-      <div className="grid grid-cols-4">
-        {data.map((items) => (
-          <span>{items.collectionStatus}</span>
-        ))}
-      </div>
+      {/* <ProductCart datas={data}></ProductCart> */}
     </div>
   );
 };

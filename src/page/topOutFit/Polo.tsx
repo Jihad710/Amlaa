@@ -9,7 +9,7 @@ const Polo = () => {
     data,
   } = useQuery("allProduct", async () => {
     const response = await fetch(
-      "http://localhost:5000/products/category?category=polos"
+      "https://black-and-white-server.vercel.app/products/category?category=polos"
     );
     console.log(response);
 

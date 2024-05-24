@@ -1,5 +1,7 @@
 const fetchProductByCategori = async (pValue: string) => {
-  const response = await fetch(`http://localhost:5000/collection/?${pValue}`);
+  const response = await fetch(
+    `https://black-and-white-server.vercel.appcollection/?${pValue}`
+  );
 
   if (!response.ok) {
     throw new Error("Failed to fetch product data");

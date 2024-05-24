@@ -9,7 +9,7 @@ const BestDealsCarousel = () => {
     "popularInstructors",
     async () => {
       const response = await fetch(
-        "http://localhost:5000/products/category?category=deal"
+        "https://black-and-white-server.vercel.appproducts/category?category=deal"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");

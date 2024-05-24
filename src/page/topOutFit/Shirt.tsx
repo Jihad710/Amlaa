@@ -5,7 +5,7 @@ import ProductCart from "../products/ProductCart";
 const Shirt = () => {
   const { isLoading, data } = useQuery("allProduct", async () => {
     const response = await fetch(
-      "http://localhost:5000/products/category?category=shirt"
+      "https://black-and-white-server.vercel.app/products/category?category=shirt"
     );
     console.log(response);
 

@@ -1,52 +1,52 @@
-import React, { useState } from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router-dom";
-import { FaBangladeshiTakaSign } from "react-icons/fa6";
+
+import { useMutation } from "react-query";
+import { useNavigate } from "react-router-dom";
+
+// interface FormData {
+//   name: string;
+//   number: string;
+//   code: string;
+//   state: string;
+//   city: string;
+//   houseNumber: string;
+//   area: string;
+//   district: string;
+// }
+
 const OderAddres = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const mutation = useMutation((data) => {
+    return fetch("https://black-and-white-server.vercel.app/api/order-address", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  });
 
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
+  const onSubmit = async () => {
+    try {
+      const response = await mutation.mutateAsync();
+      if (response.status) {
+        return navigate("/payment-system");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
     <div className="w-2/3 mx-auto py-20">
-      <div className="flex justify-between pb-10">
-        <div className="flex gap-3 items-center">
-          <div>
-            {" "}
-            <FaBangladeshiTakaSign></FaBangladeshiTakaSign>
-            <input
-              type="radio"
-              id="cash"
-              value="cash"
-              checked={selectedOption === "cash"}
-              onChange={handleOptionChange}
-            />
-          </div>
-          <label htmlFor="cash">Cash On Delivery</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            id="sscl"
-            value="sscl"
-            checked={selectedOption === "sscl"}
-            onChange={handleOptionChange}
-          />
-          <label htmlFor="sscl">Other</label>
-        </div>
-      </div>
       <h1 className="text-3xl font-bold mb-8 text-center">
         Business-logo Desi Minimals
       </h1>
@@ -153,8 +153,11 @@ const OderAddres = () => {
           </div>
         </div>
 
-        <button className="block w-full max-w-xs mx-auto mt-10 py-4 px-6 bg-black text-white text-lg font-semibold rounded-lg shadow-md hover:bg-gray-800 focus:outline-none focus:bg-gray-800 transition duration-300">
-          <NavLink to={"/payment-system"}>Payment</NavLink>
+        <button
+          type="submit"
+          className="block w-full max-w-xs mx-auto mt-10 py-4 px-6 bg-black text-white text-lg font-semibold rounded-lg shadow-md hover:bg-gray-800 focus:outline-none focus:bg-gray-800 transition duration-300"
+        >
+          Payment
         </button>
       </form>
     </div>

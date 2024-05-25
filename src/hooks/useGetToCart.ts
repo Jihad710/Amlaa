@@ -2,7 +2,9 @@ import { useQuery } from "react-query";
 
 const useGetToCard = () => {
   const { isLoading, data, error } = useQuery("cartData", async () => {
-    const response = await fetch("http://localhost:5000/oder/product");
+    const response = await fetch(
+      "https://black-and-white-server.vercel.app/oder/product"
+    );
 
     if (!response.ok) {
       throw new Error("Network response was not ok");

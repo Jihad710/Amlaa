@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { handleBuyProduct } from "../../hooks/BuyProduct";
-import { Product } from "../../types/Product";
+import { Product } from "../allProducts/AllProduct";
 
 interface ProductCartProps {
   datas: Product[];
@@ -32,13 +32,13 @@ const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {
           >
             <div>
               <img
-                src={data.image}
+                src={data?.images}
                 alt={data.title}
                 className="w-full h-auto"
               />
             </div>
             <div>
-              <p>{data.name}</p>
+              <p>{data.type}</p>
               <p>${data.price}</p>
             </div>
           </div>

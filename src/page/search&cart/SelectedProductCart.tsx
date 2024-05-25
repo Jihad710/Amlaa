@@ -15,7 +15,7 @@ const SelectedProductCart = () => {
           {data && data.length === 0 ? (
             <p className="text-center">Your cart is currently empty.</p>
           ) : (
-            <OderProductCard></OderProductCard>
+            <OderProductCard data={data}></OderProductCard>
           )}
 
           <NavLink to="/">

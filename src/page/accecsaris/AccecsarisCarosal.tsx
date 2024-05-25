@@ -6,7 +6,7 @@ const AccecsarisCarosal = () => {
     "popularInstructors",
     async () => {
       const response = await fetch(
-        "https://black-and-white-server.vercel.appproducts/category?category=accessories"
+        "https://black-and-white-server.vercel.app/products/category?category=accessories"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -21,7 +21,7 @@ const AccecsarisCarosal = () => {
   if (error) {
     return <div>Error: {(error as Error)?.message}</div>;
   }
-
+  console.log(data);
   return (
     <div>
       <h1 className="mb-7 font-bold text-3xl text-[#3c3633] text-center">

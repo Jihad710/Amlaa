@@ -56,7 +56,7 @@ const Banner = () => {
         {bannerData.map((data, index) => (
           <SwiperSlide key={index}>
             <div className="w-full h-screen">
-              <img className="w-full " src={data.image} alt="" />
+              <img className="w-full h-full" src={data.image} alt="" />
               <h1>{data.title}</h1>
               <p>{data.subTitle}</p>
             </div>

@@ -38,7 +38,7 @@ const BestDeals = () => {
   return (
     <div>
       <DynamicBanner title="Deals"></DynamicBanner>
-      {/* <ProductCart datas={data}></ProductCart> */}
+      <ProductCart datas={data}></ProductCart>
     </div>
   );
 };

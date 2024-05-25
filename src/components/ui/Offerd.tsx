@@ -21,9 +21,9 @@ const Offerd = () => {
     },
   ];
   return (
-    <div className="flex gap-10 mt-40">
+    <div className="md:flex gap-10 mt-40">
       {services.map((items, index) => (
-        <div key={index} className="text-center ">
+        <div key={index} className="text-center  my-10">
           <img className="mx-auto h-20 w-20" src={items.image} alt="" />
           <h1 className="py-3 text-xl font-bold text-[#3c3633]">
             {items.title}

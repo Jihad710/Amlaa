@@ -7,7 +7,7 @@ const AskQutions = () => {
   const [secondOpen, setSecondOpen] = useState(false);
   const [thiredOpen, setThirdOpen] = useState(false);
   return (
-    <div className="my-32 w-9/12 mx-auto">
+    <div className="my-32 md:w-9/12 w-10/12 mx-auto pb-10">
       <h1 className="text-center font-bold text-4xl pb-10">FAQs</h1>
       <div>
         <div>

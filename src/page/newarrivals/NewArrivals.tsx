@@ -2,9 +2,9 @@ import { useQuery } from "react-query";
 import NewArrivalsItems from "./NewArrivalsItems";
 
 const NewArrivals = () => {
-  const { isLoading, data: items } = useQuery("allProduct", async () => {
+  const { isLoading, data: items } = useQuery(["allProduct"], async () => {
     const response = await fetch(
-      "https://black-and-white-server.vercel.appproducts/category?category=new"
+      "https://black-and-white-server.vercel.app/products/category?category=new"
     );
 
     if (!response.ok) {

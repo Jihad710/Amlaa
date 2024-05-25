@@ -58,7 +58,7 @@ const Category = () => {
       <h1 className="mb-14 text-center font-bold text-3xl text-[#3c3633]">
         SHOP BY CATEGORY
       </h1>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid md:grid-cols-4 grid-cols-2 gap-5">
         {items.map((item, index) => (
           <NavLink key={index} to={item?.route}>
             <div

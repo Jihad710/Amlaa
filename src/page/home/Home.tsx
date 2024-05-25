@@ -16,11 +16,11 @@ const Home = () => {
     <div className="bg-[#eeedeb]">
       <Banner></Banner>
       <Category></Category>
-      <NewArrivals></NewArrivals>
+      {/* <NewArrivals></NewArrivals> */}
       <AddSection></AddSection>
       <BestDealsCarousel></BestDealsCarousel>
       <MovingText></MovingText>
-      <ShowBag></ShowBag>
+      {/* <ShowBag></ShowBag> */}
       <AccecsarisCarosal></AccecsarisCarosal>
 
       <Offerd></Offerd>

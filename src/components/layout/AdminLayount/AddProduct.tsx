@@ -36,6 +36,7 @@ const AddProduct = () => {
   );
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
     mutation.mutate(data);
   };
 

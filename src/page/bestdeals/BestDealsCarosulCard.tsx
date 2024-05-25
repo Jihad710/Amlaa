@@ -1,9 +1,9 @@
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import "swiper/css/scrollbar";
-
 import { Keyboard, Scrollbar, Navigation } from "swiper/modules";
 
 type Instructor = {
@@ -23,7 +23,7 @@ const BestDealsCarosulCard = ({ data }: { data: Instructor[] }) => {
         {`
           .swiper-scrollbar {
             height: 200px;
-            background-color:#eeedeb;
+            background-color: #eeedeb;
           }
 
           .swiper-scrollbar .swiper-scrollbar-drag {
@@ -38,26 +38,21 @@ const BestDealsCarosulCard = ({ data }: { data: Instructor[] }) => {
         autoplay={{ delay: 1000, disableOnInteraction: false }}
         speed={2000}
         loop={true}
-        keyboard={{
-          enabled: true,
-        }}
+        keyboard={{ enabled: true }}
         navigation={true}
-        scrollbar={{
-          draggable: true,
-          hide: false,
-        }}
+        scrollbar={{ draggable: true, hide: false }}
         modules={[Scrollbar, Navigation, Keyboard]}
         className="swipers"
       >
-        {data.map((instructor: Instructor) => (
+        {data.map((instructor) => (
           <SwiperSlide key={instructor._id}>
-            <div className="mx-3 mb-5">
-              <div className=" text-center cursor-pointer h-full bg-[#eeedeb]  text-neutral-600 mx-1 ">
+            <div className="mx-3 mb-5 bg-red-500 w-full h-56">
+              <div className="text-center cursor-pointer h-full bg-[#eeedeb] text-neutral-600 mx-1">
                 <figure>
                   <img
                     src={instructor.image}
                     alt="instructor"
-                    className="w-full h-[327px]  mx-auto"
+                    className="w-full h-[327px] mx-auto"
                   />
                 </figure>
                 <div className="mt-5 items-center text-center">

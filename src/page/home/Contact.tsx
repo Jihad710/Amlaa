@@ -1,11 +1,11 @@
 const Contact = () => {
   return (
-    <div className="w-8/12  mx-auto mb-32">
-      <h1 className="text-center font-bold text-4xl">Contact us</h1>
+    <div className="md:w-8/12 w-11/12  mx-auto mb-32">
+      <h1 className="text-center font-bold text-4xl mb-5">Contact us</h1>
       <div>
         <form action="">
-          <div className="w-full flex justify-between gap-5 py-10">
-            <div className="w-1/2 ">
+          <div className="w-full md:flex justify-between gap-5 py-10">
+            <div className="md:w-1/2 ">
               <label htmlFor="name">Name</label>
               <input
                 className="block bg-transparent w-full p-2 text-xl border-b-2 outline-none border-purple-700"
@@ -14,7 +14,7 @@ const Contact = () => {
                 id="name"
               />
             </div>
-            <div className="w-1/2">
+            <div className="md:w-1/2">
               <label htmlFor="email">Email </label>
               <input
                 className="block bg-transparent w-full p-2 text-xl border-b-2 outline-none border-purple-700"

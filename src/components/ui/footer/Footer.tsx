@@ -11,9 +11,9 @@ const Footer = () => {
   return (
     <div>
       <ConvertionF></ConvertionF>
-      <div className="mt-20 flex justify-center items-center">
+      <div className="mt-20 flex  flex-wrap justify-center items-center">
         <div>
-          <ul className="flex items-center justify-center gap-5 py-10">
+          <ul className="flex flex-wrap items-center justify-center gap-5 py-10">
             <li>
               <FaFacebook className="size-16  text-[#6e6e6d]  border-2 border-[#6e6e6d] rounded-full outline-none p-4  " />
             </li>
@@ -31,7 +31,7 @@ const Footer = () => {
             </li>
           </ul>
 
-          <ul className="flex  gap-5">
+          <ul className="flex justify-center items-center flex-wrap gap-5">
             <li>Shipping & Returns</li>
             <li>Return/Exchange Portal </li>
             <li> DM Gift Card</li>

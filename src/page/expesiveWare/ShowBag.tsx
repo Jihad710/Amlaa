@@ -1,91 +1,88 @@
-const myobj = [
-  {
-    images: [
-      "https://desiminimals.com/cdn/shop/files/DSC_2192.jpg?v=1713083304&width=750",
+import React, { useState } from "react";
+import img1 from "../../../public/DSC_2182.webp";
+import img2 from "../../../public/DSC_2184_8e8dfb2e-74ac-4819-a159-d280ae7321a3.jpg";
+import img3 from "../../../public/DSC_2189_d339ae62-2a2e-40f6-b1ed-88db6d7af1ec.webp";
+import img4 from "../../../public/DSC_2386.webp";
+import img5 from "../../../public/DSC_2182.webp";
+import img6 from "../../../public/DSC_2387.webp";
+import img7 from "../../../public/DSC_2391_a786ee40-4e75-4890-81eb-9b6359a26ab7.jpg";
 
-      "https://desiminimals.com/cdn/shop/files/DSC_2192.jpg?v=1713083304&width=750",
+const ShowBag: React.FC = () => {
+  const [mainImage, setMainImage] = useState(img1);
 
-      "https://desiminimals.com/cdn/shop/files/DSC_2192.jpg?v=1713083304&width=750",
-      "https://desiminimals.com/cdn/shop/files/DSC_2192.jpg?v=1713083304&width=750",
-      "https://desiminimals.com/cdn/shop/files/DSC_2192.jpg?v=1713083304&width=750",
-      "https://desiminimals.com/cdn/shop/files/DSC_2192.jpg?v=1713083304&width=750",
-      "https://desiminimals.com/cdn/shop/files/DSC_2192.jpg?v=1713083304&width=750",
-    ],
-    title: "Moss — Heavy Duty Tote Bag",
-    price: "1,150.00",
-    textProperty: "Tax included.",
-    productDetails:
-      "Large and thick tote in canvas, made in 100% cotton with printed branding on the front. Long handles that go around the front of the bag. Unlined with a magnet closure.",
-    productInfo: [
-      { Height: "15 inches", Width: "21 inches", Handle: "29 inches" },
-    ],
-    capacity: "15L",
-  },
-  // Add more products as needed
-];
+  const handleImageHover = (imageSrc: string) => {
+    setMainImage(imageSrc);
+  };
 
-const ShowBag = () => {
   return (
-    <div className="px-10 mb-52  mt-12">
-      <div className="w-full">
-        {myobj.map((value, index) => (
-          <div key={index} className="flex gap-5 ">
-            <div className="w-4/12 h-[480px] flex gap-3">
-              <div className="h-full overflow-y-auto">
-                <div className=" h-full  flex flex-col ">
-                  {value.images.map((image, idx) => (
+    <div className="md:w-11/12 w-full mx-auto mt-10 text-[#3c3633]  mb-36">
+      <div className="containe">
+        <div className="md:flex gap-10 items-center">
+          <div className="md:flex  gap-5 border md:w-5/12">
+            <div className="md:flex hidden">
+              <div className=" overflow-y-auto h-[490px] hide-scrollbar ">
+                {[img2, img3, img4, img5, img6, img7].map((img, index) => (
+                  <div key={index}>
                     <img
-                      key={idx}
-                      src={image}
-                      alt={`product-${index}-${idx}`}
-                      className=" w-20 h-32 object-cover cursor-pointer my-1"
+                      src={img}
+                      alt=""
+                      className="w-20 mb-5 h-28 cursor-pointer hover:opacity-80 transition-opacity"
+                      onMouseOver={() => handleImageHover(img)}
                     />
-                  ))}
-                </div>
-              </div>
-              <div className=" h-full ">
-                <img
-                  src={value.images[0]}
-                  alt={`product-${index}-big`}
-                  className="h-[480px] w-full object-cover"
-                />
-              </div>
-            </div>
-            <div className="w-8/12 p-5 pt-10">
-              <h1 className="font-bold text-4xl">{value.title}</h1>
-              <div className="py-5 font-semibold">
-                <p>${value.price}</p>
-                <p className="text-sm">{value.textProperty}</p>
-              </div>
-              <p className="text-sm font-semibold pb-5">
-                {value.productDetails}
-              </p>
-              <div>
-                <p className="font-bold text-lg">Dimensions -</p>
-                {value.productInfo.map((i, idx) => (
-                  <div key={idx}>
-                    <p>
-                      Width <span className="font-semibold">{i.Width}</span>
-                    </p>
-                    <p>
-                      Height <span className="font-semibold">{i.Height}</span>
-                    </p>
-                    <p>
-                      Handle <span className="font-semibold">{i.Handle}</span>
-                    </p>
                   </div>
                 ))}
               </div>
-              <p className="py-5">
-                Capacity -{" "}
-                <span className="font-semibold">{value.capacity}</span>
-              </p>
-              <button className="mt-2 uppercase w-full py-2 rounded-lg border-2 border-gray-900">
+            </div>
+
+            <div className="">
+              <img
+                src={mainImage}
+                alt=""
+                className="md:w-[350px] w-full h-[490px] mx-auto"
+              />
+            </div>
+          </div>
+          <div className="md:w-6/12 w-10/12 mx-auto">
+            <h3 className=" font-bold text-4xl mb-4 text-center md:text-start">
+              Crater — Heavy Duty Tote Bag
+            </h3>
+            <div className=" mb-8 text-center md:text-start">
+              <span className="block   text-2xl font-bold opacity-90">
+                ₹ 999.00
+              </span>
+              <span className="font-semibold">Tax included.</span>
+            </div>
+            <p className="mb-5 md:font-bold text-xl opacity-80">
+              Large and thick tote in canvas, made in 100% cotton with embossed
+              branding on the front. Long handles at the top. Unlined with a
+              magnet closure.
+            </p>
+            <div className="text-xl mb-5">
+              <p className="font-bold ">Dimensions -</p>
+              <ul>
+                <li>
+                  Height -{" "}
+                  <span className="font-bold opacity-80"> 15 inches</span>
+                </li>
+                <li>
+                  Width -<span className="font-bold opacity-80">21 inches</span>
+                </li>
+                <li>
+                  Handle -{" "}
+                  <span className="font-bold opacity-80">29 inches</span>
+                </li>
+              </ul>
+            </div>
+            <p className="font-xl  mb-5">
+              Capacity - <span className="font-bold"> 15L</span>
+            </p>
+            <div>
+              <button className="w-full   text-xl font-bold border-2 border-[#3c3633]  px-4 py-2 mr-2 rounded-xl ">
                 Add to Cart
               </button>
             </div>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

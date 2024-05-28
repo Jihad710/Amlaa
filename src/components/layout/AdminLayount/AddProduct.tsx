@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "react-query";
 
-type FileList = [];
 type Inputs = {
   title: string;
   price: number;
@@ -15,10 +15,11 @@ type Inputs = {
   productStatus: string;
   collectionStatus: string;
   category: string;
-  images: FileList;
+  images: string[];
 };
 
 const AddProduct = () => {
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
   const {
     register,
     handleSubmit,
@@ -35,8 +36,16 @@ const AddProduct = () => {
     })
   );
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      const urls = Array.from(files).map((file) => URL.createObjectURL(file));
+      setImageUrls((prevUrls) => [...prevUrls, ...urls]);
+    }
+  };
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
+    data.images = imageUrls;
     mutation.mutate(data);
   };
 
@@ -85,24 +94,6 @@ const AddProduct = () => {
           )}
         </div>
 
-        {/* Material */}
-        <div>
-          <label
-            htmlFor="material"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Material
-          </label>
-          <input
-            id="material"
-            {...register("material", { required: true })}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500"
-          />
-          {errors.material && (
-            <span className="text-red-500 text-sm">This field is required</span>
-          )}
-        </div>
-
         {/* Size */}
         <div>
           <label
@@ -135,24 +126,6 @@ const AddProduct = () => {
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500"
           />
           {errors.color && (
-            <span className="text-red-500 text-sm">This field is required</span>
-          )}
-        </div>
-
-        {/* Product Type */}
-        <div>
-          <label
-            htmlFor="productType"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Product Type
-          </label>
-          <input
-            id="productType"
-            {...register("productType", { required: true })}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500"
-          />
-          {errors.productType && (
             <span className="text-red-500 text-sm">This field is required</span>
           )}
         </div>
@@ -195,24 +168,6 @@ const AddProduct = () => {
           )}
         </div>
 
-        {/* Details Material */}
-        <div>
-          <label
-            htmlFor="detailsMaterial"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Details Material
-          </label>
-          <input
-            id="detailsMaterial"
-            {...register("detailsMaterial", { required: true })}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500"
-          />
-          {errors.detailsMaterial && (
-            <span className="text-red-500 text-sm">This field is required</span>
-          )}
-        </div>
-
         {/* Product Status */}
         <div>
           <label
@@ -251,6 +206,7 @@ const AddProduct = () => {
             <option value="">Select...</option>
             <option value="New">New</option>
             <option value="Regular">Regular</option>
+            <option value="Deal">Deal</option>
           </select>
           {errors.collectionStatus && (
             <span className="text-red-500 text-sm">This field is required</span>
@@ -273,6 +229,8 @@ const AddProduct = () => {
             <option value="">Select...</option>
             <option value="tshirt">T-shirt</option>
             <option value="polos">Polos</option>
+            <option value="headwear">Headwear</option>
+            <option value="begs/wallets">Bags/Wallets</option>
             <option value="shirt">Shirt</option>
             <option value="jackets">Jackets</option>
             <option value="headware">Headware</option>
@@ -286,11 +244,65 @@ const AddProduct = () => {
             <span className="text-red-500 text-sm">This field is required</span>
           )}
         </div>
+        {/* Material */}
+        <div>
+          <label
+            htmlFor="material"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Material
+          </label>
+          <input
+            id="material"
+            {...register("material", { required: true })}
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500"
+          />
+          {errors.material && (
+            <span className="text-red-500 text-sm">This field is required</span>
+          )}
+        </div>
+        {/* Details Material */}
+        <div>
+          <label
+            htmlFor="detailsMaterial"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Details Material
+          </label>
+          <textarea
+            id="detailsMaterial"
+            {...register("detailsMaterial", { required: true })}
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500"
+          />
+          {errors.detailsMaterial && (
+            <span className="text-red-500 text-sm">This field is required</span>
+          )}
+        </div>
 
         {/* Image inputs */}
-
-        {/* Image inputs */}
-        {/* Image inputs */}
+        <div className="col-span-2">
+          <label className="block text-sm font-medium text-gray-700">
+            Images
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleImageChange}
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500"
+          />
+          {/* Display selected images */}
+          <div className="mt-2 flex gap-3">
+            {imageUrls.map((url, index) => (
+              <img
+                key={index}
+                src={url}
+                alt={`Image ${index + 1}`}
+                className="w-24 h-24 object-cover mr-2 mb-2 rounded-md"
+              />
+            ))}
+          </div>
+        </div>
 
         <div className="col-span-2">
           <input

@@ -8,6 +8,7 @@ import { useGetToCard } from "../../../hooks/useGetToCart";
 
 const Navbar = () => {
   const { data } = useGetToCard();
+
   const [topwarDropdownOpen, setTopwarDropdownOpen] = useState(false);
   const [accesarisDropdownOpen, setAccesarisDropdownOpen] = useState(false);
 
@@ -114,7 +115,7 @@ const Navbar = () => {
             <FiShoppingCart className="w-6 h-6" />
             {data && data.length > 0 && (
               <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100  rounded-full">
-                {data.length}
+                {data?.length}
               </span>
             )}
           </NavLink>

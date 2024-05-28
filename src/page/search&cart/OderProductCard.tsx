@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
+
+import ResponsiveDialog from "./ConfirmOderModal";
 
 interface Product {
   _id: string;
   title: string;
   price: number;
   tex: string;
-  size: string[];
+  size?: string[]; // made optional
   detailsMaterial: string;
-  color: string[];
+  color?: string[]; // made optional
   productStatus: string;
 }
 
@@ -41,7 +42,7 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
                 <p className="text-lg font-semibold">{data.title}</p>
                 <p>
                   <span className="font-medium">Size:</span>
-                  <span className="ml-1">{data.size[0]}</span>
+                  <span className="ml-1">{data.size?.[0] || "N/A"}</span>
                 </p>
                 <p>
                   <span className="font-medium">Style:</span>
@@ -49,7 +50,7 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
                 </p>
                 <p>
                   <span className="font-medium">Color:</span>
-                  <span className="ml-1">{data.color[0]}</span>
+                  <span className="ml-1">{data.color?.[0] || "N/A"}</span>
                 </p>
               </div>
             </div>
@@ -73,11 +74,10 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
         </div>
       </div>
       <hr className="w-full h-1 bg-black my-2" />
-      <NavLink to="/oderAddres">
-        <button className="mt-10 p-4 px-10 tracking-widest font-semibold text-xl text-white bg-[#3c3633] rounded-full flex justify-center w-fit">
-          Check Out
-        </button>
-      </NavLink>
+
+      <div>
+        <ResponsiveDialog></ResponsiveDialog>
+      </div>
     </div>
   );
 };

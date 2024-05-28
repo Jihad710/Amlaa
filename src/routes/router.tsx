@@ -20,8 +20,7 @@ import Search from "../page/search&cart/Search";
 import Cart from "../page/search&cart/SelectedProductCart";
 import { handleBuyProduct } from "../hooks/BuyProduct";
 import ProductDetails from "../page/products/ProductDetails";
-import Accessories from "../page/accecsaris/BagsAndWallets";
-import OderAddres from "../page/search&cart/OderAddres";
+import Accessories from "../page/accecsaris/Accessories";
 import PaymentSystem from "../page/search&cart/PaymentSystem";
 
 const router = createBrowserRouter([
@@ -89,10 +88,6 @@ const router = createBrowserRouter([
         path: "product/:id",
         element: <ProductDetails />,
         loader: ({ params }) => handleBuyProduct(params.id as string),
-      },
-      {
-        path: "/oderAddres",
-        element: <OderAddres></OderAddres>,
       },
       {
         path: "/payment-system",

@@ -1,26 +1,10 @@
 import { useQuery } from "react-query";
 import DynamicBanner from "../../components/ui/DynamicBanner";
 import ProductCart from "../products/ProductCart";
-
-interface Product {
-  id: string;
-  title: string;
-  price: number;
-  material: string;
-  size: string[];
-  color: string[];
-  productType: string;
-  discount: number;
-  type: string;
-  detailsMaterial: string;
-  productStatus: string;
-  collectionStatus: string;
-  category: string;
-  images: string[];
-}
+import { TProduct } from "../../components/type/Types";
 
 const BestDeals = () => {
-  const { isLoading, data } = useQuery<Product[]>("allProduct", async () => {
+  const { isLoading, data } = useQuery<TProduct[]>("allProduct", async () => {
     const response = await fetch(
       "https://black-and-white-server.vercel.app/products/category?category=deal"
     );
@@ -33,6 +17,11 @@ const BestDeals = () => {
 
   if (isLoading) {
     return <div>Loading...</div>;
+  }
+
+  // Check if data is defined before rendering ProductCart
+  if (!data) {
+    return <div>No data available</div>;
   }
 
   return (

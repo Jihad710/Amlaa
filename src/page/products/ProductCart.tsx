@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { handleBuyProduct } from "../../hooks/BuyProduct";
 import { Product } from "../allProducts/AllProduct";
@@ -9,9 +9,19 @@ interface ProductCartProps {
 
 const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {
   const navigate = useNavigate();
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+
+  useEffect(() => {
+    if (isHovering) {
+      const interval = setInterval(() => {
+        setCurrentImage((prevImage) => (prevImage + 1) % datas.length);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [isHovering, datas.length]);
 
   const handleProductClick = async (id: string) => {
-    console.log("Product ID:", id);
     try {
       const productData = await handleBuyProduct(id);
       console.log("Product Data:", productData);
@@ -30,12 +40,18 @@ const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {
             onClick={() => handleProductClick(data._id)}
             className="cursor-pointer border p-4 hover:shadow-lg"
           >
-            <div>
-              <img
-                src={data?.images}
-                alt={data.title}
-                className="w-full h-auto"
-              />
+            <div
+              className="bg-white rounded-md overflow-hidden shadow-md transition-shadow ease-out relative hover:shadow-lg"
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            >
+              <div className="relative">
+                <img
+                  src={datas[currentImage].images}
+                  alt={`Image ${datas[currentImage].title}`}
+                  className="w-full h-24 transition-opacity duration-1000 ease-out"
+                />
+              </div>
             </div>
             <div>
               <p>{data.type}</p>

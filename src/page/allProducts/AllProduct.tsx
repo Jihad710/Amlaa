@@ -16,7 +16,7 @@ export interface Product {
   productStatus: string;
   collectionStatus: string;
   category: string;
-  images: string;
+  images: string[];
 }
 
 const AllProduct = () => {

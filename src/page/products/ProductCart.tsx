@@ -16,7 +16,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {
     if (isHovering) {
       const interval = setInterval(() => {
         setCurrentImage((prevImage) => (prevImage + 1) % datas.length);
-      }, 1000);
+      }, 3000);
       return () => clearInterval(interval);
     }
   }, [isHovering, datas.length]);
@@ -46,11 +46,13 @@ const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {
               onMouseLeave={() => setIsHovering(false)}
             >
               <div className="relative">
-                <img
-                  src={datas[currentImage].images}
-                  alt={`Image ${datas[currentImage].title}`}
-                  className="w-full h-24 transition-opacity duration-1000 ease-out"
-                />
+                {data?.images?.map((i) => (
+                  <img
+                    src={i}
+                    alt={`Image ${datas[currentImage].title}`}
+                    className="w-full h-24 transition-opacity duration-1000 ease-out"
+                  />
+                ))}
               </div>
             </div>
             <div>

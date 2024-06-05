@@ -12,5 +12,5 @@ export interface TProduct {
   productStatus: string;
   collectionStatus: string;
   category: string;
-  images: string;
+  images: string[];
 }

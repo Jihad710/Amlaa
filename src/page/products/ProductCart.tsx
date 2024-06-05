@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { handleBuyProduct } from "../../hooks/BuyProduct";
-import { Product } from "../allProducts/AllProduct";
+import { TProduct } from "../../components/type/Types";
 
 interface ProductCartProps {
-  datas: Product[];
+  datas: TProduct[];
 }
 
 const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {

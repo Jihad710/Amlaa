@@ -25,7 +25,7 @@ const Headwear = () => {
   return (
     <div>
       <DynamicBanner title="Headwear"></DynamicBanner>
-      <ProductCart datas={data}></ProductCart>
+      <ProductCart datas={data ?? []}></ProductCart>
     </div>
   );
 };

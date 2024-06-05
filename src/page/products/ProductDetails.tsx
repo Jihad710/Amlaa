@@ -1,27 +1,10 @@
 import React, { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useAddToCart } from "../../hooks/useAddToCart";
-
-interface ProductDetails {
-  _id: string;
-  title: string;
-  price: number;
-  tex: string;
-  size: string[];
-  detailsMaterial: string;
-  color: string[];
-  productStatus: string;
-  dimensions: {
-    height: number;
-    width: number;
-    handle: number;
-  };
-  capacity: number;
-  images: string[];
-}
+import { TProductDetails } from "../../components/type/Types";
 
 const ProductDetails: React.FC = () => {
-  const details = useLoaderData() as ProductDetails;
+  const details = useLoaderData() as TProductDetails;
   const initialImage = details.images?.[0] || "";
   const [mainImage, setMainImage] = useState(initialImage);
   const { mutate: addToCart, isLoading } = useAddToCart();

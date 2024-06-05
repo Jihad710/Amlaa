@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
-
 import ResponsiveDialog from "./ConfirmOderModal";
 
 interface Product {
@@ -8,9 +7,9 @@ interface Product {
   title: string;
   price: number;
   tex: string;
-  size?: string[]; // made optional
+  size?: string[];
   detailsMaterial: string;
-  color?: string[]; // made optional
+  color?: string[];
   productStatus: string;
 }
 
@@ -19,31 +18,27 @@ interface OderProductCardProps {
 }
 
 const OderProductCard = ({ data }: OderProductCardProps) => {
-  const [count, setCount] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
   return (
-    <div className="w-9/12 mx-auto">
-      <div className="flex flex-col">
-        {/* Table Header */}
-        <div className="flex flex-row w-full justify-end bg-gray-200 px-4 py-2">
-          <p className="w-2/12 text-right">Quantity</p>
-          <p className="w-2/12 text-right">Total</p>
-        </div>
-        <hr className="w-full h-1 bg-black my-2" />
-        {/* Table Rows */}
-        <div className="flex flex-col">
-          {/* Product Row */}
-          <div className="flex flex-row items-center justify-between border-b border-gray-200 px-4 py-2">
-            <div className="flex items-center">
-              {/* Here you can use dynamic data from props */}
-              {/* For example: */}
-              {/* <img className="w-24 h-auto mr-4" src={data.imageUrl} alt="Product" /> */}
+    <div className="w-11/12 md:w-9/12 mx-auto">
+      <table className="w-full table-auto">
+        <thead className="bg-gray-200">
+          <tr>
+            <th className="p-2 text-left"></th>
+            <th className="p-2 text-center"></th>
+            <th className="p-2 text-center">Quantity</th>
+            <th className="p-2 text-right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="border-b border-gray-200">
+            <td className="p-2">
+              <img src="" alt="" />
+            </td>
+            <td className="p-2 text-center">
               <div>
                 <p className="text-lg font-semibold">{data.title}</p>
-                <p>
-                  <span className="font-medium">Size:</span>
-                  <span className="ml-1">{data.size?.[0] || "N/A"}</span>
-                </p>
                 <p>
                   <span className="font-medium">Style:</span>
                   <span className="ml-1">{data.detailsMaterial}</span>
@@ -52,31 +47,38 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
                   <span className="font-medium">Color:</span>
                   <span className="ml-1">{data.color?.[0] || "N/A"}</span>
                 </p>
+                <p>
+                  <span className="font-medium">Size:</span>
+                  <span className="ml-1">{data.size?.[0] || "N/A"}</span>
+                </p>
               </div>
-            </div>
-            <div className="w-2/12 text-right">
-              <div className="flex items-center justify-center gap-4 border-b border-black border-solid border-b-3">
+            </td>
+            <td className="p-2 text-center">
+              <div className="flex justify-center items-center gap-4">
                 <FiMinus
                   onClick={() =>
-                    setCount((prevCount) => Math.max(prevCount - 1, 0))
+                    setQuantity((prevQuantity) => Math.max(prevQuantity - 1, 0))
                   }
+                  className="cursor-pointer"
                 />
-                <p>{count}</p>
+                <p>{quantity}</p>
                 <FiPlus
-                  onClick={() => setCount((prevCount) => prevCount + 1)}
+                  onClick={() =>
+                    setQuantity((prevQuantity) => prevQuantity + 1)
+                  }
+                  className="cursor-pointer"
                 />
               </div>
-            </div>
-            <p className="w-2/12 text-right">
-              ${(data.price * count).toFixed(2)}
-            </p>
-          </div>
-        </div>
-      </div>
+            </td>
+            <td className="p-2 text-right">
+              ${data.price ? (data?.price * quantity).toFixed(2) : "00"}
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <hr className="w-full h-1 bg-black my-2" />
-
       <div>
-        <ResponsiveDialog></ResponsiveDialog>
+        <ResponsiveDialog />
       </div>
     </div>
   );

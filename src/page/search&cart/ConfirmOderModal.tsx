@@ -9,24 +9,40 @@ interface TFormData {
   state: string;
   city: string;
   district: string;
+  paymentMethod: string; // New field for payment method
 }
 
 const ConfirmOrderModal = () => {
-  // Corrected component name
-  const [open, setOpen] = useState<boolean>(false); // Typed with boolean
+  const [open, setOpen] = useState<boolean>(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TFormData>(); // Corrected form data type
-  const onSubmit = async (data: TFormData) => {
-    try {
-      console.log(data);
-      setOpen(false);
-    } catch (error) {
-      console.error("Error:", error);
-    }
+  } = useForm<TFormData>();
+
+  const onSubmit = async () => {
+    console.log("pyment succes");
+    // try {
+    //   const response = await fetch("/api/submit-order", {
+    //     // Adjust the endpoint as necessary
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   });
+
+    //   if (!response.ok) {
+    //     throw new Error("Network response was not ok");
+    //   }
+
+    //   const responseData = await response.json();
+    //   console.log("Order submitted successfully:", responseData);
+    //   setOpen(false);
+    // } catch (error) {
+    //   console.error("Error:", error);
+    // }
   };
 
   const handleClickOpen = () => {
@@ -38,7 +54,7 @@ const ConfirmOrderModal = () => {
   };
 
   return (
-    <div className="w-full md:h-full h-screen overflow-y-hidden">
+    <div className="w-full md:h-full h-screen overflow-y-scroll">
       <button
         className="bg-blue-500 text-white py-2 px-4 rounded"
         onClick={handleClickOpen}
@@ -46,21 +62,22 @@ const ConfirmOrderModal = () => {
         Check Out
       </button>
       {open && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white w-full md:w-10/12 max-h-screen overflow-hidden">
-            <div className="bg-blue-500 text-white flex justify-between">
-              <h1 className="text-2xl font-bold p-4">Desi Minimals</h1>
-              <button
-                type="button"
-                onClick={handleClose}
-                className="bg-red-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:bg-red-700 transition duration-300"
-              >
-                Disagree
-              </button>
-            </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="mx-auto flex gap-10 py-6 overflow-hidden">
-                <div className="w-7/12 max-h-[calc(100vh-200px)] overflow-y-auto custom-scrollbar px-3">
+        <form className="" onSubmit={handleSubmit(onSubmit)}>
+          <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
+            <div className="bg-white w-full md:w-10/12 max-h-screen overflow-hidden">
+              <div className="bg-blue-500 text-white flex justify-between">
+                <h1 className="text-2xl font-bold p-4">Desi Minimals</h1>
+                <button
+                  type="button"
+                  onClick={handleClose}
+                  className="bg-red-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:bg-red-700 transition duration-300"
+                >
+                  Disagree
+                </button>
+              </div>
+
+              <div className="mx-auto border border-red-600 flex py-6 overflow-hidden">
+                <div className="w-7/12 max-h-[calc(100vh-250px)] overflow-y-auto custom-scrollbar px-3">
                   <div className="flex items-center gap-2 mb-4">
                     <IoLocationOutline className="text-xl" />
                     <p className="text-lg font-medium">Delivery Address</p>
@@ -127,22 +144,56 @@ const ConfirmOrderModal = () => {
                     {errors.district && (
                       <p className="text-red-500">District is required</p>
                     )}
+
+                    <div className="flex flex-col space-y-2">
+                      <label className="flex items-center">
+                        <input
+                          type="radio"
+                          value="cash_on_delivery"
+                          {...register("paymentMethod", { required: true })}
+                          className="mr-2"
+                        />
+                        Cash on Delivery
+                      </label>
+                      <label className="flex items-center">
+                        <input
+                          type="radio"
+                          value="ssl_payment"
+                          {...register("paymentMethod", { required: true })}
+                          className="mr-2"
+                        />
+                        SSL Payment System
+                      </label>
+                    </div>
+                    {errors.paymentMethod && (
+                      <p className="text-red-500">
+                        Please select a payment method
+                      </p>
+                    )}
                   </div>
-                  <button
-                    type="submit"
-                    className="block w-full mt-3 py-2 px-4 bg-black text-white text-lg font-semibold rounded hover:bg-gray-800 focus:outline-none focus:bg-gray-800 transition duration-300"
-                  >
-                    Payment
-                  </button>
                 </div>
-                <div className="w-5/12">
-                  <h1 className="text-2xl font-bold mb-4 text-center">
+
+                <div className="w-5/12 px-2">
+                  <h1 className=" text-xl font-medium mb-5 text-center">
                     Order Summary
                   </h1>
-                  <div className="border rounded-lg p-6">
-                    <img src="" alt="" className="w-full rounded-md mb-4" />
-                    <p className="text-lg font-semibold mb-2">Title</p>
-                    <hr className="my-4" />
+                  <div className="border rounded p-1">
+                    <div className="flex justify-between w-full  ">
+                      <img
+                        src=""
+                        alt=""
+                        className="w-12 h-12 rounded-md mb-4"
+                      />
+                      <div>
+                        <p className="text-lg font-semibold ">Title</p>
+                        <p className="text-lg font-semibold ">
+                          <span className="font-bold">Qty</span>
+                          <span>{}</span>
+                        </p>
+                      </div>
+                      <p className="text-lg font-semibold ">Title</p>
+                    </div>
+                    <hr className="mb-4 mt-1" />
                     <div className="flex justify-between">
                       <p className="text-lg">Price (incl. taxes)</p>
                       <p className="text-lg font-semibold">$500</p>
@@ -150,9 +201,18 @@ const ConfirmOrderModal = () => {
                   </div>
                 </div>
               </div>
-            </form>
+              <div className="flex justify-between p-3 w-1/2">
+                <p>price </p>
+                <button
+                  type="submit"
+                  className="block py-2 px-4 bg-black text-white text-lg font-semibold rounded hover:bg-gray-800 focus:outline-none focus:bg-gray-800 transition duration-300"
+                >
+                  Payment
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+        </form>
       )}
     </div>
   );

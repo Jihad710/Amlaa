@@ -32,7 +32,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {
   };
 
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-4 md:gap-4">
       {datas?.length > 0 ? (
         datas.map((data) => (
           <div

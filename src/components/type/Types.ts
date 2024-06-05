@@ -14,3 +14,21 @@ export interface TProduct {
   category: string;
   images: string[];
 }
+
+export interface TProductDetails {
+  _id: string;
+  title: string;
+  price: number;
+  tex: string;
+  size: string[];
+  detailsMaterial: string;
+  color: string[];
+  productStatus: string;
+  dimensions: {
+    height: number;
+    width: number;
+    handle: number;
+  };
+  capacity: number;
+  images: string[];
+}

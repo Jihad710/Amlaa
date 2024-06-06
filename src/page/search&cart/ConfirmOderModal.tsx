@@ -48,12 +48,14 @@ const ConfirmOrderModal = () => {
 
   return (
     <div className="w-full md:h-full h-screen overflow-y-scroll">
-      <button
-        className="bg-blue-500 text-white py-2 px-4 rounded"
-        onClick={handleClickOpen}
-      >
-        Check Out
-      </button>
+      <div className="flex justify-center items-center ">
+        <button
+          className=" text-white py-2 font-semibold w-56 px-14 rounded-md text-xl my-3 bg-[#3c3633]"
+          onClick={handleClickOpen}
+        >
+          Check Out
+        </button>
+      </div>
       {open && (
         <form className="" onSubmit={handleSubmit(onSubmit)}>
           <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">

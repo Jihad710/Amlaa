@@ -16,17 +16,19 @@ const SelectedProductCart = () => {
       <div>
         <OderProductCard data={data} />
 
-        <NavLink to="/">
-          <button
-            className={`${
-              data.length
-                ? "text-center"
-                : "mt-10 p-4 px-10 tracking-widest font-semibold text-xl text-white bg-[#3c3633] rounded-full"
-            }`}
-          >
-            Continue Shopping
-          </button>
-        </NavLink>
+        <div className="flex justify-center items-center pb-10 mb-24">
+          <NavLink to="/">
+            <button
+              className={`${
+                data.length
+                  ? "flex justify-center items-center text-xl capitalize font-semibold"
+                  : "mt-10 p-4 px-10 tracking-widest font-semibold text-xl text-white bg-[#3c3633] rounded-full"
+              }`}
+            >
+              Continue Shopping
+            </button>
+          </NavLink>
+        </div>
       </div>
     </div>
   );

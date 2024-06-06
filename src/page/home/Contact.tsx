@@ -8,7 +8,7 @@ const Contact = () => {
             <div className="md:w-1/2 ">
               <label htmlFor="name">Name</label>
               <input
-                className="block bg-transparent w-full p-2 text-xl border-b-2 outline-none border-purple-700"
+                className="block bg-transparent w-full p-2 text-xl border-b-2 outline-none border-[#3c3633]"
                 type="text"
                 name="name"
                 id="name"
@@ -17,7 +17,7 @@ const Contact = () => {
             <div className="md:w-1/2">
               <label htmlFor="email">Email </label>
               <input
-                className="block bg-transparent w-full p-2 text-xl border-b-2 outline-none border-purple-700"
+                className="block bg-transparent w-full p-2 text-xl border-b-2 outline-none border-[#3c3633]"
                 type="email"
                 name="email"
                 id="email"
@@ -27,7 +27,7 @@ const Contact = () => {
           <div>
             <label htmlFor="message">Message </label>
             <textarea
-              className="w-full block bg-transparent outline-none border-b-2 border-purple-700"
+              className="w-full block bg-transparent outline-none border-b-2 border-[#3c3633]"
               name="message"
               id="message"
               rows={6}

@@ -19,7 +19,7 @@ const Registation: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center h-screen my-24">
-      <div className="w-1/3">
+      <div className="md:w-1/3 w-11/12">
         <h1 className="text-4xl text-[#3c3633] mb-4 text-center pb-10 font-bold">
           Create Account
         </h1>

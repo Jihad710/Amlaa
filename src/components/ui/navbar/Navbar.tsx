@@ -5,6 +5,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { useState } from "react";
 import FormDialog from "../../FormDialog";
 import { useGetToCard } from "../../../hooks/useGetToCart";
+import { FaAngleDown } from "react-icons/fa6";
 
 const Navbar = () => {
   const { data } = useGetToCard();
@@ -31,91 +32,124 @@ const Navbar = () => {
   };
 
   return (
-    <div>
-      <div className="hidden bg-[#eeedeb] sm:flex justify-between items-center h-[170px] px-10 py-[30px]  ">
+    <div className="bg-[#eeedeb] py-4 text-[#3c3633]">
+      <div className="container mx-auto flex justify-between items-center">
         <div className="flex-shrink-0">
-          <div className="w-[110px] h-[84px]">
-            <NavLink to={"/"}>
-              <img className="w-full h-full" src={logo} alt="" />
-            </NavLink>
-          </div>
+          <NavLink to={"/"}>
+            <img className="w-[110px] h-[84px]" src={logo} alt="Logo" />
+          </NavLink>
         </div>
-        <div>
-          <ul className="flex text-xl font-light">
-            <NavLink className="px-5" to={"/allProduct"}>
-              All
-            </NavLink>
-            <NavLink className="px-5" to={"/collection/best-deal"}>
-              Best Deal
-            </NavLink>
-
-            <li
-              className="relative"
-              onMouseEnter={handleTopwarMouseEnter}
-              onMouseLeave={handleTopwarMouseLeave}
-            >
-              <NavLink className="px-5" to={""}>
-                Topwar
-              </NavLink>
-              {topwarDropdownOpen && (
-                <ul className="absolute left-0 top-full px-5 py-3 bg-white shadow-md  rounded-md z-10 w-40">
-                  <li className="pb-3">
-                    <NavLink to={"/collection/t-shirt"}>T-Shirt</NavLink>
-                  </li>
-                  <li className="pb-3">
-                    <NavLink to={"/collection/polo"}>Polo</NavLink>
-                  </li>
-                  <li className=" pb-3">
-                    <NavLink className="mb-10" to={"/collection/shirt"}>
-                      Shirt
-                    </NavLink>
-                  </li>
-                  <li className="pb-3">
-                    <NavLink to={"/collection/jackets"}>Jackets</NavLink>
-                  </li>
-                </ul>
-              )}
-            </li>
-            <NavLink className="px-5" to={"/collection/bottomwar"}>
-              Bottomwar
-            </NavLink>
-            <li
-              className="relative"
-              onMouseEnter={handleAccesarisMouseEnter}
-              onMouseLeave={handleAccesarisMouseLeave}
-            >
-              <NavLink className="ps-5" to={""}>
-                Accesaris
-              </NavLink>
-              {accesarisDropdownOpen && (
-                <ul className="absolute left-0 top-full  py-3 bg-white shadow-md rounded-md z-10 w-40 p-4">
-                  <li className="pb-3">
-                    <NavLink to={"/collection/head-wear"}>Headwear</NavLink>
-                  </li>
-                  <li className="pb-3">
-                    <NavLink to={"/collection/accessories"}>
-                      Bags/Wallets
-                    </NavLink>
-                  </li>
-                </ul>
-              )}
-            </li>
-          </ul>
-        </div>
-        <div className="flex gap-5 items-center relative">
-          <NavLink to={"/login"}>
-            <VscAccount className="w-6 h-6" />
+        <ul className="flex text-lg font-light items-center space-x-6">
+          <NavLink
+            className="hover:text-gray-700 text-2xl font-semibold"
+            to={"/allProduct"}
+          >
+            All
+          </NavLink>
+          <NavLink
+            className="hover:text-gray-700 text-2xl font-semibold"
+            to={"/collection/best-deal"}
+          >
+            Best Deal
           </NavLink>
 
-          <div>
-            <FormDialog />
-          </div>
-
+          <li
+            className="relative w-[120px] ps-1"
+            onMouseEnter={handleTopwarMouseEnter}
+            onMouseLeave={handleTopwarMouseLeave}
+          >
+            <NavLink
+              className="hover:text-gray-700 flex items-center justify-between  font-semibold text-2xl"
+              to={""}
+            >
+              Topwar <FaAngleDown className="ml-1" />
+            </NavLink>
+            {topwarDropdownOpen && (
+              <ul className="absolute ps-1 left-0 top-full bg-white shadow-md rounded-md z-10 w-40 py-3 mt-2">
+                <li className="pb-3">
+                  <NavLink
+                    className="hover:text-gray-700"
+                    to={"/collection/t-shirt"}
+                  >
+                    T-Shirt
+                  </NavLink>
+                </li>
+                <li className="pb-3 ">
+                  <NavLink
+                    className="hover:text-gray-700"
+                    to={"/collection/polo"}
+                  >
+                    Polo
+                  </NavLink>
+                </li>
+                <li className="pb-3">
+                  <NavLink
+                    className="hover:text-gray-700"
+                    to={"/collection/shirt"}
+                  >
+                    Shirt
+                  </NavLink>
+                </li>
+                <li className="pb-3">
+                  <NavLink
+                    className="hover:text-gray-700"
+                    to={"/collection/jackets"}
+                  >
+                    Jackets
+                  </NavLink>
+                </li>
+              </ul>
+            )}
+          </li>
+          <NavLink
+            className="hover:text-gray-700 text-2xl font-semibold"
+            to={"/collection/bottomwar"}
+          >
+            Bottomwar
+          </NavLink>
+          <li
+            className="relative w-[140px] ps-1"
+            onMouseEnter={handleAccesarisMouseEnter}
+            onMouseLeave={handleAccesarisMouseLeave}
+          >
+            <NavLink
+              className="hover:text-gray-700 flex items-center justify-between font-semibold text-2xl"
+              to={""}
+            >
+              Accesaris <FaAngleDown className="ml-1" />
+            </NavLink>
+            {accesarisDropdownOpen && (
+              <ul className="absolute left-0 top-full bg-white shadow-md rounded-md z-10 w-40 py-3 mt-1 ps-1">
+                <li className="pb-3">
+                  <NavLink
+                    className="hover:text-gray-700"
+                    to={"/collection/head-wear"}
+                  >
+                    Headwear
+                  </NavLink>
+                </li>
+                <li className="pb-3">
+                  <NavLink
+                    className="hover:text-gray-700"
+                    to={"/collection/accessories"}
+                  >
+                    Bags/Wallets
+                  </NavLink>
+                </li>
+              </ul>
+            )}
+          </li>
+        </ul>
+        <div className="flex items-center space-x-5">
+          <NavLink to={"/login"}>
+            <VscAccount className="w-6 h-6 hover:text-gray-700" />
+          </NavLink>
+          <FormDialog />
           <NavLink to={"/cart"} className="relative">
-            <FiShoppingCart className="w-6 h-6" />
+            <FiShoppingCart className="w-6 h-6 hover:text-gray-700" />
             {data && data.length > 0 && (
-              <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100  rounded-full">
-                {data?.length}
+              <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {data.length}
               </span>
             )}
           </NavLink>

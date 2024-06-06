@@ -8,7 +8,6 @@ import img5 from "../../../public/DSC_2182.webp";
 import img6 from "../../../public/DSC_2387.webp";
 import img7 from "../../../public/DSC_2391_a786ee40-4e75-4890-81eb-9b6359a26ab7.jpg";
 import { useAddToCart } from "../../hooks/useAddToCart";
-
 const details = {
   _id: "crater-tote-bag",
   title: "Crater — Heavy Duty Tote Bag",
@@ -24,9 +23,9 @@ const details = {
   images: [img1, img2, img3, img4, img5, img6, img7],
 };
 
-const user = {
-  email: "user@example.com",
-};
+// const user = {
+//   email: "user@example.com",
+// };
 
 const ShowBag: React.FC = () => {
   const [mainImage, setMainImage] = useState(details.images[0]);
@@ -39,7 +38,6 @@ const ShowBag: React.FC = () => {
       name: details.title,
       image: mainImage,
       price: details.price,
-      email: user.email,
     };
 
     addToCart(cartItem, {

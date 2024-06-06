@@ -9,16 +9,14 @@ interface CartItem {
 
 const useAddToCart = () => {
   return useMutation(async (cartItem: CartItem) => {
-    const response = await fetch(
-      "https://black-and-white-server.vercel.app/product/add",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(cartItem),
-      }
-    );
+    console.log(cartItem);
+    const response = await fetch("http://localhost:5000/product/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartItem),
+    });
 
     if (!response.ok) {
       throw new Error("Network response was not ok");

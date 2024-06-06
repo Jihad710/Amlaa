@@ -1,48 +1,41 @@
 import { useState } from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
-
-interface TFormData {
-  name: string;
-  number: string;
-  code: string;
-  state: string;
-  city: string;
-  district: string;
-  paymentMethod: string; // New field for payment method
-}
+import { TAddProduct, TOderFormData } from "../../components/type/Types";
+import { useGetToCard } from "../../hooks/useGetToCart";
 
 const ConfirmOrderModal = () => {
   const [open, setOpen] = useState<boolean>(false);
-
+  const { data: addProduct } = useGetToCard();
+  console.log(addProduct);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TFormData>();
+  } = useForm<TOderFormData>();
+  const getId = addProduct.map((data: TAddProduct) => data.menuItemId);
 
-  const onSubmit = async () => {
-    console.log("pyment succes");
-    // try {
-    //   const response = await fetch("/api/submit-order", {
-    //     // Adjust the endpoint as necessary
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   });
+  const onSubmit = async (data: TOderFormData) => {
+    data.productId = getId;
+    try {
+      const response = await fetch("http://localhost:5000/api/confirmOrder", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    //   if (!response.ok) {
-    //     throw new Error("Network response was not ok");
-    //   }
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-    //   const responseData = await response.json();
-    //   console.log("Order submitted successfully:", responseData);
-    //   setOpen(false);
-    // } catch (error) {
-    //   console.error("Error:", error);
-    // }
+      const responseData = await response.json();
+      console.log("Order submitted successfully:", responseData);
+      setOpen(false);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const handleClickOpen = () => {

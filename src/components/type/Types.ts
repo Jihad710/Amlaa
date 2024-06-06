@@ -32,3 +32,22 @@ export interface TProductDetails {
   capacity: number;
   images: string[];
 }
+
+export interface TOderFormData {
+  name: string;
+  number: string;
+  code: string;
+  state: string;
+  city: string;
+  district: string;
+  paymentMethod: string;
+  productId: string;
+}
+
+export interface TAddProduct {
+  _id: string;
+  menuItemId: string;
+  name: string;
+  image: string;
+  price: number;
+}

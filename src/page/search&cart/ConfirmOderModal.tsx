@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
 import {
@@ -7,9 +7,10 @@ import {
   TProductDetails,
 } from "../../components/type/Types";
 import { useGetToCard } from "../../hooks/useGetToCart";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const ConfirmOrderModal = () => {
-  const [open, setOpen] = useState<boolean>(false);
+  const { openModalRs, setOpenModalRs } = useContext(AuthContext);
   const { data: addProduct } = useGetToCard();
 
   const {
@@ -39,24 +40,24 @@ const ConfirmOrderModal = () => {
 
       const responseData = await response.json();
       console.log("Order submitted successfully:", responseData);
-      setOpen(false);
+      setOpenModalRs(false);
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setOpenModalRs(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setOpenModalRs(false);
   };
 
   return (
-    <div className="w-full h-full overflow-y-scroll">
+    <div className="w-full h-full overflow-y-auto">
       {addProduct?.length ? (
-        <div className="flex justify-center items-center ">
+        <div className="flex justify-center items-center">
           <button
             className="text-white py-2 font-semibold w-56 px-14 rounded-md text-xl my-3 bg-[#3c3633]"
             onClick={handleClickOpen}
@@ -68,10 +69,10 @@ const ConfirmOrderModal = () => {
         ""
       )}
 
-      {open && (
+      {openModalRs && (
         <form className="" onSubmit={handleSubmit(onSubmit)}>
-          <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center overflow-auto ">
-            <div className="bg-white w-full md:w-10/12 max-h-screen overflow-hidden ">
+          <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center overflow-auto">
+            <div className="bg-white w-full md:w-10/12 max-h-screen overflow-hidden">
               <div className="bg-blue-500 text-white flex justify-between">
                 <h1 className="text-2xl font-bold p-4">Desi Minimals</h1>
                 <button
@@ -83,7 +84,7 @@ const ConfirmOrderModal = () => {
                 </button>
               </div>
 
-              <div className="mx-auto border flex flex-col md:flex-row py-6 overflow-y-auto md:overflow-hidden max-h-[calc(100vh-150px)]">
+              <div className="mx-auto border flex flex-col md:flex-row py-6 overflow-y-auto md:overflow-hidden max-h-[calc(100vh-140px)]">
                 <div className="w-full md:w-7/12 max-h-[calc(100vh-250px)] overflow-y-auto custom-scrollbar px-3">
                   <div className="flex items-center gap-2 mb-4">
                     <IoLocationOutline className="text-xl" />
@@ -120,14 +121,11 @@ const ConfirmOrderModal = () => {
                       <p className="text-red-500">Post code is required</p>
                     )}
 
-                    <div
-                      className="flex md:gap-0
-                     gap-2 md:space-x-4"
-                    >
+                    <div className="flex md:gap-0 gap-2 md:space-x-4">
                       <input
                         type="text"
                         {...register("state", { required: true })}
-                        className="w-1/2  md:flex-1 border rounded-md p-2 placeholder-gray-500"
+                        className="w-1/2 md:flex-1 border rounded-md p-2 placeholder-gray-500"
                         placeholder="State"
                       />
                       {errors.state && (
@@ -183,7 +181,7 @@ const ConfirmOrderModal = () => {
                   </div>
                 </div>
 
-                <div className="w-full md:w-5/12 md:max-h-[calc(100vh-250px)] max-h-[calc(100vh-200px)] overflow-y-auto custom-scrollbar px-3">
+                <div className="w-full md:w-5/12 overflow-y-auto custom-scrollbar px-3">
                   <h1 className="text-xl font-medium mb-5 text-center">
                     Order Summary
                   </h1>
@@ -202,7 +200,7 @@ const ConfirmOrderModal = () => {
                           <div className="ps-2">
                             <p className="text-md ">{product.title}</p>
                             <p className="text-md">
-                              <span className="">Quantity: </span>
+                              <span className="">Quantity : </span>
                               {product.quantity}
                             </p>
                           </div>
@@ -228,7 +226,7 @@ const ConfirmOrderModal = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center p-3 w-full  md:w-1/2">
+              <div className="flex justify-center p-3 w-full md:mb-0 mb-20 md:w-1/2">
                 <button
                   type="submit"
                   className="block py-2 px-4 bg-black text-white text-lg font-semibold rounded hover:bg-gray-800 focus:outline-none focus:bg-gray-800 transition duration-300"

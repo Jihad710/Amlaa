@@ -9,11 +9,7 @@ import Polo from "../page/topOutFit/Polo";
 import Shirt from "../page/topOutFit/Shirt";
 import Jackets from "../page/topOutFit/Jackets";
 import Headwear from "../page/accecsaris/Headwear";
-import AdminLayout from "../components/layout/AdminLayount/AdminLayout";
-import AdminDashBoard from "../components/layout/AdminLayount/AdminDashBoard";
-import AddProduct from "../components/layout/AdminLayount/AddProduct";
-import UpDateProduct from "../components/layout/AdminLayount/UpDateProduct";
-import CoustomerOder from "../components/layout/AdminLayount/CoustomerOder";
+
 import Login from "../page/log/Loging";
 import Registation from "../page/log/Registation";
 
@@ -84,28 +80,6 @@ const router = createBrowserRouter([
         path: "product/:id",
         element: <ProductDetails />,
         loader: ({ params }) => handleBuyProduct(params.id as string),
-      },
-    ],
-  },
-  {
-    path: "/admin-dashboard",
-    element: <AdminLayout></AdminLayout>,
-    children: [
-      {
-        index: true,
-        element: <AdminDashBoard></AdminDashBoard>,
-      },
-      {
-        path: "/admin-dashboard/add-product",
-        element: <AddProduct></AddProduct>,
-      },
-      {
-        path: "/admin-dashboard/update-product",
-        element: <UpDateProduct></UpDateProduct>,
-      },
-      {
-        path: "/admin-dashboard/coustomerOder",
-        element: <CoustomerOder></CoustomerOder>,
       },
     ],
   },

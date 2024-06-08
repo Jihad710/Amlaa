@@ -3,13 +3,16 @@ import Footer from "../ui/footer/Footer";
 import TopBar from "../ui/navbar/TopBar";
 import Navbar from "../ui/navbar/Navbar";
 import MobileNavBar from "../ui/navbar/MobileNavBar";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const MainLayout = () => {
+  const { openModalRs } = useContext(AuthContext);
   return (
     <div className="bg-[#eeedeb]">
       <TopBar></TopBar>
       <Navbar></Navbar>
-      <MobileNavBar></MobileNavBar>
+      {openModalRs ? "" : <MobileNavBar></MobileNavBar>}
       <Outlet></Outlet>
       <Footer></Footer>
     </div>

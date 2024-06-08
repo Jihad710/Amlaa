@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#eeedeb] py-4 text-[#3c3633]">
+    <div className="bg-[#eeedeb] py-4 text-[#3c3633] md:flex hidden">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex-shrink-0">
           <NavLink to={"/"}>

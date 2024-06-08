@@ -54,11 +54,11 @@ const ConfirmOrderModal = () => {
   };
 
   return (
-    <div className="w-full md:h-full h-screen overflow-y-scroll">
+    <div className="w-full h-full overflow-y-scroll">
       {addProduct?.length ? (
         <div className="flex justify-center items-center ">
           <button
-            className=" text-white py-2 font-semibold w-56 px-14 rounded-md text-xl my-3 bg-[#3c3633]"
+            className="text-white py-2 font-semibold w-56 px-14 rounded-md text-xl my-3 bg-[#3c3633]"
             onClick={handleClickOpen}
           >
             Check Out
@@ -70,7 +70,7 @@ const ConfirmOrderModal = () => {
 
       {open && (
         <form className="" onSubmit={handleSubmit(onSubmit)}>
-          <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center overflow-y-auto">
             <div className="bg-white w-full md:w-10/12 max-h-screen overflow-hidden">
               <div className="bg-blue-500 text-white flex justify-between">
                 <h1 className="text-2xl font-bold p-4">Desi Minimals</h1>
@@ -83,13 +83,13 @@ const ConfirmOrderModal = () => {
                 </button>
               </div>
 
-              <div className="mx-auto border border-red-600 flex py-6 overflow-hidden">
-                <div className="w-7/12 max-h-[calc(100vh-250px)] overflow-y-auto custom-scrollbar px-3">
+              <div className="mx-auto border  flex flex-col md:flex-row py-6 overflow-y-auto md:overflow-hidden">
+                <div className="w-full md:w-7/12 max-h-[calc(100vh-250px)] overflow-y-auto custom-scrollbar px-3">
                   <div className="flex items-center gap-2 mb-4">
                     <IoLocationOutline className="text-xl" />
                     <p className="text-lg font-medium">Delivery Address</p>
                   </div>
-                  <div className="space-y-6 p-1 ">
+                  <div className="space-y-6 p-1">
                     <input
                       type="text"
                       {...register("name", { required: true })}
@@ -120,11 +120,14 @@ const ConfirmOrderModal = () => {
                       <p className="text-red-500">Post code is required</p>
                     )}
 
-                    <div className="flex space-x-4">
+                    <div
+                      className="flex md:gap-0
+                     gap-2 md:space-x-4"
+                    >
                       <input
                         type="text"
                         {...register("state", { required: true })}
-                        className="flex-1 border rounded-md p-2 placeholder-gray-500"
+                        className="w-1/2  md:flex-1 border rounded-md p-2 placeholder-gray-500"
                         placeholder="State"
                       />
                       {errors.state && (
@@ -134,7 +137,7 @@ const ConfirmOrderModal = () => {
                       <input
                         type="text"
                         {...register("city", { required: true })}
-                        className="flex-1 border rounded-md p-2 placeholder-gray-500"
+                        className="w-1/2 md:flex-1 border rounded-md p-2 placeholder-gray-500"
                         placeholder="City"
                       />
                       {errors.city && (
@@ -180,7 +183,7 @@ const ConfirmOrderModal = () => {
                   </div>
                 </div>
 
-                <div className="w-5/12 px-2">
+                <div className="w-full md:w-5/12 px-2 mt-4 md:mt-0">
                   <h1 className="text-xl font-medium mb-5 text-center">
                     Order Summary
                   </h1>
@@ -190,19 +193,19 @@ const ConfirmOrderModal = () => {
                         key={product.menuItemId}
                         className="flex justify-between items-center mb-4"
                       >
-                        <img
-                          src={product.image}
-                          alt={product.title}
-                          className="w-12 h-12 rounded-md"
-                        />
-                        <div>
-                          <p className="text-lg font-semibold">
-                            {product.title}
-                          </p>
-                          <p className="text-lg font-semibold">
-                            <span className="font-bold">Qty: </span>
-                            {product.quantity}
-                          </p>
+                        <div className="flex">
+                          <img
+                            src={product.image}
+                            alt={product.title}
+                            className="w-[63px] h-[63px] rounded-md"
+                          />
+                          <div className="ps-2">
+                            <p className="text-md ">{product.title}</p>
+                            <p className="text-md">
+                              <span className="">Quantity: </span>
+                              {product.quantity}
+                            </p>
+                          </div>
                         </div>
                         <p className="text-lg font-semibold">
                           ${product.price}
@@ -225,7 +228,7 @@ const ConfirmOrderModal = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-between p-3 w-1/2">
+              <div className="flex justify-center p-3 w-full md:mb-0 mb-20 md:w-1/2">
                 <button
                   type="submit"
                   className="block py-2 px-4 bg-black text-white text-lg font-semibold rounded hover:bg-gray-800 focus:outline-none focus:bg-gray-800 transition duration-300"

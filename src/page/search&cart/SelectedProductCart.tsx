@@ -20,8 +20,8 @@ const SelectedProductCart = () => {
             <button
               className={`${
                 data.length
-                  ? "flex justify-center items-center text-xl capitalize font-semibold"
-                  : "mt-10 p-4 px-10 tracking-widest font-semibold text-xl text-white bg-[#3c3633] rounded-full"
+                  ? "md:flex md:justify-center md:items-center text-xl capitalize font-semibold"
+                  : "md:mt-10 p-4 px-10 tracking-widest font-semibold text-xl text-white bg-[#3c3633] rounded-full"
               }`}
             >
               Continue Shopping

@@ -70,16 +70,16 @@ const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {
   };
 
   return (
-    <div className="grid md:w-11/12 mx-auto grid-cols-1 md:grid-cols-4 md:gap-10 text-[#3c3633]">
+    <div className="grid w-11/12  mx-auto grid-cols-1 md:grid-cols-4 md:gap-10 text-[#3c3633]">
       {datas?.length > 0 ? (
         datas.map((data, index) => (
           <div
             key={data._id}
             onClick={() => handleProductClick(data._id)}
-            className="cursor-pointer border"
+            className="cursor-pointer border md:mb-0 mb-12 "
           >
             <div
-              className="overflow-hidden shadow-md transition-shadow ease-out relative hover:shadow-lg"
+              className="overflow-hidden shadow-md transition-shadow ease-out relative  hover:shadow-lg "
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={() => handleMouseLeave(index)}
             >

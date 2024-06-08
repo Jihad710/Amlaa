@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
+import FormDialog from "../../FormDialog";
 
 const MobileNavBar = () => {
   const [expanded, setExpanded] = useState(false);
@@ -19,24 +20,28 @@ const MobileNavBar = () => {
       >
         {expanded && (
           <div className="flex w-full flex-col items-center gap-2 mb-2">
-            <NavLink to="/all" className="py-2 px-4 rounded text-white">
+            <NavLink to="/allProduct" className="py-2 px-4 rounded text-white">
               all
             </NavLink>
-            <NavLink to="/deal" className="py-2 px-4 rounded text-white">
+            <NavLink
+              to="/collection/best-deal"
+              className="py-2 px-4 rounded text-white"
+            >
               deal
             </NavLink>
-            <NavLink to="/topwar" className="py-2 px-4 rounded text-white">
+            <NavLink to="" className="py-2 px-4 rounded text-white">
               topwar
             </NavLink>
-            <NavLink to="/bottomwar" className="py-2 px-4 rounded text-white">
+            <NavLink
+              to="/collection/bottomwar"
+              className="py-2 px-4 rounded text-white"
+            >
               bottomwar
             </NavLink>
             <NavLink to="/login" className="py-2 px-4 rounded text-white">
               login
             </NavLink>
-            <NavLink to="/search" className="py-2 px-4 rounded text-white">
-              search
-            </NavLink>
+            <FormDialog />
           </div>
         )}
         <div

@@ -70,8 +70,8 @@ const ProductDetails: React.FC = () => {
   return (
     <div className="md:w-11/12 w-full mx-auto mt-10 text-[#3c3633] mb-36">
       <div className="container">
-        <div className="md:flex gap-10 items-center ">
-          <div className="md:flex gap-5 border md:w-1/2">
+        <div className="md:flex md:gap-10 items-center ">
+          <div className="md:flex md:gap-5 border md:w-1/2">
             <div className="md:flex hidden">
               <div className="overflow-y-auto h-[500px] hide-scrollbar">
                 {details.images?.map((img, index) => (
@@ -97,7 +97,7 @@ const ProductDetails: React.FC = () => {
               )}
             </div>
           </div>
-          <div className="md:w-6/12 ps-10 w-10/12 mx-auto">
+          <div className="md:w-6/12 md:ps-10 w-11/12 mx-auto">
             <h3 className="font-bold text-4xl mb-4 text-center md:text-start">
               {details?.title}
             </h3>
@@ -196,7 +196,7 @@ const ProductDetails: React.FC = () => {
               <div>
                 <button
                   onClick={handleAddToCart}
-                  className="w-full text-xl font-bold border-2 border-[#3c3633] px-4 py-2 mr-2 rounded-xl"
+                  className="w-full text-xl mt-5 md:mt-0 font-bold border-2 border-[#3c3633] px-4 py-2 md:mr-2 rounded-xl"
                   disabled={isLoading}
                 >
                   {isLoading ? "Adding to Cart..." : "Add to Cart"}

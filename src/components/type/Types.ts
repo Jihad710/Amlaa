@@ -20,9 +20,9 @@ export interface TProductDetails {
   title: string;
   price: number;
   tex: string;
-  size: string[];
+  size: string | string[];
   detailsMaterial: string;
-  color: string[];
+  color: string | string[];
   productStatus: string;
   material: string;
   status: string;

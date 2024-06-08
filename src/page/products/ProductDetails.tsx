@@ -128,7 +128,10 @@ const ProductDetails: React.FC = () => {
             <div className="mb-5">
               <p className="md:font-bold text-xl opacity-80 pb-2">Color:</p>
               <div className="flex gap-2">
-                {details.color?.split(",").map((color, index) => (
+                {(typeof details.color === "string"
+                  ? details.color.split(",")
+                  : []
+                ).map((color, index) => (
                   <button
                     key={index}
                     className={`border border-[#3c3633] px-6 py-3  rounded  ${
@@ -143,7 +146,10 @@ const ProductDetails: React.FC = () => {
               <div className="mb-5">
                 <p className="md:font-bold text-xl opacity-80 py-2">Size:</p>
                 <div className="flex gap-2">
-                  {details.size?.split(",").map((size, index) => (
+                  {(typeof details.size === "string"
+                    ? details.size.split(",")
+                    : []
+                  ).map((size, index) => (
                     <button
                       key={index}
                       className={`border border-[#3c3633] px-6 py-3  rounded ${

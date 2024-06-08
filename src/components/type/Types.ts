@@ -24,6 +24,10 @@ export interface TProductDetails {
   detailsMaterial: string;
   color: string[];
   productStatus: string;
+  material: string;
+  status: string;
+  discount: number;
+  fit: string;
   dimensions: {
     height: number;
     width: number;

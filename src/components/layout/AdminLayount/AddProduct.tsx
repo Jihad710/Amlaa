@@ -1,21 +1,18 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "react-query";
 
 type Inputs = {
   title: string;
-  price: number;
-  material: string;
+  images: string[];
   size: string[];
   color: string[];
-  productType: string;
+  status: string;
   discount: number;
-  type: string;
-  detailsMaterial: string;
-  productStatus: string;
-  collectionStatus: string;
   category: string;
-  images: string[];
+  material: string;
+  fit: string;
+  price: number;
 };
 
 const AddProduct = () => {
@@ -27,7 +24,7 @@ const AddProduct = () => {
   } = useForm<Inputs>();
 
   const mutation = useMutation((data: Inputs) =>
-    fetch("https://black-and-white-server.vercel.app/product/add", {
+    fetch("http://localhost:5000/admin/product/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,12 +34,12 @@ const AddProduct = () => {
   );
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (files) {
-      const urls = Array.from(files).map((file) => URL.createObjectURL(file));
-      setImageUrls((prevUrls) => [...prevUrls, ...urls]);
+    const url = e.target.value;
+    if (url && imageUrls.length < 5) {
+      setImageUrls((prevUrls) => [...prevUrls, url]);
     }
   };
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
     data.images = imageUrls;
@@ -56,7 +53,6 @@ const AddProduct = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-6 grid grid-cols-2 gap-6"
       >
-        {/* Title */}
         <div className="col-span-2">
           <label
             htmlFor="title"
@@ -73,9 +69,7 @@ const AddProduct = () => {
             <span className="text-red-500 text-sm">This field is required</span>
           )}
         </div>
-
-        {/* Price */}
-        <div>
+        <div className="col-span-2">
           <label
             htmlFor="price"
             className="block text-sm font-medium text-gray-700"
@@ -94,8 +88,23 @@ const AddProduct = () => {
           )}
         </div>
 
-        {/* Size */}
-        <div>
+        <div className="col-span-2">
+          <label
+            htmlFor="color"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Color (comma-separated)
+          </label>
+          <input
+            id="color"
+            {...register("color", { required: true })}
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500"
+          />
+          {errors.color && (
+            <span className="text-red-500 text-sm">This field is required</span>
+          )}
+        </div>
+        <div className="col-span-2">
           <label
             htmlFor="size"
             className="block text-sm font-medium text-gray-700"
@@ -112,26 +121,28 @@ const AddProduct = () => {
           )}
         </div>
 
-        {/* Color */}
-        <div>
+        <div className="col-span-2">
           <label
-            htmlFor="color"
+            htmlFor="status"
             className="block text-sm font-medium text-gray-700"
           >
-            Color (comma-separated)
+            Status (New or Sold Out)
           </label>
-          <input
-            id="color"
-            {...register("color", { required: true })}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500"
-          />
-          {errors.color && (
+          <select
+            id="status"
+            {...register("status", { required: true })}
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white focus:ring-indigo-500 focus:border-indigo-500"
+          >
+            <option value="">Select...</option>
+            <option value="New">New</option>
+            <option value="Sold Out">Sold Out</option>
+          </select>
+          {errors.status && (
             <span className="text-red-500 text-sm">This field is required</span>
           )}
         </div>
 
-        {/* Discount */}
-        <div>
+        <div className="col-span-2">
           <label
             htmlFor="discount"
             className="block text-sm font-medium text-gray-700"
@@ -150,70 +161,6 @@ const AddProduct = () => {
           )}
         </div>
 
-        {/* Type */}
-        <div>
-          <label
-            htmlFor="type"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Type
-          </label>
-          <input
-            id="type"
-            {...register("type", { required: true })}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500"
-          />
-          {errors.type && (
-            <span className="text-red-500 text-sm">This field is required</span>
-          )}
-        </div>
-
-        {/* Product Status */}
-        <div>
-          <label
-            htmlFor="productStatus"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Product Status
-          </label>
-          <select
-            id="productStatus"
-            {...register("productStatus", { required: true })}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white focus:ring-indigo-500 focus:border-indigo-500"
-          >
-            <option value="">Select...</option>
-            <option value="Available">Available</option>
-            <option value="Out of Stock">Out of Stock</option>
-          </select>
-          {errors.productStatus && (
-            <span className="text-red-500 text-sm">This field is required</span>
-          )}
-        </div>
-
-        {/* Collection Status */}
-        <div>
-          <label
-            htmlFor="collectionStatus"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Collection Status
-          </label>
-          <select
-            id="collectionStatus"
-            {...register("collectionStatus", { required: true })}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white focus:ring-indigo-500 focus:border-indigo-500"
-          >
-            <option value="">Select...</option>
-            <option value="New">New</option>
-            <option value="Regular">Regular</option>
-            <option value="Deal">Deal</option>
-          </select>
-          {errors.collectionStatus && (
-            <span className="text-red-500 text-sm">This field is required</span>
-          )}
-        </div>
-
-        {/* Category */}
         <div>
           <label
             htmlFor="category"
@@ -244,8 +191,8 @@ const AddProduct = () => {
             <span className="text-red-500 text-sm">This field is required</span>
           )}
         </div>
-        {/* Material */}
-        <div>
+
+        <div className="col-span-2">
           <label
             htmlFor="material"
             className="block text-sm font-medium text-gray-700"
@@ -261,37 +208,37 @@ const AddProduct = () => {
             <span className="text-red-500 text-sm">This field is required</span>
           )}
         </div>
-        {/* Details Material */}
-        <div>
+
+        <div className="col-span-2">
           <label
-            htmlFor="detailsMaterial"
+            htmlFor="fit"
             className="block text-sm font-medium text-gray-700"
           >
-            Details Material
+            Fit
           </label>
-          <textarea
-            id="detailsMaterial"
-            {...register("detailsMaterial", { required: true })}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500"
-          />
-          {errors.detailsMaterial && (
+          <select
+            id="fit"
+            {...register("fit", { required: true })}
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 bg-white focus:ring-indigo-500 focus:border-indigo-500"
+          >
+            <option value="">Select...</option>
+            <option value="Regular Fit">Regular Fit</option>
+            <option value="Slim Fit">Slim Fit</option>
+          </select>
+          {errors.fit && (
             <span className="text-red-500 text-sm">This field is required</span>
           )}
         </div>
 
-        {/* Image inputs */}
         <div className="col-span-2">
           <label className="block text-sm font-medium text-gray-700">
-            Images
+            Images (Up to seven URLs)
           </label>
           <input
-            type="file"
-            accept="image/*"
-            multiple
+            type="text"
             onChange={handleImageChange}
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500"
           />
-          {/* Display selected images */}
           <div className="mt-2 flex gap-3">
             {imageUrls.map((url, index) => (
               <img
@@ -305,10 +252,12 @@ const AddProduct = () => {
         </div>
 
         <div className="col-span-2">
-          <input
+          <button
             type="submit"
-            className="mt-2 w-full bg-indigo-600 text-white py-2 px-4 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          />
+            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Add Product
+          </button>
         </div>
       </form>
     </div>

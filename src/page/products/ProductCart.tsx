@@ -9,17 +9,34 @@ interface ProductCartProps {
 
 const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {
   const navigate = useNavigate();
-  const [currentImage, setCurrentImage] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
+  const [hoverStates, setHoverStates] = useState<boolean[]>(
+    new Array(datas.length).fill(false)
+  );
+  const [imageIndexes, setImageIndexes] = useState<number[]>(
+    new Array(datas.length).fill(0)
+  );
 
   useEffect(() => {
-    if (isHovering) {
-      const interval = setInterval(() => {
-        setCurrentImage((prevImage) => (prevImage + 1) % datas.length);
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [isHovering, datas.length]);
+    const intervals = datas.map((_, index) => {
+      if (hoverStates[index]) {
+        return setInterval(() => {
+          setImageIndexes((prevIndexes) => {
+            const newIndexes = [...prevIndexes];
+            newIndexes[index] =
+              (newIndexes[index] + 1) % datas[index].images.length;
+            return newIndexes;
+          });
+        }, 3000);
+      }
+      return null;
+    });
+
+    return () => {
+      intervals.forEach((interval) => {
+        if (interval) clearInterval(interval);
+      });
+    };
+  }, [hoverStates, datas]);
 
   const handleProductClick = async (id: string) => {
     try {
@@ -31,33 +48,56 @@ const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {
     }
   };
 
+  const handleMouseEnter = (index: number) => {
+    setHoverStates((prevStates) => {
+      const newStates = [...prevStates];
+      newStates[index] = true;
+      return newStates;
+    });
+  };
+
+  const handleMouseLeave = (index: number) => {
+    setHoverStates((prevStates) => {
+      const newStates = [...prevStates];
+      newStates[index] = false;
+      return newStates;
+    });
+    setImageIndexes((prevIndexes) => {
+      const newIndexes = [...prevIndexes];
+      newIndexes[index] = 0;
+      return newIndexes;
+    });
+  };
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 md:gap-4">
+    <div className="grid md:w-11/12 mx-auto grid-cols-1 md:grid-cols-4 md:gap-10 text-[#3c3633]">
       {datas?.length > 0 ? (
-        datas.map((data) => (
+        datas.map((data, index) => (
           <div
             key={data._id}
             onClick={() => handleProductClick(data._id)}
-            className="cursor-pointer border p-4 hover:shadow-lg"
+            className="cursor-pointer border"
           >
             <div
-              className="bg-white rounded-md overflow-hidden shadow-md transition-shadow ease-out relative hover:shadow-lg"
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
+              className="overflow-hidden shadow-md transition-shadow ease-out relative hover:shadow-lg"
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={() => handleMouseLeave(index)}
             >
               <div className="relative">
-                {data?.images?.map((i) => (
-                  <img
-                    src={i}
-                    alt={`Image ${datas[currentImage].title}`}
-                    className="w-full h-24 transition-opacity duration-1000 ease-out"
-                  />
-                ))}
+                <img
+                  src={data.images[imageIndexes[index]]}
+                  alt={`Image ${data.title}`}
+                  className="w-full mx-auto md:w-[256px] h-[372px] transition-opacity duration-100 ease-out"
+                />
               </div>
             </div>
             <div>
-              <p>{data.type}</p>
-              <p>${data.price}</p>
+              <p className="text-[22px] py-1 text-center font-semibold">
+                {data.title}
+              </p>
+              <p className="text-center font-medium text-xl tracking-wide">
+                ${data.price}
+              </p>
             </div>
           </div>
         ))

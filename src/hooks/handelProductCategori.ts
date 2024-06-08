@@ -1,6 +1,6 @@
 const fetchProductByCategori = async (pValue: string) => {
   const response = await fetch(
-    `https://black-and-white-server.vercel.appcollection/?${pValue}`
+    `https://black-and-white-server.vercel.app/collection/?${pValue}`
   );
 
   if (!response.ok) {

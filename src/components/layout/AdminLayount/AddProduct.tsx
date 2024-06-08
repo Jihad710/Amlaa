@@ -24,7 +24,7 @@ const AddProduct = () => {
   } = useForm<Inputs>();
 
   const mutation = useMutation((data: Inputs) =>
-    fetch("http://localhost:5000/admin/product/add", {
+    fetch("https://black-and-white-server.vercel.app/admin/product/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

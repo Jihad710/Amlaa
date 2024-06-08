@@ -22,13 +22,16 @@ const ConfirmOrderModal = () => {
   const onSubmit = async (data: TOderFormData) => {
     data.productId = getId;
     try {
-      const response = await fetch("http://localhost:5000/api/confirmOrder", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://black-and-white-server.vercel.app/api/confirmOrder",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Network response was not ok");

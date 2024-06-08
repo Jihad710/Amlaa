@@ -1,5 +1,7 @@
 const fetchProductById = async (productId: string) => {
-  const response = await fetch(`http://localhost:5000/product/${productId}`);
+  const response = await fetch(
+    `https://black-and-white-server.vercel.app/product/${productId}`
+  );
 
   if (!response.ok) {
     throw new Error(

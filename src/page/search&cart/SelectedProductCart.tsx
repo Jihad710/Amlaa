@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import OderProductCard from "./OderProductCard";
 import { useGetToCard } from "../../hooks/useGetToCart";
-// import { useQuery } from "react-query";
 
 const SelectedProductCart = () => {
   const { data, isLoading } = useGetToCard();

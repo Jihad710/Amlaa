@@ -35,6 +35,9 @@ export interface TProductDetails {
   };
   capacity: number;
   images: string[];
+  menuItemId: string;
+  image: string;
+  quantity: number;
 }
 
 export interface TOderFormData {

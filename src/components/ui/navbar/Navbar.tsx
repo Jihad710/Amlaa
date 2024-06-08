@@ -146,7 +146,13 @@ const Navbar = () => {
           </NavLink>
           <FormDialog />
           <NavLink to={"/cart"} className="relative">
-            <FiShoppingCart className="w-6 h-6 hover:text-gray-700" />
+            <FiShoppingCart
+              className={`${
+                data && data.length
+                  ? "w-12 h-12 p-3  bg-gray-300 rounded-full "
+                  : "w-6 h-6 rounded-md"
+              } `}
+            />
             {data && data.length > 0 && (
               <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 {data.length}

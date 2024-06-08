@@ -21,7 +21,7 @@ interface OderProductCardProps {
 
 const OderProductCard = ({ data }: OderProductCardProps) => {
   const [quantities, setQuantities] = useState<number[]>(
-    new Array(data.length).fill(0)
+    new Array(data.length).fill(1)
   );
 
   const handleQuantityChange = (index: number, delta: number) => {
@@ -46,7 +46,7 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
             <tbody>
               {data.map((value, index) => (
                 <tr key={value._id} className="border-b border-gray-200">
-                  <td className="p-2">
+                  <td className="p-2 h-52 w-[150]">
                     <img
                       src={value.image || "placeholder.jpg"}
                       alt={value.name}

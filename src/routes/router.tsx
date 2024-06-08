@@ -16,12 +16,11 @@ import UpDateProduct from "../components/layout/AdminLayount/UpDateProduct";
 import CoustomerOder from "../components/layout/AdminLayount/CoustomerOder";
 import Login from "../page/log/Loging";
 import Registation from "../page/log/Registation";
-import Search from "../page/search&cart/Search";
+
 import Cart from "../page/search&cart/SelectedProductCart";
 import { handleBuyProduct } from "../hooks/BuyProduct";
 import ProductDetails from "../page/products/ProductDetails";
 import Accessories from "../page/accecsaris/Accessories";
-import PaymentSystem from "../page/search&cart/PaymentSystem";
 
 const router = createBrowserRouter([
   {
@@ -76,10 +75,7 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Registation></Registation>,
       },
-      {
-        path: "/search",
-        element: <Search></Search>,
-      },
+
       {
         path: "/cart",
         element: <Cart></Cart>,
@@ -88,10 +84,6 @@ const router = createBrowserRouter([
         path: "product/:id",
         element: <ProductDetails />,
         loader: ({ params }) => handleBuyProduct(params.id as string),
-      },
-      {
-        path: "/payment-system",
-        element: <PaymentSystem></PaymentSystem>,
       },
     ],
   },

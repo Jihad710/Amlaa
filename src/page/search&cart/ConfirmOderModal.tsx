@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
-import { TAddProduct, TOderFormData } from "../../components/type/Types";
+import {
+  TAddProduct,
+  TOderFormData,
+  TProductDetails,
+} from "../../components/type/Types";
 import { useGetToCard } from "../../hooks/useGetToCart";
 
 const ConfirmOrderModal = () => {
@@ -174,35 +178,51 @@ const ConfirmOrderModal = () => {
                 </div>
 
                 <div className="w-5/12 px-2">
-                  <h1 className=" text-xl font-medium mb-5 text-center">
+                  <h1 className="text-xl font-medium mb-5 text-center">
                     Order Summary
                   </h1>
                   <div className="border rounded p-1">
-                    <div className="flex justify-between w-full  ">
-                      <img
-                        src=""
-                        alt=""
-                        className="w-12 h-12 rounded-md mb-4"
-                      />
-                      <div>
-                        <p className="text-lg font-semibold ">Title</p>
-                        <p className="text-lg font-semibold ">
-                          <span className="font-bold">Qty</span>
-                          <span>{}</span>
+                    {addProduct.map((product: TProductDetails) => (
+                      <div
+                        key={product.menuItemId}
+                        className="flex justify-between items-center mb-4"
+                      >
+                        <img
+                          src={product.image}
+                          alt={product.title}
+                          className="w-12 h-12 rounded-md"
+                        />
+                        <div>
+                          <p className="text-lg font-semibold">
+                            {product.title}
+                          </p>
+                          <p className="text-lg font-semibold">
+                            <span className="font-bold">Qty: </span>
+                            {product.quantity}
+                          </p>
+                        </div>
+                        <p className="text-lg font-semibold">
+                          ${product.price}
                         </p>
                       </div>
-                      <p className="text-lg font-semibold ">Title</p>
-                    </div>
+                    ))}
                     <hr className="mb-4 mt-1" />
                     <div className="flex justify-between">
-                      <p className="text-lg">Price (incl. taxes)</p>
-                      <p className="text-lg font-semibold">$500</p>
+                      <p className="text-lg">Total Price (incl. taxes)</p>
+                      <p className="text-lg font-semibold">
+                        $
+                        {addProduct.reduce(
+                          (total: number, product: TProductDetails) =>
+                            total +
+                            (product?.price || 0) * (product?.quantity || 1),
+                          0
+                        )}
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="flex justify-between p-3 w-1/2">
-                <p>price </p>
                 <button
                   type="submit"
                   className="block py-2 px-4 bg-black text-white text-lg font-semibold rounded hover:bg-gray-800 focus:outline-none focus:bg-gray-800 transition duration-300"

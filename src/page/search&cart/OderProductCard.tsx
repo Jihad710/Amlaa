@@ -66,15 +66,11 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
                         </p>
                         <p>
                           <span className="font-medium">Color:</span>
-                          <span className="ml-1">
-                            {value.color?.[0] || "N/A"}
-                          </span>
+                          <span className="ml-1">{value?.color || "N/A"}</span>
                         </p>
                         <p>
                           <span className="font-medium">Size:</span>
-                          <span className="ml-1">
-                            {value.size?.[0] || "N/A"}
-                          </span>
+                          <span className="ml-1">{value?.size || "N/A"}</span>
                         </p>
                       </div>
                     </td>

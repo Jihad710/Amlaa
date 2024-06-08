@@ -11,7 +11,7 @@ import { useGetToCard } from "../../hooks/useGetToCart";
 const ConfirmOrderModal = () => {
   const [open, setOpen] = useState<boolean>(false);
   const { data: addProduct } = useGetToCard();
-  console.log(addProduct);
+
   const {
     register,
     handleSubmit,
@@ -70,8 +70,8 @@ const ConfirmOrderModal = () => {
 
       {open && (
         <form className="" onSubmit={handleSubmit(onSubmit)}>
-          <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center overflow-y-auto">
-            <div className="bg-white w-full md:w-10/12 max-h-screen overflow-hidden">
+          <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center overflow-auto ">
+            <div className="bg-white w-full md:w-10/12 max-h-screen overflow-hidden ">
               <div className="bg-blue-500 text-white flex justify-between">
                 <h1 className="text-2xl font-bold p-4">Desi Minimals</h1>
                 <button
@@ -83,7 +83,7 @@ const ConfirmOrderModal = () => {
                 </button>
               </div>
 
-              <div className="mx-auto border  flex flex-col md:flex-row py-6 overflow-y-auto md:overflow-hidden">
+              <div className="mx-auto border flex flex-col md:flex-row py-6 overflow-y-auto md:overflow-hidden max-h-[calc(100vh-150px)]">
                 <div className="w-full md:w-7/12 max-h-[calc(100vh-250px)] overflow-y-auto custom-scrollbar px-3">
                   <div className="flex items-center gap-2 mb-4">
                     <IoLocationOutline className="text-xl" />
@@ -183,7 +183,7 @@ const ConfirmOrderModal = () => {
                   </div>
                 </div>
 
-                <div className="w-full md:w-5/12 px-2 mt-4 md:mt-0">
+                <div className="w-full md:w-5/12 md:max-h-[calc(100vh-250px)] max-h-[calc(100vh-200px)] overflow-y-auto custom-scrollbar px-3">
                   <h1 className="text-xl font-medium mb-5 text-center">
                     Order Summary
                   </h1>
@@ -228,7 +228,7 @@ const ConfirmOrderModal = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center p-3 w-full md:mb-0 mb-20 md:w-1/2">
+              <div className="flex justify-center p-3 w-full  md:w-1/2">
                 <button
                   type="submit"
                   className="block py-2 px-4 bg-black text-white text-lg font-semibold rounded hover:bg-gray-800 focus:outline-none focus:bg-gray-800 transition duration-300"

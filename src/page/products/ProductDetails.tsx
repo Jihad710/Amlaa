@@ -47,7 +47,7 @@ const ProductDetails: React.FC = () => {
       color: selectedColor,
       email: user.email,
     };
-
+    console.log(cartItem);
     addToCart(cartItem, {
       onSuccess: () => {
         navigate("/cart");
@@ -145,7 +145,7 @@ const ProductDetails: React.FC = () => {
               </div>
               <div className="mb-5">
                 <p className="md:font-bold text-xl opacity-80 py-2">Size:</p>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   {(typeof details.size === "string"
                     ? details.size.split(",")
                     : []

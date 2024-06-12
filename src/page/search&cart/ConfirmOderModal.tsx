@@ -1,38 +1,46 @@
 import { useContext } from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
-import {
-  TAddProduct,
-  TOderFormData,
-  TProductDetails,
-} from "../../components/type/Types";
-import { useGetToCard } from "../../hooks/useGetToCart";
+import { Product, TOderFormData } from "../../components/type/Types";
+
 import { AuthContext } from "../../provider/AuthProvider";
+import { useGetToCardLocal } from "../../hooks/useGetToCardLocal";
 
 const ConfirmOrderModal = () => {
   const { openModalRs, setOpenModalRs } = useContext(AuthContext);
-  const { data: addProduct } = useGetToCard();
+  const { data: addProduct = [] } = useGetToCardLocal();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<TOderFormData>();
-  const getId = addProduct.map((data: TAddProduct) => data.menuItemId);
 
   const onSubmit = async (data: TOderFormData) => {
-    data.productId = getId;
+    const submitData = {
+      ...data,
+      productInfo: addProduct.map((product) => {
+        return {
+          menuItemId: product.menuItemId,
+          name: product.name,
+          color: product.color,
+          image: product.image,
+          size: product.size,
+          quantity: product.quantity,
+          price: parseFloat(product.price),
+          deliveryStatus: "pending",
+        };
+      }),
+    };
+
     try {
-      const response = await fetch(
-        "https://black-and-white-server.vercel.app/api/confirmOrder",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch("http://localhost:5000/api/confirmOrder", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submitData),
+      });
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -40,7 +48,9 @@ const ConfirmOrderModal = () => {
 
       const responseData = await response.json();
       console.log("Order submitted successfully:", responseData);
+
       setOpenModalRs(false);
+      localStorage.removeItem("product");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -186,7 +196,7 @@ const ConfirmOrderModal = () => {
                     Order Summary
                   </h1>
                   <div className="border rounded p-1">
-                    {addProduct.map((product: TProductDetails) => (
+                    {addProduct.map((product: Product) => (
                       <div
                         key={product.menuItemId}
                         className="flex justify-between items-center mb-4"
@@ -194,11 +204,11 @@ const ConfirmOrderModal = () => {
                         <div className="flex">
                           <img
                             src={product.image}
-                            alt={product.title}
+                            alt={product.name}
                             className="w-[63px] h-[63px] rounded-md"
                           />
                           <div className="ps-2">
-                            <p className="text-md ">{product.title}</p>
+                            <p className="text-md ">{product.name}</p>
                             <p className="text-md">
                               <span className="">Quantity : </span>
                               {product.quantity}
@@ -216,9 +226,10 @@ const ConfirmOrderModal = () => {
                       <p className="text-lg font-semibold">
                         $
                         {addProduct.reduce(
-                          (total: number, product: TProductDetails) =>
+                          (total: number, product: Product) =>
                             total +
-                            (product?.price || 0) * (product?.quantity || 1),
+                            (Number(product?.price) || 0) *
+                              (product?.quantity || 1),
                           0
                         )}
                       </p>

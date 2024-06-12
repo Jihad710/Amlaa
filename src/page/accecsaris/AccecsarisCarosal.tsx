@@ -21,7 +21,7 @@ const AccecsarisCarosal = () => {
   if (error) {
     return <div>Error: {(error as Error)?.message}</div>;
   }
-  console.log(data);
+
   return (
     <div>
       <h1 className="mb-7 font-bold text-3xl text-[#3c3633] text-center">

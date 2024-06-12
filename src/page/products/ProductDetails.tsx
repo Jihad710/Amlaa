@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
-import { useAddToCart } from "../../hooks/useAddToCart";
-import { TProductDetails } from "../../components/type/Types";
+import { useLoaderData } from "react-router-dom";
+import { TCartItem, TProductDetails } from "../../components/type/Types";
 import { toast } from "react-hot-toast";
+import { useAddToCartLocal } from "../../hooks/useAddToCartLocal";
 
 const ProductDetails: React.FC = () => {
   const details = useLoaderData() as TProductDetails;
@@ -10,10 +10,7 @@ const ProductDetails: React.FC = () => {
   const [mainImage, setMainImage] = useState(initialImage);
   const [selectedSize, setSelectedSize] = useState<string>("");
   const [selectedColor, setSelectedColor] = useState<string>("");
-  const { mutate: addToCart, isLoading } = useAddToCart();
-  const navigate = useNavigate();
-
-  const user = { email: "user@example.com" };
+  const { addToCart, isLoading } = useAddToCartLocal();
 
   const handleImageHover = (imageSrc: string) => {
     setMainImage(imageSrc);
@@ -38,31 +35,29 @@ const ProductDetails: React.FC = () => {
       return;
     }
 
-    const cartItem = {
+    const cartItem: TCartItem = {
       menuItemId: details._id,
       name: details.title,
       image: mainImage,
       price: details.price,
       size: selectedSize,
       color: selectedColor,
-      email: user.email,
+      quantity: 1,
     };
-    console.log(cartItem);
-    addToCart(cartItem, {
-      onSuccess: () => {
-        navigate("/cart");
-      },
-    });
+
+    addToCart(cartItem);
   };
+
   const calculateDiscountedPrice = () => {
     if (details?.discount && details.price) {
-      const discountAmount = (details.price * details?.discount) / 100;
+      const discountAmount = (details.price * details.discount) / 100;
       return details.price - discountAmount;
     }
     return null;
   };
 
   const discountedPrice = calculateDiscountedPrice();
+
   if (!details) {
     return <div>Loading...</div>;
   }
@@ -130,11 +125,11 @@ const ProductDetails: React.FC = () => {
               <div className="flex gap-2">
                 {(typeof details.color === "string"
                   ? details.color.split(",")
-                  : []
+                  : details.color
                 ).map((color, index) => (
                   <button
                     key={index}
-                    className={`border border-[#3c3633] px-6 py-3  rounded  ${
+                    className={`border border-[#3c3633] px-6 py-3  rounded ${
                       selectedColor === color ? "bg-gray-400" : ""
                     }`}
                     onClick={() => handleColorClick(color)}
@@ -143,65 +138,65 @@ const ProductDetails: React.FC = () => {
                   </button>
                 ))}
               </div>
-              <div className="mb-5">
-                <p className="md:font-bold text-xl opacity-80 py-2">Size:</p>
-                <div className="flex flex-wrap gap-2">
-                  {(typeof details.size === "string"
-                    ? details.size.split(",")
-                    : []
-                  ).map((size, index) => (
-                    <button
-                      key={index}
-                      className={`border border-[#3c3633] px-6 py-3  rounded ${
-                        selectedSize === size ? "bg-gray-400" : ""
-                      }`}
-                      onClick={() => handleSizeClick(size)}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
+            </div>
+            <div className="mb-5">
+              <p className="md:font-bold text-xl opacity-80 py-2">Size:</p>
+              <div className="flex flex-wrap gap-2">
+                {(typeof details.size === "string"
+                  ? details.size.split(",")
+                  : details.size
+                ).map((size, index) => (
+                  <button
+                    key={index}
+                    className={`border border-[#3c3633] px-6 py-3  rounded ${
+                      selectedSize === size ? "bg-gray-400" : ""
+                    }`}
+                    onClick={() => handleSizeClick(size)}
+                  >
+                    {size}
+                  </button>
+                ))}
               </div>
-              {details.dimensions && (
-                <div className="text-xl mb-5">
-                  <p className="font-bold">Dimensions -</p>
-                  <ul>
-                    <li>
-                      Height -{" "}
-                      <span className="font-bold opacity-80">
-                        {details.dimensions.height} inches
-                      </span>
-                    </li>
-                    <li>
-                      Width -{" "}
-                      <span className="font-bold opacity-80">
-                        {details.dimensions.width} inches
-                      </span>
-                    </li>
-                    <li>
-                      Handle -{" "}
-                      <span className="font-bold opacity-80">
-                        {details.dimensions.handle} inches
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              )}
-              {details.capacity && (
-                <p className="font-xl mb-5">
-                  Capacity -{" "}
-                  <span className="font-bold">{details.capacity}L</span>
-                </p>
-              )}
-              <div>
-                <button
-                  onClick={handleAddToCart}
-                  className="w-full text-xl mt-5 md:mt-0 font-bold border-2 border-[#3c3633] px-4 py-2 md:mr-2 rounded-xl"
-                  disabled={isLoading}
-                >
-                  {isLoading ? "Adding to Cart..." : "Add to Cart"}
-                </button>
+            </div>
+            {details.dimensions && (
+              <div className="text-xl mb-5">
+                <p className="font-bold">Dimensions -</p>
+                <ul>
+                  <li>
+                    Height -{" "}
+                    <span className="font-bold opacity-80">
+                      {details.dimensions.height} inches
+                    </span>
+                  </li>
+                  <li>
+                    Width -{" "}
+                    <span className="font-bold opacity-80">
+                      {details.dimensions.width} inches
+                    </span>
+                  </li>
+                  <li>
+                    Handle -{" "}
+                    <span className="font-bold opacity-80">
+                      {details.dimensions.handle} inches
+                    </span>
+                  </li>
+                </ul>
               </div>
+            )}
+            {details.capacity && (
+              <p className="font-xl mb-5">
+                Capacity -{" "}
+                <span className="font-bold">{details.capacity}L</span>
+              </p>
+            )}
+            <div>
+              <button
+                onClick={handleAddToCart}
+                className="w-full text-xl mt-5 md:mt-0 font-bold border-2 border-[#3c3633] px-4 py-2 md:mr-2 rounded-xl"
+                disabled={isLoading}
+              >
+                {isLoading ? "Adding to Cart..." : "Add to Cart"}
+              </button>
             </div>
           </div>
         </div>
@@ -209,4 +204,5 @@ const ProductDetails: React.FC = () => {
     </div>
   );
 };
+
 export default ProductDetails;

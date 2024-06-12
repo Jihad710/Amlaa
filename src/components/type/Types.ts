@@ -13,6 +13,20 @@ export interface TProduct {
   collectionStatus: string;
   category: string;
   images: string[];
+  menuItemId: string;
+}
+export interface Product {
+  _id: string;
+  menuItemId: string;
+  name: string;
+  image: string;
+  price: string;
+  size?: string[];
+  detailsMaterial: string;
+  color?: string[];
+  productStatus: string;
+  quantity: number;
+  title: string;
 }
 
 export interface TProductDetails {
@@ -57,4 +71,14 @@ export interface TAddProduct {
   name: string;
   image: string;
   price: number;
+}
+
+export interface TCartItem {
+  menuItemId: string;
+  name: string;
+  image: string;
+  price: number;
+  size: string;
+  color: string;
+  quantity: number;
 }

@@ -2,10 +2,13 @@ import { NavLink } from "react-router-dom";
 import OderProductCard from "./OderProductCard";
 
 import { useGetToCardLocal } from "../../hooks/useGetToCardLocal";
+import { useEffect } from "react";
 
 const SelectedProductCart = () => {
   const { loading, data } = useGetToCardLocal();
-
+  useEffect(() => {
+    console.log(localStorage.getItem("product"));
+  }, [data]);
   return (
     <div>
       <h1 className="text-4xl font-bold text-center text-[#423e3c]">Cart</h1>

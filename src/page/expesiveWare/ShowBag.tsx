@@ -23,10 +23,6 @@ const details = {
   images: [img1, img2, img3, img4, img5, img6, img7],
 };
 
-// const user = {
-//   email: "user@example.com",
-// };
-
 const ShowBag: React.FC = () => {
   const [mainImage, setMainImage] = useState(details.images[0]);
   const { mutate: addToCart, isLoading } = useAddToCart();

@@ -2,13 +2,19 @@ import { VscAccount } from "react-icons/vsc";
 import { NavLink } from "react-router-dom";
 import logo from "../../../../public/dm_full_1_shopify_black_ss24.avif";
 import { FiShoppingCart } from "react-icons/fi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormDialog from "../../FormDialog";
-import { useGetToCard } from "../../../hooks/useGetToCart";
 import { FaAngleDown } from "react-icons/fa6";
+import { useGetToCardLocal } from "../../../hooks/useGetToCardLocal";
 
 const Navbar = () => {
-  const { data } = useGetToCard();
+  const { data } = useGetToCardLocal();
+  const [quantity, setQuantity] = useState(0);
+
+  useEffect(() => {
+    const totalQuantity = data.reduce((sum, item) => sum + item.quantity, 0);
+    setQuantity(totalQuantity);
+  }, [data]);
 
   const [topwarDropdownOpen, setTopwarDropdownOpen] = useState(false);
   const [accesarisDropdownOpen, setAccesarisDropdownOpen] = useState(false);
@@ -147,15 +153,16 @@ const Navbar = () => {
           <FormDialog />
           <NavLink to={"/cart"} className="relative">
             <FiShoppingCart
-              className={`${
+              className={
                 data && data.length
-                  ? "w-12 h-12 p-3  bg-gray-300 rounded-full "
+                  ? "w-12 h-12 p-3 bg-gray-300 rounded-full"
                   : "w-6 h-6 rounded-md"
-              } `}
+              }
             />
-            {data && data.length > 0 && (
+
+            {data?.length > 0 && (
               <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {data.length}
+                {quantity}
               </span>
             )}
           </NavLink>

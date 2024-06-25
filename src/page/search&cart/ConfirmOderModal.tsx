@@ -34,13 +34,16 @@ const ConfirmOrderModal = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/confirmOrder", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submitData),
-      });
+      const response = await fetch(
+        "https://black-and-white-server.vercel.app/api/confirmOrder",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(submitData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Network response was not ok");

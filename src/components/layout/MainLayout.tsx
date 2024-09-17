@@ -5,12 +5,14 @@ import Navbar from "../ui/navbar/Navbar";
 import MobileNavBar from "../ui/navbar/MobileNavBar";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import MiddleNav from "../ui/navbar/MiddleNav";
 
 const MainLayout = () => {
   const { openModalRs } = useContext(AuthContext);
   return (
     <div className="bg-[#eeedeb]">
       <TopBar></TopBar>
+      <MiddleNav></MiddleNav>
       <Navbar></Navbar>
       {openModalRs ? "" : <MobileNavBar></MobileNavBar>}
       <Outlet></Outlet>

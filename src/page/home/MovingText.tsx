@@ -19,14 +19,14 @@ const MovingText = () => {
   ];
   return (
     <div>
-      <Marquee className="  text-2xl py-2 text-[#4f4a47]">
+      {/* <Marquee pauseOnHover={true} className="  text-2xl py-2 text-[#4f4a47]">
         {text.map((item, index) => (
           <p key={index} className="mx-10">
             {" "}
-            {item.title}{" "}
+            {item.title}sss
           </p>
         ))}
-      </Marquee>
+      </Marquee> */}
     </div>
   );
 };

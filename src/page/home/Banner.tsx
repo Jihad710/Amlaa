@@ -43,7 +43,7 @@ const bannerData = [
 
 const Banner = () => {
   return (
-    <div className="h-screen mb-20">
+    <div className="h-screen">
       <Swiper
         autoplay={{
           delay: 3000,
@@ -64,7 +64,7 @@ const Banner = () => {
         ))}
       </Swiper>
       <div>
-        <Marquee className="  text-3xl py-2  text-[#3c3633]">
+        <Marquee pauseOnHover={true} className="  text-2xl py-2  text-[#3c3633]">
           {text.map((item, index) => (
             <p key={index} className="mx-10 font-4xl font-semibold">
               {" "}

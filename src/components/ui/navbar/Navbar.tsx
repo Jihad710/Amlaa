@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className=''>
             <ul className='flex items-center justify-center border-t border-black'>
                 <li className='text-2xl px-7 py-4'>
-                    <NavLink to={"/allProduct"}>All</NavLink>
+                    <NavLink to={"/products"}>All</NavLink>
                 </li>
                 <li className='text-2xl px-7 py-4'>
                     <NavLink to={"/collection/best-deal"}>Deals</NavLink>

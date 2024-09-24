@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../page/home/Home";
-import AllProduct from "./../page/allProducts/AllProduct";
+import AllProduct from "../page/allProducts/Products";
 import BestDeals from "../page/bestdeals/BestDeals";
 import BottomWar from "../page/bottomwar/BottomWar";
 import TShirt from "../page/topOutFit/TShirt";
@@ -17,6 +17,7 @@ import Cart from "../page/search&cart/SelectedProductCart";
 import { handleBuyProduct } from "../hooks/BuyProduct";
 import ProductDetails from "../page/products/ProductDetails";
 import Accessories from "../page/accecsaris/Accessories";
+import Products from "../page/allProducts/Products";
 
 const router = createBrowserRouter([
   {
@@ -28,8 +29,8 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/allProduct",
-        element: <AllProduct></AllProduct>,
+        path: "/products",
+        element: <Products></Products>,
       },
       {
         path: "/collection/best-deal",

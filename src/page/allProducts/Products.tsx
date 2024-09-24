@@ -3,7 +3,7 @@ import DynamicBanner from "../../components/ui/DynamicBanner";
 import ProductCart from "../products/ProductCart";
 import { TProduct } from "../../components/type/Types";
 
-const AllProduct = () => {
+const Products = () => {
   const { isLoading, data } = useQuery<TProduct[]>("allProduct", async () => {
     const response = await fetch(
       "https://black-and-white-server.vercel.app/collection/allProducts"
@@ -14,9 +14,9 @@ const AllProduct = () => {
     return response.json();
   });
 
-  if (isLoading) {
-    return <div>Loading...............</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Loading...............</div>;
+  // }
 
   return (
     <div>
@@ -26,4 +26,4 @@ const AllProduct = () => {
   );
 };
 
-export default AllProduct;
+export default Products;

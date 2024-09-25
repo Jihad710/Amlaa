@@ -28,7 +28,7 @@ console.log(data);
   return (
     <div>
       <DynamicBanner title="Deals"></DynamicBanner>
-      <ProductCart datas={data ?? []}></ProductCart>
+      <ProductCart data={data ?? []}></ProductCart>
     </div>
   );
 };

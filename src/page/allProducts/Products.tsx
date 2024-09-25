@@ -21,7 +21,7 @@ const Products = () => {
   return (
     <div>
       <DynamicBanner title={"Shop All"}></DynamicBanner>
-      <ProductCart datas={data ?? []}></ProductCart>
+      <ProductCart data={data ?? []}></ProductCart>
     </div>
   );
 };

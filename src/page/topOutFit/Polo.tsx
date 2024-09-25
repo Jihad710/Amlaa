@@ -26,7 +26,7 @@ const Polo = () => {
   return (
     <div>
       <DynamicBanner title="Polos"></DynamicBanner>
-      <ProductCart datas={data}></ProductCart>
+      <ProductCart data={data}></ProductCart>
     </div>
   );
 };

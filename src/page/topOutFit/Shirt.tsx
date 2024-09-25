@@ -24,7 +24,7 @@ const Shirt = () => {
   return (
     <div>
       <DynamicBanner title="Shirt"></DynamicBanner>
-      <ProductCart datas={data}></ProductCart>
+      <ProductCart data={data}></ProductCart>
     </div>
   );
 };

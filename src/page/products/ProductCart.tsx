@@ -4,26 +4,26 @@ import { handleBuyProduct } from "../../hooks/BuyProduct";
 import { TProduct } from "../../components/type/Types";
 
 interface ProductCartProps {
-  datas: TProduct[];
+  data: TProduct[];
 }
 
-const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {
+const ProductCart: React.FC<ProductCartProps> = ({ data: data }) => {
   const navigate = useNavigate();
   const [hoverStates, setHoverStates] = useState<boolean[]>(
-    new Array(datas.length).fill(false)
+    new Array(data.length).fill(false)
   );
   const [imageIndexes, setImageIndexes] = useState<number[]>(
-    new Array(datas.length).fill(0)
+    new Array(data.length).fill(0)
   );
 
   useEffect(() => {
-    const intervals = datas.map((_, index) => {
+    const intervals = data.map((_, index) => {
       if (hoverStates[index]) {
         return setInterval(() => {
           setImageIndexes((prevIndexes) => {
             const newIndexes = [...prevIndexes];
             newIndexes[index] =
-              (newIndexes[index] + 1) % datas[index].images.length;
+              (newIndexes[index] + 1) % data[index].images.length;
             return newIndexes;
           });
         }, 3000);
@@ -36,7 +36,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {
         if (interval) clearInterval(interval);
       });
     };
-  }, [hoverStates, datas]);
+  }, [hoverStates, data]);
 
   const handleProductClick = async (id: string) => {
     try {
@@ -68,11 +68,11 @@ const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {
       return newIndexes;
     });
   };
-console.log(datas);
+console.log(data);
   return (
     <div className="grid w-11/12  mx-auto grid-cols-1 md:grid-cols-4 md:gap-10 text-[#3c3633]">
-      {datas?.length > 0 ? (
-        datas.map((data, index) => (
+      {data?.length > 0 ? (
+        data.map((data, index) => (
           <div
             key={data._id}
             onClick={() => handleProductClick(data._id)}

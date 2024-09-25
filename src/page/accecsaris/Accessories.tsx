@@ -24,7 +24,7 @@ const Accessories = () => {
   return (
     <div>
       <DynamicBanner title="Accessories"></DynamicBanner>
-      <ProductCart datas={data ?? []}></ProductCart>
+      <ProductCart data={data ?? []}></ProductCart>
     </div>
   );
 };

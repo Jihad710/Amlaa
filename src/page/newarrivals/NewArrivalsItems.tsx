@@ -23,10 +23,10 @@ interface Props {
 }
 
 const NewArrivalsItems: React.FC<Props> = ({ items = [] }) => {
-    console.log(items);
+    // console.log(items);
 
     return (
-        <div className=' py-24'>
+        <div className=' pt-24'>
             <div className=''>
                 <Swiper
                     slidesPerView={4}
@@ -36,6 +36,7 @@ const NewArrivalsItems: React.FC<Props> = ({ items = [] }) => {
                         delay: 5000,
                         disableOnInteraction: false,
                       }}
+                    //   scrollbar={{ draggable: true, hide: false }}
                     modules={[Navigation,Autoplay]}
                     className='mySwiper'>
                     {items.map((item) => (

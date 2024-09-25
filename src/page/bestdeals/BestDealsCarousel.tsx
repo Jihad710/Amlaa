@@ -9,7 +9,7 @@ const BestDealsCarousel = () => {
     "popularInstructors",
     async () => {
       const response = await fetch(
-        "https://black-and-white-server.vercel.app/products/category?category=deal"
+        "http://localhost:5000/products"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -27,7 +27,7 @@ const BestDealsCarousel = () => {
   }
 
   return (
-    <div className="my-32">
+    <div className="my-14">
       <div className="text-center">
         <h1 className="mb-4 font-bold text-3xl text-[#3c3633]">Deals</h1>
         <p className="font-semibold">you don't want to miss</p>

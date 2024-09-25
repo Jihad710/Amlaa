@@ -1,8 +1,4 @@
 import { useQuery } from "react-query";
-import image_1 from "../../assets/arival_1.png";
-import image_2 from "../../assets/arival_2.png";
-import image_3 from "../../assets/arival_3.png";
-import image_4 from "../../assets/arival_4.png";
 
 import NewArrivalsItems from "./NewArrivalsItems";
 const NewArrivals = () => {

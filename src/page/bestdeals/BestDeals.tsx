@@ -2,11 +2,12 @@ import { useQuery } from "react-query";
 import DynamicBanner from "../../components/ui/DynamicBanner";
 import ProductCart from "../products/ProductCart";
 import { TProduct } from "../../components/type/Types";
+import BestDealsCarousel from "./BestDealsCarousel";
 
 const BestDeals = () => {
   const { isLoading, data } = useQuery<TProduct[]>("allProduct", async () => {
     const response = await fetch(
-      "https://black-and-white-server.vercel.app/products/category?category=deal"
+      "http://localhost:5000/products"
     );
 
     if (!response.ok) {
@@ -23,7 +24,7 @@ const BestDeals = () => {
   if (!data) {
     return <div>No data available</div>;
   }
-
+console.log(data);
   return (
     <div>
       <DynamicBanner title="Deals"></DynamicBanner>

@@ -68,7 +68,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ datas }) => {
       return newIndexes;
     });
   };
-
+console.log(datas);
   return (
     <div className="grid w-11/12  mx-auto grid-cols-1 md:grid-cols-4 md:gap-10 text-[#3c3633]">
       {datas?.length > 0 ? (

@@ -1,72 +1,85 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/autoplay";
-import "swiper/css/scrollbar";
-import { Keyboard, Scrollbar, Navigation } from "swiper/modules";
 
-type Instructor = {
-  _id: string;
-  name: string;
-  email: string;
-  image: string;
-};
+// import required modules
+import { Navigation,Autoplay } from "swiper/modules";
+import { Link, NavLink } from "react-router-dom";
 
-const BestDealsCarosulCard = ({ data }: { data: Instructor[] }) => {
-  return (
-    <div
-      className="mt-10 swiper-container"
-      style={{ width: "100%", overflow: "hidden" }}
-    >
-      <style>
-        {`
-          .swiper-scrollbar {
-            height: 200px;
-            background-color: #eeedeb;
-          }
+// type Instructor = {
+//     _id: string;
+//     name: string;
+//     email: string;
+//     image: string;
+// };
+interface Item {
+    title: string;
+    images: string;
+    name: string;
+    price: number;
+    status: string;
+    _id: string;
+    collectionStatus: string;
+}
 
-          .swiper-scrollbar .swiper-scrollbar-drag {
-            background-color: #c1c1c1;
-            border-radius: 0;
-            height: 100px;
-          }
-        `}
-      </style>
-      <Swiper
-        slidesPerView={4}
-        autoplay={{ delay: 1000, disableOnInteraction: false }}
-        speed={2000}
-        loop={true}
-        keyboard={{ enabled: true }}
-        navigation={true}
-        scrollbar={{ draggable: true, hide: false }}
-        modules={[Scrollbar, Navigation, Keyboard]}
-        className="swipers"
-      >
-        {data.map((instructor) => (
-          <SwiperSlide key={instructor._id}>
-            <div className="mx-3 mb-5 bg-red-500 w-full h-56">
-              <div className="text-center cursor-pointer h-full bg-[#eeedeb] text-neutral-600 mx-1">
-                <figure>
-                  <img
-                    src={instructor.image}
-                    alt="instructor"
-                    className="w-full h-[327px] mx-auto"
-                  />
-                </figure>
-                <div className="mt-5 items-center text-center">
-                  <h2 className="font-bold uppercase text-lg">
-                    {"Grow Almond — Heavy Weight T-Shirt"}
-                  </h2>
-                  <h2 className="pb-3">{"₹ 1,490.00 Sale price₹ 990.00"}</h2>
-                </div>
-              </div>
+const BestDealsCarosulCard = ({ data }: { data: Item[] }) => {
+    return (
+        <div className=' pt-24'>
+            <div className=''>
+                <Swiper
+                    slidesPerView={4}
+                    spaceBetween={20}
+                    navigation={true}
+                    autoplay={{
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    }}
+                    //   scrollbar={{ draggable: true, hide: false }}
+                    modules={[Navigation, Autoplay]}
+                    className='mySwiper'>
+                    {data.map((item) => (
+                        <SwiperSlide>
+                            <Link
+                                className='flex rounded-md justify-center w-full my-1'
+                                key={item._id}
+                                to={`/product/${item._id}`}>
+                                <div>
+                                    <div className='h-[460px] rounded-md overflow-hidden relative'>
+                                        <img
+                                            className='w-full h-full object-cover object-top'
+                                            src={item?.images[0]}
+                                            alt=''
+                                        />
+                                        <p className='absolute top-0 right-0 bg-[#3c3633] text-white p-2 px-4 capitalize pt-1'>
+                                            {item?.status}
+                                        </p>
+                                    </div>
+                                    <div className='mt-4 px-3 .barlow-regular'>
+                                        <p className='capitalize barlow-regular text-lg'>
+                                            {item?.title}
+                                        </p>
+                                        <p className='barlow-semibold mt-1 text-lg'>
+                                            ${item?.price}
+                                        </p>
+                                    </div>
+                                </div>
+                            </Link>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
-  );
+
+            <div className='w-32 rounded-full mt-10 mx-auto text-center'>
+                <NavLink to={"/allProduct"}>
+                    <button className='text-white uppercase font-semibold bg-[#3c3633] w-full py-3 px-4 text-center rounded-full'>
+                        View All
+                    </button>
+                </NavLink>
+            </div>
+        </div>
+    );
 };
 
 export default BestDealsCarosulCard;

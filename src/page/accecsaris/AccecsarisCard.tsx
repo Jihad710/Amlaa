@@ -5,74 +5,56 @@ import "swiper/css/autoplay";
 import "swiper/css/scrollbar";
 
 import { Keyboard, Scrollbar, Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
 
-type Instructor = {
-  _id: string;
-  name: string;
-  email: string;
-  image: string;
-};
+interface items {
+    title: string;
+    images: string;
+    name: string;
+    price: number;
+    status: string;
+    _id: string;
+}
 
-const AccecsarisCard = ({ data }: { data: Instructor[] }) => {
-  return (
-    <div
-      className="mt-10 swiper-container"
-      style={{ width: "100%", overflow: "hidden" }}
-    >
-      <style>
-        {`
-          .swiper-scrollbar {
-            height: 200px;
-            background-color:#eeedeb;
-          }
-
-          .swiper-scrollbar .swiper-scrollbar-drag {
-            background-color: #c1c1c1;
-            border-radius: 0;
-            height: 100px;
-          }
-        `}
-      </style>
-      <Swiper
-        slidesPerView={4}
-        autoplay={{ delay: 1000, disableOnInteraction: false }}
-        speed={2000}
-        loop={true}
-        keyboard={{
-          enabled: true,
-        }}
-        navigation={true}
-        scrollbar={{
-          draggable: true,
-          hide: false,
-        }}
-        modules={[Scrollbar, Navigation, Keyboard]}
-        className="swipers"
-      >
-        {data.map((instructor: Instructor) => (
-          <SwiperSlide key={instructor._id}>
-            <div className="mx-3 mb-5">
-              <div className=" text-center cursor-pointer h-full bg-[#eeedeb]  text-neutral-600 mx-1 ">
-                <figure>
-                  <img
-                    src={instructor.image}
-                    alt="instructor"
-                    className="w-full h-[327px]  mx-auto"
-                  />
-                </figure>
-                <div className="mt-5 items-center text-center">
-                  <h2 className="font-bold uppercase text-lg">
-                    {"Grow Almond — Heavy Weight T-Shirt"}
-                  </h2>
-                  <h2 className="pb-3">{"₹ 1,490.00 Sale price₹ 990.00"}</h2>
-                </div>
-              </div>
+const AccecsarisCard = ({ data }: { data: items[] }) => {
+    return (
+        <div className=' pt-24'>
+            <div className='grid grid-cols-4 gap-4'>
+                {data.map((item) => (
+                    <Link
+                        className='flex rounded-md justify-center w-full my-1'
+                        key={item._id}
+                        to={`/product/${item._id}`}>
+                        <div>
+                            <div className='h-[460px] rounded-md overflow-hidden relative'>
+                                <img
+                                    className='w-full h-full object-cover object-top'
+                                    src={item?.images[0]}
+                                    alt=''
+                                />
+                            </div>
+                            <div className='mt-4 px-3 .barlow-regular'>
+                                <p className='capitalize barlow-regular text-lg'>
+                                    {item?.title}
+                                </p>
+                                <p className='barlow-semibold mt-1 text-lg'>
+                                    ${item?.price}
+                                </p>
+                            </div>
+                        </div>
+                    </Link>
+                ))}
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
-  );
+
+            <div className='w-32 rounded-full mt-10 mx-auto text-center'>
+                <Link to={"/allProduct"}>
+                    <button className='text-white uppercase font-semibold bg-[#3c3633] w-full py-3 px-4 text-center rounded-full'>
+                        View All
+                    </button>
+                </Link>
+            </div>
+        </div>
+    );
 };
 
 export default AccecsarisCard;

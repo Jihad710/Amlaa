@@ -24,9 +24,10 @@ const AccecsarisCarosal = () => {
 
   return (
     <div>
-      <h1 className="mb-7 font-bold text-3xl text-[#3c3633] text-center">
-        Explore Accessories
-      </h1>
+    <div className="text-center">
+        <h1 className="mb-4 font-bold text-3xl text-[#3c3633]">ACCESSORIES</h1>
+        <p className="font-semibold">YOU WILL LOVE THIS</p>
+      </div>
       <div>
         <AccecsarisCard data={data}></AccecsarisCard>
       </div>

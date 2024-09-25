@@ -87,7 +87,7 @@ const ProductDetails: React.FC = () => {
                 <img
                   src={mainImage}
                   alt={details.title}
-                  className="md:w-[457px] w-full h-[500px] mx-auto"
+                  className="md:w-[457px] w-full h-[500px] object-cover object-top mx-auto"
                 />
               )}
             </div>

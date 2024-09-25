@@ -29,8 +29,8 @@ const BestDealsCarousel = () => {
   return (
     <div className="my-14">
       <div className="text-center">
-        <h1 className="mb-4 font-bold text-3xl text-[#3c3633]">Deals</h1>
-        <p className="font-semibold">you don't want to miss</p>
+        <h1 className="mb-4 font-bold text-3xl text-[#3c3633]">DEALS</h1>
+        <p className="font-semibold">YOU DON’T WANT TO MISS</p>
       </div>
       <BestDealsCarosulCard data={data}></BestDealsCarosulCard>
     </div>

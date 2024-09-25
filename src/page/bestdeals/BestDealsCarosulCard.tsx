@@ -52,9 +52,6 @@ const BestDealsCarosulCard = ({ data }: { data: Item[] }) => {
                                             src={item?.images[0]}
                                             alt=''
                                         />
-                                        <p className='absolute top-0 right-0 bg-[#3c3633] text-white p-2 px-4 capitalize pt-1'>
-                                            {item?.status}
-                                        </p>
                                     </div>
                                     <div className='mt-4 px-3 .barlow-regular'>
                                         <p className='capitalize barlow-regular text-lg'>

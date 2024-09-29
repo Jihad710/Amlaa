@@ -74,7 +74,7 @@ console.log(data);
       {data?.length > 0 ? (
         data.map((data, index) => (
           <div
-            key={data._id}
+            key={index}
             onClick={() => handleProductClick(data._id)}
             className="cursor-pointer border md:mb-0 mb-12 "
           >

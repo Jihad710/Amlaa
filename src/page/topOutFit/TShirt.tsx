@@ -1,33 +1,35 @@
 import { useQuery } from "react-query";
 import DynamicBanner from "../../components/ui/DynamicBanner";
 import ProductCart from "../products/ProductCart";
+import { useEffect, useState } from "react";
 
 const TShirt = () => {
-  const {
-    isLoading,
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    data,
-  } = useQuery("allProduct", async () => {
-    const response = await fetch(
-      "https://black-and-white-server.vercel.app/products/category?category=tshirt"
-    );
-    console.log(response);
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
+    useEffect(() => {
+        (async () => {
+            setIsLoading(true);
+            const response = await fetch(
+                `http://localhost:5000/products/tshirt`
+            );
+            const data = await response.json();
+            if (data) {
+                setData(data);
+                setIsLoading(false);
+            }
+        })();
+    }, []);
+    console.log(isLoading);
+    if (isLoading) {
+         return <div className='h-[80vh]'>loading...............</div>;
     }
-    return response.json();
-  });
-  console.log(data);
-  if (isLoading) {
-    <div>loding...............</div>;
-  }
-  return (
-    <div>
-      <DynamicBanner title="T-Shirt"></DynamicBanner>
-      <ProductCart data={data}></ProductCart>
-    </div>
-  );
+    return (
+        <div>
+            <DynamicBanner title='T-Shirt'></DynamicBanner>
+            <ProductCart data={data || []}></ProductCart>
+        </div>
+    );
 };
 
 export default TShirt;

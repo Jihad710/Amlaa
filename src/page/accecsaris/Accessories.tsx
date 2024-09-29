@@ -9,7 +9,7 @@ const Accessories = () => {
     data,
   } = useQuery("allProduct", async () => {
     const response = await fetch(
-      "https://black-and-white-server.vercel.app/products/category?category=accessories"
+         `http://localhost:5000/products/accessories`
     );
 
     if (!response.ok) {
@@ -19,7 +19,7 @@ const Accessories = () => {
   });
   console.log(data);
   if (isLoading) {
-    <div>loding...............</div>;
+    <div>loading...............</div>;
   }
   return (
     <div>

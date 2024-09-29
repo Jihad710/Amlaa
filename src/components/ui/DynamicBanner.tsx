@@ -10,7 +10,7 @@ const DynamicBanner: React.FC<DynamicBannerProps> = ({ title }) => {
     return (
         <div className=' flex justify-center items-center border-t border-black pt-3'>
             <div className='text-center'>
-                <h1 className='text-4xl  font-bold'>{title}</h1>
+                <h1 className='text-4xl  font-bold capitalize'>{title}</h1>
                 <div className='flex gap-20 mt-8'>
                     <div>
                         <p>Availability</p>

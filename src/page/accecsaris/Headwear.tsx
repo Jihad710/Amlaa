@@ -2,14 +2,15 @@ import { useQuery } from "react-query";
 import DynamicBanner from "../../components/ui/DynamicBanner";
 import ProductCart from "../products/ProductCart";
 
-const Headwear = () => {
+const 
+Headwear = () => {
   const {
     isLoading,
 
     data,
   } = useQuery("allProduct", async () => {
     const response = await fetch(
-      "https://black-and-white-server.vercel.app/products/category?category=headware"
+         `http://localhost:5000/products/headwear`
     );
     console.log(response);
 

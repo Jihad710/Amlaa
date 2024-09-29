@@ -9,7 +9,7 @@ const BottomWar = () => {
     data,
   } = useQuery("allProduct", async () => {
     const response = await fetch(
-      "https://black-and-white-server.vercel.app/products/category?category=bottomware"
+     `http://localhost:5000/products/bottomwear`
     );
     console.log(response);
 

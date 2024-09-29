@@ -29,41 +29,41 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/products",
+        path: "/products/:category",
         element: <Products></Products>,
       },
-      {
-        path: "/collection/best-deal",
-        element: <BestDeals></BestDeals>,
-      },
-      {
-        path: "/collection/t-shirt",
-        element: <TShirt></TShirt>,
-      },
-      {
-        path: "/collection/polo",
-        element: <Polo></Polo>,
-      },
-      {
-        path: "/collection/shirt",
-        element: <Shirt></Shirt>,
-      },
-      {
-        path: "/collection/jackets",
-        element: <Jackets></Jackets>,
-      },
-      {
-        path: "/collection/bottomwar",
-        element: <BottomWar></BottomWar>,
-      },
-      {
-        path: "/collection/head-wear",
-        element: <Headwear></Headwear>,
-      },
-      {
-        path: "/collection/accessories",
-        element: <Accessories></Accessories>,
-      },
+      // {
+      //   path: "/products/deals",
+      //   element: <BestDeals></BestDeals>,
+      // },
+      // {
+      //   path: "/products/tshirt",
+      //   element: <TShirt></TShirt>,
+      // },
+      // {
+      //   path: "/products/polos",
+      //   element: <Polo></Polo>,
+      // },
+      // {
+      //   path: "/products/shirt",
+      //   element: <Shirt></Shirt>,
+      // },
+      // {
+      //   path: "/products/jackets",
+      //   element: <Jackets></Jackets>,
+      // },
+      // {
+      //   path: "/products/bottomwar",
+      //   element: <BottomWar></BottomWar>,
+      // },
+      // {
+      //   path: "/products/head-wear",
+      //   element: <Headwear></Headwear>,
+      // },
+      // {
+      //   path: "/products/accessories",
+      //   element: <Accessories></Accessories>,
+      // },
       {
         path: "/login",
         element: <Login></Login>,

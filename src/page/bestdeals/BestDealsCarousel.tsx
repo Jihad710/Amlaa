@@ -9,7 +9,7 @@ const BestDealsCarousel = () => {
     "popularInstructors",
     async () => {
       const response = await fetch(
-        "http://localhost:5000/products"
+        "http://localhost:5000/products/all"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");

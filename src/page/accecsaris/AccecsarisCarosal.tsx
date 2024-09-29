@@ -3,10 +3,10 @@ import AccecsarisCard from "./AccecsarisCard";
 
 const AccecsarisCarosal = () => {
   const { isLoading, error, data } = useQuery(
-    "popularInstructors",
+    "accessories",
     async () => {
       const response = await fetch(
-        "https://black-and-white-server.vercel.app/products/category?category=accessories"
+        "http://localhost:5000/products/all"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");

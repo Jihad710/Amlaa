@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import banner from "../../assets/banner.jpg";
 import InputRange from "react-input-range";
 type DynamicBannerProps = {
     title: string;

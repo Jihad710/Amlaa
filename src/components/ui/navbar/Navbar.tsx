@@ -4,17 +4,6 @@ import { useGetToCardLocal } from "../../../hooks/useGetToCardLocal";
 import { FaAngleDown, FaChevronDown, FaSortDown } from "react-icons/fa";
 
 const Navbar = () => {
-    const { data } = useGetToCardLocal();
-    const [quantity, setQuantity] = useState(0);
-
-    useEffect(() => {
-        const totalQuantity = data.reduce(
-            (sum, item) => sum + item.quantity,
-            0
-        );
-        setQuantity(totalQuantity);
-    }, [data]);
-
     return (
         <div className=''>
             <ul className='flex items-center justify-center border-t border-black'>

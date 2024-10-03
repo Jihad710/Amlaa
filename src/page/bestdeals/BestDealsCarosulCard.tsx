@@ -69,7 +69,7 @@ const BestDealsCarosulCard = ({ data }: { data: Item[] }) => {
             </div>
 
             <div className='w-32 rounded-full mt-10 mx-auto text-center'>
-                <NavLink to={"/allProduct"}>
+                <NavLink to={"/products/deals"}>
                     <button className='text-white uppercase font-semibold bg-[#3c3633] w-full py-3 px-4 text-center rounded-full'>
                         View All
                     </button>

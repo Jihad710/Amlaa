@@ -6,6 +6,7 @@ import MobileNavBar from "../ui/navbar/MobileNavBar";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import MiddleNav from "../ui/navbar/MiddleNav";
+import { Toaster } from "react-hot-toast";
 
 const MainLayout = () => {
   const { openModalRs } = useContext(AuthContext);
@@ -17,6 +18,7 @@ const MainLayout = () => {
       {openModalRs ? "" : <MobileNavBar></MobileNavBar>}
       <Outlet></Outlet>
       <Footer></Footer>
+      <Toaster />
     </div>
   );
 };

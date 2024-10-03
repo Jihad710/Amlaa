@@ -26,9 +26,8 @@ const MiddleNav = () => {
     const handleCloseModal = () => {
         setSearchModal(false);
         setProducts([]);
-        setSearchText("")
-
-    }
+        setSearchText("");
+    };
     useEffect(() => {
         (async () => {
             console.log(searchText);
@@ -58,7 +57,9 @@ const MiddleNav = () => {
                         </Link>
                     </li>
                     <li className='text-2xl cursor-pointer'>
-                        <button className="block" onClick={() => setSearchModal(true)} >
+                        <button
+                            className='block'
+                            onClick={() => setSearchModal(true)}>
                             {" "}
                             <IoIosSearch />
                         </button>
@@ -75,7 +76,9 @@ const MiddleNav = () => {
             </div>
 
             <div
-                className={ `fixed duration-500 w-full overflow-y-auto bottom-0 left-0 bg-white z-20 ${searchModal ? "h-screen" : "h-0"}`}>
+                className={`fixed duration-500 w-full overflow-y-auto bottom-0 left-0 bg-white z-20 ${
+                    searchModal ? "h-screen" : "h-0"
+                }`}>
                 <button
                     className='text-3xl absolute top-4 right-4'
                     onClick={handleCloseModal}>
@@ -90,30 +93,32 @@ const MiddleNav = () => {
                     className='block w-4/5 mx-auto mt-14 p-4 bg-[#f3f4f6] mb-2 border-[#3c3633] rounded-md shadow-sm outline-none border-b-2  '
                 />
                 <div className='w-4/5 mx-auto grid grid-cols-3 mt-10 gap-4'>
-                    {products.map((item) => (
-                        <Link
-                            className='flex rounded-md justify-center w-full my-1'
-                            key={item._id}
-                            to={`/product/${item._id}`}>
-                            <div>
-                                <div className='h-[460px] rounded-md overflow-hidden relative'>
-                                    <img
-                                        className='w-full h-full object-cover object-top'
-                                        src={item?.images[0]}
-                                        alt=''
-                                    />
-                                </div>
-                                <div className='mt-4 px-3 .barlow-regular'>
-                                    <p className='capitalize barlow-regular text-lg'>
-                                        {item?.title}
-                                    </p>
-                                    <p className='barlow-semibold mt-1 text-lg'>
-                                        ${item?.price}
-                                    </p>
-                                </div>
-                            </div>
-                        </Link>
-                    ))}
+                    {products.length > 0
+                        ? products?.map((item) => (
+                              <Link
+                                  className='flex rounded-md justify-center w-full my-1'
+                                  key={item._id}
+                                  to={`/product/${item._id}`}>
+                                  <div>
+                                      <div className='h-[460px] rounded-md overflow-hidden relative'>
+                                          <img
+                                              className='w-full h-full object-cover object-top'
+                                              src={item?.images[0]}
+                                              alt=''
+                                          />
+                                      </div>
+                                      <div className='mt-4 px-3 barlow-regular'>
+                                          <p className='capitalize barlow-regular text-lg'>
+                                              {item?.title}
+                                          </p>
+                                          <p className='barlow-semibold mt-1 text-lg'>
+                                              ${item?.price}
+                                          </p>
+                                      </div>
+                                  </div>
+                              </Link>
+                          ))
+                        : "No match found"}
                 </div>
             </div>
         </div>

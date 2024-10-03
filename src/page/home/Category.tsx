@@ -3,44 +3,44 @@ import { NavLink } from "react-router-dom";
 const items = [
     {
         name: "T-Shirt",
-        route: "/collection/t-shirt",
+        route: "/products/tshirt",
         image: "https://desiminimals.com/cdn/shop/files/20240212-_RHN2763.jpg?v=1708334241&width=352",
     },
     {
         name: "Shirt",
-        route: "/collection/shirt",
+        route: "/products/shirt",
 
         image: "https://desiminimals.com/cdn/shop/files/DSC_3852.jpg?v=1698665188&width=352",
     },
     {
         name: "Bottomware",
-        route: "/collection/bottomwar",
+        route: "/products/bottomwear",
         image: "https://desiminimals.com/cdn/shop/files/20240212-_RHN2895.jpg?v=1708335900&width=352",
     },
     {
-        name: "Swaitshirt",
-        route: "/collection/jackets",
+        name: "Jacket",
+        route: "/products/jacket",
 
         image: "https://desiminimals.com/cdn/shop/files/DSC_5166.jpg?v=1704369101&width=352",
     },
     {
         name: "Headware",
-        route: "/collection/head-wear",
+        route: "/products/headwear",
         image: "https://desiminimals.com/cdn/shop/files/DSC_3174_37b58d4f-7527-4b46-ada1-fa2c11f57004.jpg?v=1698665391&width=352",
     },
     {
         name: "Accerios",
-        route: "/collection/bags-and-wallets",
+        route: "/products/accessories",
         image: "https://desiminimals.com/cdn/shop/files/20240213-_RHN3116.jpg?v=1708335676&width=352",
     },
     {
         name: "Deals",
-        route: "/collection/best-deal",
+        route: "/collection/deals",
         image: "https://desiminimals.com/cdn/shop/files/DSC_5327_b077cd25-07fc-405e-8b17-2ec8555587e3.jpg?v=1704454596&width=352",
     },
     {
         name: "Polos",
-        route: "/collection/polo",
+        route: "/collection/polos",
         image: "https://desiminimals.com/cdn/shop/files/20240213-_RHN3102.jpg?v=1708335367&width=352",
     },
 ];

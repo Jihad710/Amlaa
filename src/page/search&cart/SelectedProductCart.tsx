@@ -3,6 +3,7 @@ import OderProductCard from "./OderProductCard";
 
 import { useGetToCardLocal } from "../../hooks/useGetToCardLocal";
 import { useEffect } from "react";
+import Loader from "../../components/ui/Loader";
 
 const SelectedProductCart = () => {
   const { loading, data } = useGetToCardLocal();
@@ -13,7 +14,7 @@ const SelectedProductCart = () => {
     <div>
       <h1 className="text-4xl font-bold text-center text-[#423e3c]">Cart</h1>
       {loading ? (
-        <p className="text-center">Loading...</p>
+        <p className="text-center"><Loader/></p>
       ) : (
         <div>
           <OderProductCard data={data} />

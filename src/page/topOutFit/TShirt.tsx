@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import DynamicBanner from "../../components/ui/DynamicBanner";
-import ProductCart from "../products/ProductCart";
+import ProductCart from "../products/ProductCard";
 import { useEffect, useState } from "react";
 
 const TShirt = () => {
@@ -22,7 +22,7 @@ const TShirt = () => {
     }, []);
     console.log(isLoading);
     if (isLoading) {
-         return <div className='h-[80vh]'>loading...............</div>;
+        return <div className='h-[80vh]'>loading...............</div>;
     }
     return (
         <div>

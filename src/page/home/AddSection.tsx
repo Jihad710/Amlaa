@@ -14,7 +14,7 @@ const AddSection = () => {
             <h1 className="text-white w-full text-7xl font-bold mb-4">
               SCULPT CROP TOPS
             </h1>
-            <NavLink to={"/allProduct"}>
+            <NavLink to={"/products/all"}>
               <button className="text-white uppercase font-semibold bg-[#3c3633] mt-3 py-3 px-7 rounded-full">
                 Explore
               </button>

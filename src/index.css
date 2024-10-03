@@ -209,3 +209,18 @@ body {
     right: var(--swiper-navigation-sides-offset, 10px) !important;
     left: auto;
 }
+
+
+
+
+/* Customizing the track (background) color */
+.input-range__track {
+    background: rgba(128, 128, 128, 0.123) !important; /* Example of light gray background */
+  }
+  
+  /* Customizing the active range color (the part between min and max) */
+  .input-range__track--active {
+    background: BLUE !important; /* Example of green active range color */
+  }
+  
+

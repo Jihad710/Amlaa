@@ -7,14 +7,12 @@ import Loader from "../../components/ui/Loader";
 
 const SelectedProductCart = () => {
   const { loading, data } = useGetToCardLocal();
-  useEffect(() => {
-    console.log(localStorage.getItem("product"));
-  }, [data]);
+
   return (
     <div>
       <h1 className="text-4xl font-bold text-center text-[#423e3c]">Cart</h1>
       {loading ? (
-        <p className="text-center"><Loader/></p>
+        <Loader/>
       ) : (
         <div>
           <OderProductCard data={data} />

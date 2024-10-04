@@ -14,11 +14,8 @@ const MiddleNav = () => {
     const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
-        const totalQuantity = data.reduce(
-            (sum, item) => sum + item.quantity,
-            0
-        );
-        setQuantity(totalQuantity);
+
+        setQuantity(data.length);
     }, [data]);
     const handleSearch = async (searchText: string) => {
         setSearchText(searchText);
@@ -40,7 +37,6 @@ const MiddleNav = () => {
             }
         })();
     }, [searchText]);
-    console.log(products);
     return (
         <div className='flex items-center my-4'>
             <div className='w-full flex justify-center'>

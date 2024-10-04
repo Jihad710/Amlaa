@@ -16,6 +16,7 @@ export interface TProduct {
   menuItemId: string;
 }
 export interface Product {
+  notAvailable: any;
   _id: string;
   menuItemId: string;
   name: string;

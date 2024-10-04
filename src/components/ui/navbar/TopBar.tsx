@@ -3,7 +3,6 @@ import Marquee from "react-fast-marquee";
 
 const TopBar = () => {
     const [text, setText] = useState([{text: "Top bar text"}]);
-    console.log(text);
     useEffect(() => {
         fetch("http://localhost:5000/top-moving-text")
             .then((response) => response.json())

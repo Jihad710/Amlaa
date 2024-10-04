@@ -10,7 +10,7 @@ export const useGetToCardLocal = () => {
       const value = localStorage.getItem("product");
       if (value !== null) {
         const parsedData: Product[] = JSON.parse(value);
-        console.log(parsedData);
+        // console.log(parsedData);
         setData(parsedData);
       } else {
         setData([]);

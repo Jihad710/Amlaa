@@ -108,12 +108,18 @@ const ProductDetails: React.FC = () => {
                                     <p className='mb-5 md:font-medium text-xl gap-1 flex items-center opacity-80'>
                                         {details?.discount && details.price && (
                                             <>
-                                                <span className="line-through">
+                                                <span className='line-through'>
                                                     {" "}
                                                     &#x09F3;{details.price}
-                                                </span>{" - "}
-                                                <span> &#x09F3; {discountedPrice}</span>
-                                                 <span className="text-sm rounded p-px bg-red-200 text-red-700">-{details?.discount}%</span>
+                                                </span>
+                                                {" - "}
+                                                <span>
+                                                    {" "}
+                                                    &#x09F3; {discountedPrice}
+                                                </span>
+                                                <span className='text-sm rounded p-px bg-red-200 text-red-700'>
+                                                    -{details?.discount}%
+                                                </span>
                                             </>
                                         )}
                                     </p>
@@ -156,21 +162,24 @@ const ProductDetails: React.FC = () => {
                                 Size:
                             </p>
                             <div className='flex flex-wrap gap-2'>
-                                {(typeof details.size === "string"
-                                    ? details.size.split(",")
-                                    : details.size
-                                ).map((size, index) => (
-                                    <button
-                                        key={index}
-                                        className={`border border-[#3c3633] px-6 py-3  rounded ${
-                                            selectedSize === size
-                                                ? "bg-gray-400"
-                                                : ""
-                                        }`}
-                                        onClick={() => handleSizeClick(size)}>
-                                        {size}
-                                    </button>
-                                ))}
+                                {details.size &&
+                                    (typeof details.size === "string"
+                                        ? details.size.split(",")
+                                        : details.size
+                                    ).map((size, index) => (
+                                        <button
+                                            key={index}
+                                            className={`border border-[#3c3633] px-6 py-3  rounded ${
+                                                selectedSize === size
+                                                    ? "bg-gray-400"
+                                                    : ""
+                                            }`}
+                                            onClick={() =>
+                                                handleSizeClick(size)
+                                            }>
+                                            {size}
+                                        </button>
+                                    ))}
                             </div>
                         </div>
                         {details.dimensions && (
@@ -209,10 +218,14 @@ const ProductDetails: React.FC = () => {
                         <div>
                             <button
                                 onClick={handleAddToCart}
-                                className='w-full text-xl mt-5 md:mt-0 font-bold border-2 border-[#3c3633] px-4 py-2 md:mr-2 rounded-xl'
-                                disabled={isLoading}>
+                                className='w-full text-xl mt-5 md:mt-0 font-bold border-2 border-[#3c3633] px-4 py-2 md:mr-2 rounded-xl disabled:cursor-not-allowed opacity-40'
+                                disabled={
+                                    isLoading || details.status == "sold-out"
+                                }>
                                 {isLoading
                                     ? "Adding to Cart..."
+                                    : details.status == "sold-out"
+                                    ? "Sold out"
                                     : "Add to Cart"}
                             </button>
                         </div>

@@ -21,7 +21,7 @@ const Offerd = () => {
     },
   ];
   return (
-    <div className="md:flex gap-10 mt-40">
+    <div className="md:flex gap-10 mt-10">
       {services.map((items, index) => (
         <div key={index} className="text-center  my-10">
           <img className="mx-auto h-20 w-20" src={items.image} alt="" />

@@ -18,7 +18,7 @@ const MiddleBanner = () => {
       </div>
       <div className="w-full mt-20 md:mt-0 md:w-1/2 flex items-center ps-10">
         <div className="p-5 text-center md:text-left">
-          <p className="font-semibold text-xl pb-4 text-white">DESI MINIMALS</p>
+          <p className="font-semibold text-xl pb-4 text-white">AMLAA</p>
           <p className="text-white text-4xl font-bold">Get comfortable.</p>
         </div>
       </div>

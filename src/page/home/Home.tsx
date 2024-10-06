@@ -23,7 +23,7 @@ const Home = () => {
       <ShowBag></ShowBag>
       <AccecsarisCarosal></AccecsarisCarosal>
 
-      <Offerd></Offerd>
+      {/* <Offerd></Offerd> */}
       <AskQutions></AskQutions>
       <Contact></Contact>
       <MiddleBanner></MiddleBanner>

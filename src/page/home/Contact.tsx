@@ -1,6 +1,6 @@
 const Contact = () => {
   return (
-    <div className="md:w-8/12 w-11/12  mx-auto mb-32">
+    <div className="md:w-8/12 w-11/12  mx-auto mb-14">
       <h1 className="text-center font-bold text-4xl mb-5">Contact us</h1>
       <div>
         <form action="">
@@ -43,10 +43,10 @@ const Contact = () => {
           </div>
         </form>
       </div>
-      <span className="mt-10">
+      {/* <span className="mt-10">
         This site is protected by reCAPTCHA and the Google Privacy Policy and
         Terms of Service apply.
-      </span>
+      </span> */}
     </div>
   );
 };

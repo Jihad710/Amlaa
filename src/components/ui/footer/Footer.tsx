@@ -10,7 +10,6 @@ import ConvertionF from "./ConvertionF";
 const Footer = () => {
   return (
     <div>
-      <ConvertionF></ConvertionF>
       <div className="mt-20 flex  flex-wrap justify-center items-center">
         <div>
           <ul className="flex flex-wrap items-center justify-center gap-5 py-10">

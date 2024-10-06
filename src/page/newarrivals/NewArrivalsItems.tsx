@@ -55,7 +55,7 @@ const NewArrivalsItems: React.FC<Props> = ({ items = [] }) => {
                                             alt=''
                                         />
                                         <p className='absolute top-0 right-0 bg-[#3c3633] text-white p-2 px-4 capitalize pt-1'>
-                                            New
+                                            {item.status === 'sold-out' ? "Sold Out" : "New"}
                                         </p>
                                     </div>
                                     <div className='mt-4 px-3 .barlow-regular'>

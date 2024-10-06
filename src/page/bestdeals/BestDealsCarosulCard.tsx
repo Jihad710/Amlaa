@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 // import required modules
-import { Navigation,Autoplay } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 // type Instructor = {
@@ -15,6 +15,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 //     image: string;
 // };
 interface Item {
+    discount: number;
     title: string;
     images: string;
     name: string;
@@ -48,7 +49,7 @@ const BestDealsCarosulCard = ({ data }: { data: Item[] }) => {
                             <div
                                 className='flex rounded-md justify-center w-full my-1'
                                 key={item._id}
-                                onClick={()=> handleClick(item._id)}>
+                                onClick={() => handleClick(item._id)}>
                                 <div>
                                     <div className='h-[460px] rounded-md overflow-hidden relative'>
                                         <img
@@ -56,6 +57,11 @@ const BestDealsCarosulCard = ({ data }: { data: Item[] }) => {
                                             src={item?.images[0]}
                                             alt=''
                                         />
+                                        {item.status === "sold-out" && (
+                                            <p className='absolute top-0 right-0 bg-[#3c3633] text-white p-2 px-4 capitalize pt-1'>
+                                                Sold Out
+                                            </p>
+                                        )}
                                     </div>
                                     <div className='mt-4 px-3 .barlow-regular'>
                                         <p className='capitalize barlow-regular text-lg'>

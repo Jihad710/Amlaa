@@ -6,7 +6,7 @@ const AccecsarisCarosal = () => {
     "accessories",
     async () => {
       const response = await fetch(
-        "http://localhost:5000/products/all"
+        "http://localhost:5000/product/home/accessories"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");

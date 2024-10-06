@@ -7,21 +7,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import Marquee from "react-fast-marquee";
+import { useEffect, useState } from "react";
 
-const text = [
-  {
-    title: "it's time you get comfortable. ",
-  },
-  {
-    title: "it's time you get comfortable.",
-  },
-  {
-    title: "it's time you get comfortable. ",
-  },
-  {
-    title: "it's time you get comfortable. ",
-  },
-];
 
 const bannerData = [
   {
@@ -42,6 +29,15 @@ const bannerData = [
 ];
 
 const Banner = () => {
+  const [text, setText] = useState([{text: "Top bar text"}]);
+  useEffect(() => {
+      fetch("http://localhost:5000/banner-moving-text")
+          .then((response) => response.json())
+          .then((data) => {
+              setText(data);
+          });
+  }, []);
+  const repeatedData = Array(3).fill(text);
   return (
     <div className="h-screen">
       <Swiper
@@ -66,10 +62,10 @@ const Banner = () => {
       <div>
         
         <Marquee pauseOnHover={true} className="  text-2xl py-2  text-[#3c3633]">
-          {text.map((item, index) => (
+          {repeatedData.map((item, index) => (
             <p key={index} className="mx-10 font-4xl font-semibold">
               {" "}
-              {item.title}{" "}
+              {item.text}{" "}
             </p>
           ))}
         </Marquee>

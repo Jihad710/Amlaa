@@ -79,7 +79,10 @@ const ProductCart: React.FC<ProductCartProps> = ({ data: data }) => {
                     <div
                         key={index}
                         onClick={() => handleProductClick(data._id)}
-                        className='cursor-pointer border md:mb-0 mb-12 '>
+                        className='cursor-pointer border md:mb-0 mb-12 relative'>
+                        {data.status == "sold-out" && <div className='absolute z-10 top-0 right-0 bg-[#3c3633] text-white p-2 px-4 capitalize pt-1'>
+                            Sold Out
+                        </div>}
                         <div
                             className='overflow-hidden shadow-md transition-shadow ease-out relative  hover:shadow-lg '
                             onMouseEnter={() => handleMouseEnter(index)}
@@ -97,7 +100,6 @@ const ProductCart: React.FC<ProductCartProps> = ({ data: data }) => {
                                 {data.title}
                             </p>
                             <p className='text-center font-medium text-xl tracking-wide'>
-                            
                                 {data.discount > 0 ? (
                                     <p className='mb-5 md:font-medium text-xl gap-1 flex items-center opacity-80'>
                                         {data?.discount && data.price && (
@@ -109,7 +111,11 @@ const ProductCart: React.FC<ProductCartProps> = ({ data: data }) => {
                                                 {" - "}
                                                 <span>
                                                     {" "}
-                                                    &#x09F3; {data.price - ((data.price * data.discount) / 100)}
+                                                    &#x09F3;{" "}
+                                                    {data.price -
+                                                        (data.price *
+                                                            data.discount) /
+                                                            100}
                                                 </span>
                                                 <span className='text-sm rounded p-px bg-red-200 text-red-700'>
                                                     -{data?.discount}%

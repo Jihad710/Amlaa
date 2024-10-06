@@ -14,12 +14,10 @@ const Navbar = () => {
                     <NavLink to={"/products/deals"}>Deals</NavLink>
                 </li>
                 <li className='text-2xl px-7 py-4 relative group'>
-                    <NavLink
-                        className={"flex items-center gap-3"}
-                        to={"/products/topwear"}>
+                    <p className={"flex items-center gap-3"}>
                         Topwear{" "}
                         <FaChevronDown className='text-sm mt-2 group-hover:-rotate-180 duration-500' />
-                    </NavLink>
+                    </p>
                     <ul className='absolute top-14 left-0 z-10 hidden w-[180px] rounded-md shadow-lg border cursor-default bg-white group-hover:block overflow-hidden'>
                         <li className='text-xl'>
                             <Link

@@ -21,7 +21,10 @@ const Products = () => {
         inStock: 0,
         soldOut: 0,
     });
-
+    useEffect(() => {
+        // Scroll to the top when the component is first rendered
+        window.scrollTo(0, 0);
+    }, []);
     useEffect(() => {
         (async () => {
             const response = await fetch(

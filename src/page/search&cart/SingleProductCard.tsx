@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react"; // Assuming MenuItem type is defined in types.ts
 import { FiMinus, FiPlus } from "react-icons/fi";
-import { Product, TProduct } from "../../components/type/Types";
 import pleceholderImage from "../../assets/pleceholder.png";
+import { Link } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
+import { useGetToCardLocal } from "../../hooks/useGetToCardLocal";
+import { Product, TCartItem } from "../../components/type/Types";
+import Swal from "sweetalert2";
 interface SingleProductCardProps {
-    value: Product;
+    value: TCartItem;
     cartItems: { menuItemId: string; quantity: number }[];
     buyAvailProducts: { menuItemId: string; quantity: number }[];
     setBuyAvailProducts: Function;
+    setCartItems: Function;
     handleQuantityIncrement: (menuItemId: string) => void;
     handleQuantityDecrement: (menuItemId: string) => void;
 }
@@ -14,11 +19,13 @@ interface SingleProductCardProps {
 const SingleProductCard: React.FC<SingleProductCardProps> = ({
     value,
     cartItems,
+    setCartItems,
     buyAvailProducts,
     setBuyAvailProducts,
     handleQuantityIncrement,
     handleQuantityDecrement,
 }) => {
+    const [product, setProduct] = useState<Product | null>(null);
     const [isSoldOut, setIsSoldOut] = useState(false);
     const [notAvailable, setNotAvailable] = useState(true);
     useEffect(() => {
@@ -36,7 +43,7 @@ const SingleProductCard: React.FC<SingleProductCardProps> = ({
                 // console.log(result);
                 if (result.status) {
                     setNotAvailable(false);
-
+                    setProduct(result);
                     if (result.status == "sold-out") {
                         setIsSoldOut(true);
                     }
@@ -49,28 +56,49 @@ const SingleProductCard: React.FC<SingleProductCardProps> = ({
     // console.log(value);
 
     const cartItem = cartItems.find(
-        (item) => item.menuItemId == value.menuItemId
+        (item) => item.localStoreId === value.localStoreId
     ) || { quantity: 0 };
-    useEffect(() => {
-        const isExist = buyAvailProducts.find(
-            (product) => product.menuItemId === value.menuItemId
-        );
-
-        if (!notAvailable) {
-            if (!isSoldOut) {
-                if (isExist) {
-                    const restProducts = buyAvailProducts.filter(
-                        (item) => item.menuItemId != value.menuItemId
+    const handleRemoveFromCart = (menuItemId: number) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result: { isConfirmed: any }) => {
+            if (result.isConfirmed) {
+                const restProducts = cartItems.filter(
+                    (item) => item.localStoreId !== menuItemId
+                );
+                console.log(menuItemId);
+                if (restProducts) {
+                    localStorage.setItem(
+                        "product",
+                        JSON.stringify(restProducts)
                     );
-                    setBuyAvailProducts([...restProducts, { ...cartItem }]);
-                } else {
-                    setBuyAvailProducts([...buyAvailProducts, { ...cartItem }]);
+                    setCartItems(restProducts);
                 }
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your product has been deleted.",
+                    icon: "success",
+                });
             }
+        });
+    };
+    const calculateDiscountedPrice = () => {
+        if (value?.discount && value.price) {
+            const discountAmount = (value.price * value.discount) / 100;
+            return value.price - discountAmount;
         }
-    }, [cartItems, isSoldOut, notAvailable]);
+        return null;
+    };
+
+    const discountedPrice = calculateDiscountedPrice();
     return (
-        <tr className='border-b border-gray-500 mb-10'>
+        <tr className='border-b border-gray-500 '>
             <td className=' h-52 w-[150px] relative overflow-hidden rounded'>
                 <img src={value?.image || pleceholderImage} alt={value?.name} />
                 {(isSoldOut || notAvailable) && (
@@ -83,9 +111,13 @@ const SingleProductCard: React.FC<SingleProductCardProps> = ({
                     </div>
                 )}
             </td>
-            <td className=' ps-10'>
+            <td className='ps-10'>
                 <div>
-                    <p className='text-lg font-semibold'>{value?.name}</p>
+                    <Link
+                        to={`/product/${value.menuItemId}`}
+                        className='text-lg font-semibold hover:underline'>
+                        {value?.name}
+                    </Link>
                     <p>
                         <span className='font-medium'>Style:</span>
                         <span className='ml-1'>{value?.detailsMaterial}</span>
@@ -104,14 +136,14 @@ const SingleProductCard: React.FC<SingleProductCardProps> = ({
                 <div className='flex justify-center items-center gap-4'>
                     <FiMinus
                         onClick={() =>
-                            handleQuantityDecrement(value.menuItemId)
+                            handleQuantityDecrement(value.localStoreId)
                         }
                         className='cursor-pointer'
                     />
                     <p>{cartItem.quantity}</p>
                     <FiPlus
                         onClick={() =>
-                            handleQuantityIncrement(value.menuItemId)
+                            handleQuantityIncrement(value.localStoreId)
                         }
                         className='cursor-pointer'
                     />
@@ -124,13 +156,22 @@ const SingleProductCard: React.FC<SingleProductCardProps> = ({
                         className={`${
                             (notAvailable || isSoldOut) && "line-through"
                         }`}>
-                        {(parseFloat(value.price) * cartItem.quantity).toFixed(
-                            2
-                        )}
+                        {discountedPrice
+                            ? discountedPrice
+                            : parseFloat(
+                                  value.price * cartItem.quantity
+                              ).toFixed(2)}
                     </span>
                 ) : (
                     "00"
                 )}
+            </td>
+            <td className='flex items-center h-52 justify-center'>
+                <button
+                    className='text-3xl text-red-500 mt-5'
+                    onClick={() => handleRemoveFromCart(value.localStoreId)}>
+                    <MdDelete />
+                </button>
             </td>
         </tr>
     );

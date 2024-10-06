@@ -1,4 +1,5 @@
 export interface TProduct {
+  status: string;
   _id: string;
   title: string;
   price: number;
@@ -16,6 +17,8 @@ export interface TProduct {
   menuItemId: string;
 }
 export interface Product {
+  discount: string;
+  images: any;
   notAvailable: any;
   _id: string;
   menuItemId: string;
@@ -59,7 +62,7 @@ export interface TOderFormData {
   name: string;
   number: string;
   code: string;
-  state: string;
+  localAddress: string;
   city: string;
   district: string;
   paymentMethod: string;
@@ -75,11 +78,13 @@ export interface TAddProduct {
 }
 
 export interface TCartItem {
+  localStoreId: number;
   menuItemId: string;
   name: string;
   image: string;
   price: number;
   size: string;
+  discount: number;
   color: string;
   quantity: number;
 }

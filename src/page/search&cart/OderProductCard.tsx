@@ -9,7 +9,6 @@ interface OderProductCardProps {
 }
 
 const OderProductCard = ({ data }: OderProductCardProps) => {
-    const [refetch, setRefetch] = useState(true);
     const [cartItems, setCartItems] = useState<TCartItem[]>([]);
     const [buyAvailProducts, setBuyAvailProducts] = useState<Product[]>([]);
     useEffect(() => {
@@ -17,11 +16,11 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
             localStorage.getItem("product") || "[]"
         );
         setCartItems(getAllItems);
-    }, [refetch]);
+    }, []);
 
     const handleQuantityIncrement = (id: string) => {
         const updatedItems = cartItems.map((item) => {
-            if (item.menuItemId === id) {
+            if (item.localStoreId == id) {
                 return { ...item, quantity: item.quantity + 1 };
             }
             return item;
@@ -33,7 +32,7 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
     };
     const handleQuantityDecrement = (id: string) => {
         const updatedItems = cartItems.map((item) => {
-            if (item.menuItemId === id && item.quantity > 1) {
+            if (item.localStoreId == id && item.quantity > 1) {
                 return { ...item, quantity: item.quantity - 1 };
             }
             return item;
@@ -42,9 +41,8 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
         setCartItems(updatedItems);
         localStorage.setItem("product", JSON.stringify(updatedItems));
     };
-    console.log(buyAvailProducts);
     return (
-        <div className='w-full px-5 md:px-0 md:w-9/12 mx-auto'>
+        <div className='w-full px-5 md:px-0 md:w-10/12 mx-auto'>
             {cartItems?.length ? (
                 <>
                     {/* Table for larger screens */}
@@ -56,11 +54,14 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
                                     <th className='p-2 '></th>
                                     <th className='p-2 '>Quantity</th>
                                     <th className='p-2 '>Total</th>
+                                    <th className='p-2 '>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {data.map((value, idx) => (
+                                {cartItems.map((value, idx) => (
                                     <SingleProductCard
+                                    key={idx}
+                                        setCartItems={setCartItems}
                                         buyAvailProducts={buyAvailProducts}
                                         setBuyAvailProducts={
                                             setBuyAvailProducts
@@ -73,7 +74,7 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
                                             handleQuantityDecrement
                                         }
                                         value={value}
-                                        key={value.menuItemId}></SingleProductCard>
+                                       ></SingleProductCard>
                                 ))}
                             </tbody>
                         </table>
@@ -173,7 +174,7 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
 
                     <hr className='w-full h-1 bg-black my-2' />
                     <div>
-                        <ResponsiveDialog buyAvailProducts={buyAvailProducts}/>
+                        <ResponsiveDialog setCartItems={setCartItems} cartItems={cartItems} />
                     </div>
                 </>
             ) : (

@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation,Autoplay } from "swiper/modules";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 // type Instructor = {
 //     _id: string;
@@ -25,6 +25,10 @@ interface Item {
 }
 
 const BestDealsCarosulCard = ({ data }: { data: Item[] }) => {
+    const navigate = useNavigate();
+    const handleClick = (id: any) => {
+        navigate(`/product/${id}`);
+    };
     return (
         <div className=' pt-24'>
             <div className=''>
@@ -41,10 +45,10 @@ const BestDealsCarosulCard = ({ data }: { data: Item[] }) => {
                     className='mySwiper'>
                     {data.map((item) => (
                         <SwiperSlide>
-                            <Link
+                            <div
                                 className='flex rounded-md justify-center w-full my-1'
                                 key={item._id}
-                                to={`/product/${item._id}`}>
+                                onClick={()=> handleClick(item._id)}>
                                 <div>
                                     <div className='h-[460px] rounded-md overflow-hidden relative'>
                                         <img
@@ -58,11 +62,45 @@ const BestDealsCarosulCard = ({ data }: { data: Item[] }) => {
                                             {item?.title}
                                         </p>
                                         <p className='barlow-semibold mt-1 text-lg'>
-                                            ${item?.price}
+                                            {item.discount > 0 ? (
+                                                <p className='mb-5 md:font-medium text-xl gap-1 flex items-center opacity-80'>
+                                                    {item?.discount &&
+                                                        item.price && (
+                                                            <>
+                                                                <span className='line-through'>
+                                                                    {" "}
+                                                                    &#x09F3;
+                                                                    {item.price}
+                                                                </span>
+                                                                {" - "}
+                                                                <span>
+                                                                    {" "}
+                                                                    &#x09F3;{" "}
+                                                                    {item.price -
+                                                                        (item.price *
+                                                                            item.discount) /
+                                                                            100}
+                                                                </span>
+                                                                <span className='text-sm rounded p-px bg-red-200 text-red-700'>
+                                                                    -
+                                                                    {
+                                                                        item?.discount
+                                                                    }
+                                                                    %
+                                                                </span>
+                                                            </>
+                                                        )}
+                                                </p>
+                                            ) : (
+                                                <span>
+                                                    {" "}
+                                                    &#x09F3; {item.price}
+                                                </span>
+                                            )}
                                         </p>
                                     </div>
                                 </div>
-                            </Link>
+                            </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>

@@ -19,7 +19,7 @@ const Home = () => {
       <NewArrivals></NewArrivals>
       <AddSection></AddSection>
       <BestDealsCarousel></BestDealsCarousel>
-      <MovingText></MovingText>
+      {/* <MovingText></MovingText> */}
       <ShowBag></ShowBag>
       <AccecsarisCarosal></AccecsarisCarosal>
 

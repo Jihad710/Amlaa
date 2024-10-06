@@ -5,7 +5,7 @@ import "swiper/css/autoplay";
 import "swiper/css/scrollbar";
 
 import { Keyboard, Scrollbar, Navigation } from "swiper/modules";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface items {
     title: string;
@@ -17,14 +17,18 @@ interface items {
 }
 
 const AccecsarisCard = ({ data }: { data: items[] }) => {
+    const navigate = useNavigate();
+    const handleClick = (id: any) => {
+        navigate(`/product/${id}`);
+    };
     return (
         <div className=' pt-24'>
             <div className='grid grid-cols-4 gap-4'>
                 {data.map((item) => (
-                    <Link
+                    <div
                         className='flex rounded-md justify-center w-full my-1'
                         key={item._id}
-                        to={`/product/${item._id}`}>
+                        onClick={()=> handleClick(item._id)}>
                         <div>
                             <div className='h-[460px] rounded-md overflow-hidden relative'>
                                 <img
@@ -38,11 +42,45 @@ const AccecsarisCard = ({ data }: { data: items[] }) => {
                                     {item?.title}
                                 </p>
                                 <p className='barlow-semibold mt-1 text-lg'>
-                                    ${item?.price}
-                                </p>
+                                            {item.discount > 0 ? (
+                                                <p className='mb-5 md:font-medium text-xl gap-1 flex items-center opacity-80'>
+                                                    {item?.discount &&
+                                                        item.price && (
+                                                            <>
+                                                                <span className='line-through'>
+                                                                    {" "}
+                                                                    &#x09F3;
+                                                                    {item.price}
+                                                                </span>
+                                                                {" - "}
+                                                                <span>
+                                                                    {" "}
+                                                                    &#x09F3;{" "}
+                                                                    {item.price -
+                                                                        (item.price *
+                                                                            item.discount) /
+                                                                            100}
+                                                                </span>
+                                                                <span className='text-sm rounded p-px bg-red-200 text-red-700'>
+                                                                    -
+                                                                    {
+                                                                        item?.discount
+                                                                    }
+                                                                    %
+                                                                </span>
+                                                            </>
+                                                        )}
+                                                </p>
+                                            ) : (
+                                                <span>
+                                                    {" "}
+                                                    &#x09F3; {item.price}
+                                                </span>
+                                            )}
+                                        </p>
                             </div>
                         </div>
-                    </Link>
+                    </div>
                 ))}
             </div>
 

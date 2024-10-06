@@ -6,15 +6,17 @@ import { Link } from "react-router-dom";
 import { useGetToCardLocal } from "../../../hooks/useGetToCardLocal";
 import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
+import { Product } from "../../type/Types";
+
 const MiddleNav = () => {
     const { data } = useGetToCardLocal();
     const [quantity, setQuantity] = useState(0);
     const [searchModal, setSearchModal] = useState(false);
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<Product[]>([]);
+
     const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
-
         setQuantity(data.length);
     }, [data]);
     const handleSearch = async (searchText: string) => {

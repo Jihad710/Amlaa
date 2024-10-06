@@ -29,7 +29,7 @@ const items = [
         image: "https://desiminimals.com/cdn/shop/files/DSC_3174_37b58d4f-7527-4b46-ada1-fa2c11f57004.jpg?v=1698665391&width=352",
     },
     {
-        name: "Accerios",
+        name: "Accessories",
         route: "/products/accessories",
         image: "https://desiminimals.com/cdn/shop/files/20240213-_RHN3116.jpg?v=1708335676&width=352",
     },

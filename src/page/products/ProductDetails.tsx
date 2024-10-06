@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { TCartItem, TProductDetails } from "../../components/type/Types";
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { useAddToCartLocal } from "../../hooks/useAddToCartLocal";
 
 const ProductDetails: React.FC = () => {
@@ -11,7 +11,10 @@ const ProductDetails: React.FC = () => {
     const [selectedSize, setSelectedSize] = useState<string>("");
     const [selectedColor, setSelectedColor] = useState<string>("");
     const { addToCart, isLoading } = useAddToCartLocal();
-
+    useEffect(() => {
+        // Scroll to the top when the component is first rendered
+        window.scrollTo(0, 0);
+    }, []);
     const handleImageHover = (imageSrc: string) => {
         setMainImage(imageSrc);
     };
@@ -40,6 +43,7 @@ const ProductDetails: React.FC = () => {
             name: details.title,
             image: mainImage,
             price: details.price,
+            discount: details.discount,
             size: selectedSize,
             color: selectedColor,
             quantity: 1,

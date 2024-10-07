@@ -112,6 +112,25 @@ body {
     font-weight: 900;
     font-style: italic;
 }
+
+.sarina-regular {
+    font-family: "Sarina", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .finger-paint-regular {
+    font-family: "Finger Paint", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
+
+
+
+
+
 /*  */
 .hightBanner {
     height: calc(100vh - 140px);
@@ -215,6 +234,7 @@ body {
     left: 0;
     width: fit-content !important;
 }
+
 .swiper-pagination-bullet {
     width: 30px !important;
     height: 5px !important;

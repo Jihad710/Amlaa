@@ -12,7 +12,7 @@ const MovingText = () => {
   const repeatedData = Array(3).fill(text);
   return (
     <div>
-      <Marquee pauseOnHover={true} className="  text-2xl py-2 text-[#4f4a47]">
+      <Marquee pauseOnHover={true} className="  text-2xl py-2">
         {repeatedData.map((item, index) => (
           <p key={index} className="mx-10">
             {" "}

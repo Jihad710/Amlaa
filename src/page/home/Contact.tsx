@@ -1,54 +1,48 @@
 const Contact = () => {
-  return (
-    <div className="md:w-8/12 w-11/12  mx-auto mb-14">
-      <h1 className="text-center font-bold text-4xl mb-5">Contact us</h1>
-      <div>
-        <form action="">
-          <div className="w-full md:flex justify-between gap-5 py-10">
-            <div className="md:w-1/2 ">
-              <label htmlFor="name">Name</label>
-              <input
-                className="block bg-transparent w-full p-2 text-xl border-b-2 outline-none border-[#3c3633]"
-                type="text"
-                name="name"
-                id="name"
-              />
+    return (
+        <div className=' rounded-3xl w-11/12  mx-auto mb-14 bg-[#3C3633] p-14 text-white'>
+            <h1 className=' font-bold text-4xl mb-5'>Contact With Us</h1>
+            <div>
+                <form action=''>
+                    <div className='w-full md:flex justify-between gap-5 py-10'>
+                        <div className='md:w-1/2'>
+                            <input
+                                className='block bg-transparent w-full p-4 text-xl border rounded-md placeholder:text-white outline-none border-[#ffffff]'
+                                type='text'
+                                name='name'
+                                id='name'
+                                placeholder='Name'
+                            />
+                        </div>
+                        <div className='md:w-1/2'>
+                            <input
+                                className='block bg-transparent w-full p-4 text-xl border rounded-md placeholder:text-white outline-none border-[#ffffff]'
+                                type='email'
+                                name='email'
+                                id='email'
+                                placeholder='Email'
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <textarea
+                            className='block bg-transparent w-full p-4 text-xl border rounded-md placeholder:text-white outline-none border-[#ffffff]'
+                            name='message'
+                            placeholder="Message"
+                            id='message'
+                            rows={6}></textarea>
+                    </div>
+                    <div className="flex justify-end">
+                        <button
+                            className=' bg-white text-black font-semibold px-8 py-3 rounded-full mt-10 text-right'
+                            type='submit'>
+                            Send
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div className="md:w-1/2">
-              <label htmlFor="email">Email </label>
-              <input
-                className="block bg-transparent w-full p-2 text-xl border-b-2 outline-none border-[#3c3633]"
-                type="email"
-                name="email"
-                id="email"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="message">Message </label>
-            <textarea
-              className="w-full block bg-transparent outline-none border-b-2 border-[#3c3633]"
-              name="message"
-              id="message"
-              rows={6}
-            ></textarea>
-          </div>
-          <div>
-            <button
-              className="bg-[#3b3632] text-white px-8 py-3 uppercase rounded-full mt-6 tracking-widest mb-10"
-              type="submit"
-            >
-              Send
-            </button>
-          </div>
-        </form>
-      </div>
-      {/* <span className="mt-10">
-        This site is protected by reCAPTCHA and the Google Privacy Policy and
-        Terms of Service apply.
-      </span> */}
-    </div>
-  );
+        </div>
+    );
 };
 
 export default Contact;

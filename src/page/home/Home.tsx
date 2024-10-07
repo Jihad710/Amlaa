@@ -1,4 +1,3 @@
-import Offerd from "../../components/ui/Offerd";
 import AccecsarisCarosal from "../accecsaris/AccecsarisCarosal";
 import BestDealsCarousel from "../bestdeals/BestDealsCarousel";
 import ShowBag from "../expesiveWare/ShowBag";
@@ -9,7 +8,6 @@ import Banner from "./Banner";
 import Category from "./Category";
 import Contact from "./Contact";
 import MiddleBanner from "./MiddleBanner";
-import MovingText from "./MovingText";
 
 const Home = () => {
   return (
@@ -19,11 +17,9 @@ const Home = () => {
       <NewArrivals></NewArrivals>
       <AddSection></AddSection>
       <BestDealsCarousel></BestDealsCarousel>
-      {/* <MovingText></MovingText> */}
       <ShowBag></ShowBag>
       <AccecsarisCarosal></AccecsarisCarosal>
 
-      {/* <Offerd></Offerd> */}
       <AskQutions></AskQutions>
       <Contact></Contact>
       <MiddleBanner></MiddleBanner>

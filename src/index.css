@@ -209,8 +209,25 @@ body {
     right: var(--swiper-navigation-sides-offset, 10px) !important;
     left: auto;
 }
-
-
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: var(--swiper-pagination-bottom, 8px);
+    top: var(--swiper-pagination-top, auto);
+    left: 0;
+    width: fit-content !important;
+}
+.swiper-pagination-bullet {
+    width: 30px !important;
+    height: 5px !important;
+    display: inline-block;
+    border-radius: 20px !important;
+    background: #9b9b9b !important;
+    opacity: 100 !important;
+}
+.swiper-pagination-bullet-active {
+    background: #fff !important;
+    width: 100px !important;
+    border-radius: none !important;
+}
 
 
 /* Customizing the track (background) color */

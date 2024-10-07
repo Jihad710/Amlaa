@@ -1,47 +1,52 @@
 import { NavLink } from "react-router-dom";
-
+import tshirt from "../../assets/categories/t-shirt.png";
+import accessories from "../../assets/categories/accessories.png";
+import bottomwear from "../../assets/categories/bottom-wear.png";
+import deals from "../../assets/categories/deals.png";
+import oversizeshirt from "../../assets/categories/oversize-t-shirt.png";
+import polos from "../../assets/categories/polos.png";
+import premiumsolids from "../../assets/categories/premium-solids.png";
+import regularfit from "../../assets/categories/regular-fit.png";
 const items = [
     {
         name: "T-Shirt",
         route: "/products/tshirt",
-        image: "https://desiminimals.com/cdn/shop/files/20240212-_RHN2763.jpg?v=1708334241&width=352",
+        image: tshirt,
     },
     {
-        name: "Shirt",
-        route: "/products/shirt",
-
-        image: "https://desiminimals.com/cdn/shop/files/DSC_3852.jpg?v=1698665188&width=352",
+        name: "OVERSIZED T-SHIRT",
+        route: "/products/oversize-t-shirt",
+        image: oversizeshirt,
+    },
+    {
+        name: "Polos",
+        route: "/products/polos",
+        image: polos,
+    },
+    {
+        name: "PREMIUM SOLIDS",
+        route: "/products/premium-solids",
+        image: premiumsolids,
     },
     {
         name: "Bottomware",
         route: "/products/bottomwear",
-        image: "https://desiminimals.com/cdn/shop/files/20240212-_RHN2895.jpg?v=1708335900&width=352",
+        image: bottomwear,
     },
     {
-        name: "Jacket",
-        route: "/products/jacket",
-
-        image: "https://desiminimals.com/cdn/shop/files/DSC_5166.jpg?v=1704369101&width=352",
-    },
-    {
-        name: "Headware",
-        route: "/products/headwear",
-        image: "https://desiminimals.com/cdn/shop/files/DSC_3174_37b58d4f-7527-4b46-ada1-fa2c11f57004.jpg?v=1698665391&width=352",
+        name: "Deals",
+        route: "/products/deals",
+        image: deals,
     },
     {
         name: "Accessories",
         route: "/products/accessories",
-        image: "https://desiminimals.com/cdn/shop/files/20240213-_RHN3116.jpg?v=1708335676&width=352",
+        image: accessories,
     },
     {
-        name: "Deals",
-        route: "/collection/deals",
-        image: "https://desiminimals.com/cdn/shop/files/DSC_5327_b077cd25-07fc-405e-8b17-2ec8555587e3.jpg?v=1704454596&width=352",
-    },
-    {
-        name: "Polos",
-        route: "/collection/polos",
-        image: "https://desiminimals.com/cdn/shop/files/20240213-_RHN3102.jpg?v=1708335367&width=352",
+        name: "Regular Fit",
+        route: "/products/regular-fit",
+        image: regularfit,
     },
 ];
 const Category = () => {
@@ -54,14 +59,15 @@ const Category = () => {
                 {items.map((item, index) => (
                     <NavLink key={index} to={item?.route}>
                         <div
-                            className='relative flex justify-center items-center'
+                            className='relative h-[350px] rounded-3xl overflow-hidden flex justify-center items-center'
                             key={index}>
+                            <div className='absolute inset-0 bg-gradient-to-b from-white/0 to-black/50'></div>
                             <img
-                                className='rounded-3xl w-[255px] h-[271px]'
+                                className='rounded-3xl w-full h-full'
                                 src={item.image}
                                 alt=''
                             />
-                            <p className='absolute top-1/1 mx-3 bottom-1/1 left-0 right-0 text-white text-2xl  p-2   text-center'>
+                            <p className='absolute bottom-4 left-5 text-white text-xl  p-2 uppercase'>
                                 {item.name}
                             </p>
                         </div>

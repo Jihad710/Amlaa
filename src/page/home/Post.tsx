@@ -48,7 +48,7 @@ const Post = () => {
                     },
                     idx
                 ) => (
-                    <div className='w-full relative group'>
+                    <a href={post.link} target="_blank" className='w-full relative group'>
                         <img src={post.image} alt='' />
                         <div className='absolute group-hover:h-full top-0 left-0 w-full h-0 cursor-pointer bg-[#3C363399] bg-opacity-60 z-10'></div>
                         <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-3xl z-20 group-hover:block hidden cursor-pointer'>
@@ -80,7 +80,7 @@ const Post = () => {
                                 <MdOutlineWeb />
                             )}
                         </div>
-                    </div>
+                    </a>
                 )
             )}
         </div>

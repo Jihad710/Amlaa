@@ -35,7 +35,7 @@ const SingleProductCard: React.FC<SingleProductCardProps> = ({
                     return;
                 }
                 const response = await fetch(
-                    `http://localhost:5000/product/${value.menuItemId}`
+                    `https://amlaa.vercel.app/product/${value.menuItemId}`
                 );
 
                 const result = await response.json();

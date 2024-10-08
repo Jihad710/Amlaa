@@ -11,7 +11,7 @@ const Polo = () => {
         (async () => {
             setIsLoading(true);
             const response = await fetch(
-                `http://localhost:5000/products/polos`
+                `https://amlaa.vercel.app/products/polos`
             );
             const data = await response.json();
             if (data) {

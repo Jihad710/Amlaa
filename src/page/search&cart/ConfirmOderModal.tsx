@@ -13,7 +13,10 @@ interface ConfirmOrderModalProps {
     setCartItems: Function;
 } //+
 //+
-const ConfirmOrderModal: React.FC<ConfirmOrderModalProps> = ({ cartItems,setCartItems }) => {
+const ConfirmOrderModal: React.FC<ConfirmOrderModalProps> = ({
+    cartItems,
+    setCartItems,
+}) => {
     const { openModalRs, setOpenModalRs } = useContext(AuthContext);
     // console.log(cartItems);
     const {
@@ -34,14 +37,18 @@ const ConfirmOrderModal: React.FC<ConfirmOrderModalProps> = ({ cartItems,setCart
                     image: product.image,
                     size: product.size,
                     quantity: product.quantity,
-                    price: product.discount ? Number(product.price) - (Number(product.price) * Number(product.discount)) / 100 : Number(product.price),
+                    price: product.discount
+                        ? Number(product.price) -
+                          (Number(product.price) * Number(product.discount)) /
+                              100
+                        : Number(product.price),
                 };
             }),
         };
         console.log(submitData);
         try {
             const response = await fetch(
-                "http://localhost:5000/api/confirmOrder",
+                "https://amlaa.vercel.app/api/confirmOrder",
                 {
                     method: "POST",
                     headers: {
@@ -57,14 +64,14 @@ const ConfirmOrderModal: React.FC<ConfirmOrderModalProps> = ({ cartItems,setCart
 
             const responseData = await response.json();
             console.log("Order submitted successfully:", responseData);
-            if(responseData.orderResponse.insertedId){
+            if (responseData.orderResponse.insertedId) {
                 Swal.fire({
                     icon: "success",
                     title: "Order placed successfully",
                     showConfirmButton: false,
-                    timer: 2500
-                  });
-                  setCartItems([])
+                    timer: 2500,
+                });
+                setCartItems([]);
             }
             setOpenModalRs(false);
             localStorage.removeItem("product");
@@ -166,15 +173,19 @@ const ConfirmOrderModal: React.FC<ConfirmOrderModalProps> = ({ cartItems,setCart
                                             <div className=''>
                                                 <input
                                                     type='text'
-                                                    {...register("localAddress", {
-                                                        required: true,
-                                                    })}
+                                                    {...register(
+                                                        "localAddress",
+                                                        {
+                                                            required: true,
+                                                        }
+                                                    )}
                                                     className='w-full md:flex-1 border rounded-md p-2 placeholder-gray-500'
                                                     placeholder='Local address'
                                                 />
                                                 {errors.localAddress && (
                                                     <p className='text-red-500'>
-                                                        local address is required
+                                                        local address is
+                                                        required
                                                     </p>
                                                 )}
                                             </div>

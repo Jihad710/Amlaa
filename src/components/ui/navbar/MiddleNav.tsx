@@ -31,7 +31,7 @@ const MiddleNav = () => {
         (async () => {
             console.log(searchText);
             const response = await fetch(
-                `http://localhost:5000/products/search/${searchText}`
+                `https://amlaa.vercel.app/products/search/${searchText}`
             );
             const data = await response.json();
             if (data) {

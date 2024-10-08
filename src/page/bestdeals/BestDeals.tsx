@@ -6,7 +6,7 @@ import BestDealsCarousel from "./BestDealsCarousel";
 
 const BestDeals = () => {
     const { isLoading, data } = useQuery<TProduct[]>("allProduct", async () => {
-        const response = await fetch(`http://localhost:5000/products/deals`);
+        const response = await fetch(`https://amlaa.vercel.app/products/deals`);
 
         if (!response.ok) {
             throw new Error("Network response was not ok");

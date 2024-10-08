@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 
 const TopBar = () => {
-    const [text, setText] = useState([{text: "Top bar text"}]);
+    const [text, setText] = useState([{ text: "Top bar text" }]);
     useEffect(() => {
-        fetch("http://localhost:5000/top-moving-text")
+        fetch("https://amlaa.vercel.app/top-moving-text")
             .then((response) => response.json())
             .then((data) => {
                 setText(data);

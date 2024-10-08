@@ -8,7 +8,9 @@ const Jackets = () => {
 
         data,
     } = useQuery("allProduct", async () => {
-        const response = await fetch(`http://localhost:5000/products/jackets`);
+        const response = await fetch(
+            `https://amlaa.vercel.app/products/jackets`
+        );
         console.log(response);
 
         if (!response.ok) {

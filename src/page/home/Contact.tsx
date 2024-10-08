@@ -8,9 +8,9 @@ const Contact = () => {
         reset,
         formState: { errors },
     } = useForm();
-    
+
     const onSubmit = (data: any) => {
-        fetch("http://localhost:5000/contact-us", {
+        fetch("https://amlaa.vercel.app/contact-us", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -18,16 +18,16 @@ const Contact = () => {
             body: JSON.stringify(data),
         }).then((response) => {
             console.log(response);
-            if(response.ok){
+            if (response.ok) {
                 Swal.fire({
                     icon: "success",
                     title: "Your Message sent successfully",
                     showConfirmButton: false,
-                    timer: 1500
-                  });
-                  reset()
+                    timer: 1500,
+                });
+                reset();
             }
-        })
+        });
         // Here you can send the form data to your server
         console.log(data);
     };
@@ -35,7 +35,7 @@ const Contact = () => {
         <div className=' rounded-3xl w-11/12  mx-auto mb-14 bg-[#3C3633] p-14 text-white'>
             <h1 className=' font-bold text-4xl mb-5'>Contact With Us</h1>
             <div>
-                <form  onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='w-full md:flex justify-between gap-5 py-10'>
                         <div className='md:w-1/2'>
                             <input

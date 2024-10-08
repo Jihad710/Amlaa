@@ -4,7 +4,7 @@ import NewArrivalsItems from "./NewArrivalsItems";
 const NewArrivals = () => {
     const { isLoading, data: items } = useQuery(["allProduct"], async () => {
         const response = await fetch(
-            "http://localhost:5000/product/newlaunched"
+            "https://amlaa.vercel.app/product/newlaunched"
         );
 
         if (!response.ok) {

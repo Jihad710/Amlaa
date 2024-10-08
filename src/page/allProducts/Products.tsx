@@ -28,7 +28,7 @@ const Products = () => {
     useEffect(() => {
         (async () => {
             const response = await fetch(
-                `http://localhost:5000/products/${category}/prices-and-stock`
+                `https://amlaa.vercel.app/products/${category}/prices-and-stock`
             );
             const data = await response.json();
             if (data) {
@@ -41,7 +41,7 @@ const Products = () => {
                 setStockQuantity({
                     inStock: data.inStockCount,
                     soldOut: data.outOfStockCount,
-                })
+                });
             }
         })();
     }, [category]);
@@ -51,7 +51,7 @@ const Products = () => {
             setIsLoading(true);
             setData([]);
             const response = await fetch(
-                `http://localhost:5000/products/${category}?minPrice=${priceRange.min}&maxPrice=${priceRange.max}`
+                `https://amlaa.vercel.app/products/${category}?minPrice=${priceRange.min}&maxPrice=${priceRange.max}`
             );
             const data = await response.json();
             if (data) {

@@ -11,7 +11,7 @@ const TShirt = () => {
         (async () => {
             setIsLoading(true);
             const response = await fetch(
-                `http://localhost:5000/products/tshirt`
+                `https://amlaa.vercel.app/products/tshirt`
             );
             const data = await response.json();
             if (data) {

@@ -71,7 +71,7 @@ const ShowBag: React.FC = () => {
         (async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:5000/highlight-product-link`
+                    `https://amlaa.vercel.app/highlight-product-link`
                 );
 
                 const result = await response.json();
@@ -94,7 +94,7 @@ const ShowBag: React.FC = () => {
                 }
                 const linkId = link.split("/").pop();
                 const response = await fetch(
-                    `http://localhost:5000/product/${linkId}`
+                    `https://amlaa.vercel.app/product/${linkId}`
                 );
 
                 const result = await response.json();

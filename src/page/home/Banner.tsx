@@ -30,7 +30,7 @@ const bannerData = [
 const Banner = () => {
     const [text, setText] = useState([{ text: "Top bar text" }]);
     useEffect(() => {
-        fetch("http://localhost:5000/banner-moving-text")
+        fetch("https://amlaa.vercel.app/banner-moving-text")
             .then((response) => response.json())
             .then((data) => {
                 setText(data);
@@ -57,12 +57,14 @@ const Banner = () => {
                                 alt=''
                             />
                             <div className='absolute top-10 text-right w-fit right-10 z-20 text-white'>
-                                <h2 className="text-5xl">Wait is over</h2>
-                                <p className="text-xl">Experience true comfort</p>
+                                <h2 className='text-5xl'>Wait is over</h2>
+                                <p className='text-xl'>
+                                    Experience true comfort
+                                </p>
                             </div>
                             <div className='absolute bottom-20 w-fit left-10 z-20 text-white'>
-                                <h2 className="text-4xl">NEW LAUNCHED</h2>
-                                <p className="text-6xl">DROP SHOULDER</p>
+                                <h2 className='text-4xl'>NEW LAUNCHED</h2>
+                                <p className='text-6xl'>DROP SHOULDER</p>
                             </div>
                         </div>
                     </SwiperSlide>

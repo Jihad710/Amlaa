@@ -27,7 +27,7 @@ const Post = () => {
     const [posts, setPosts] = useState<Posts>({ _id: "", posts: [] });
     useEffect(() => {
         (async () => {
-            const response = await fetch(`http://localhost:5000/post`);
+            const response = await fetch(`https://amlaa.vercel.app/post`);
             const data = await response.json();
             console.log(data);
             if (data) {
@@ -48,7 +48,10 @@ const Post = () => {
                     },
                     idx
                 ) => (
-                    <a href={post.link} target="_blank" className='w-full relative group'>
+                    <a
+                        href={post.link}
+                        target='_blank'
+                        className='w-full relative group'>
                         <img src={post.image} alt='' />
                         <div className='absolute group-hover:h-full top-0 left-0 w-full h-0 cursor-pointer bg-[#3C363399] bg-opacity-60 z-10'></div>
                         <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-3xl z-20 group-hover:block hidden cursor-pointer'>

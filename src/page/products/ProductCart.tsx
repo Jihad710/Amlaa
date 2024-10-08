@@ -26,7 +26,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ data: data }) => {
                             (newIndexes[index] + 1) % data[index].images.length;
                         return newIndexes;
                     });
-                }, 3000);
+                }, 1000);
             }
             return null;
         });

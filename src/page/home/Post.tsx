@@ -14,17 +14,27 @@ import {
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MdOutlineWeb } from "react-icons/md";
-// interface Post {
-//     image: string;
-//     icon: string;
-//     link: string;
-// }
-interface Posts {
-    _id: string;
-    posts: never[];
+interface Post {
+    map(
+        arg0: (
+            post: {
+                link: string | undefined;
+                image: string | undefined;
+                icon: string;
+            },
+            idx: any
+        ) => import("react/jsx-runtime").JSX.Element
+    ): import("react").ReactNode;
+    image: string;
+    icon: string;
+    link: string;
 }
+// interface  {
+//     _id: string;
+//     posts: never[];
+// }
 const Post = () => {
-    const [posts, setPosts] = useState<Posts>({ _id: "", posts: [] });
+    const [posts, setPosts] = useState<Post[]>([]);
     useEffect(() => {
         (async () => {
             const response = await fetch(`https://amlaa.vercel.app/post`);
@@ -38,15 +48,14 @@ const Post = () => {
     console.log(posts);
     return (
         <div className='grid grid-cols-6 w-full'>
-            {posts?.posts?.map(
+            {posts?.map(
                 (
                     post: {
-                        _id: string;
-                        image: string;
+                        link: string | undefined;
+                        image: string | undefined;
                         icon: string;
-                        link: string;
                     },
-                    idx
+                    idx: any
                 ) => (
                     <a
                         href={post.link}

@@ -116,7 +116,7 @@ const ShowBag: React.FC = () => {
     }
     return (
         <div className='md:w-11/12 w-full mx-auto mt-10 text-[#3c3633] mb-36'>
-            <div className='container'>
+            <div className='container capitalize'>
                 <div className='md:flex md:gap-10 items-center '>
                     <div className='md:flex md:gap-5 border md:w-1/2'>
                         <div className='md:flex hidden'>

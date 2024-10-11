@@ -1,10 +1,3 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/autoplay";
-import "swiper/css/scrollbar";
-
-import { Keyboard, Scrollbar, Navigation } from "swiper/modules";
 import { Link, useNavigate } from "react-router-dom";
 
 interface items {

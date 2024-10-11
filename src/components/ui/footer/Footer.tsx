@@ -6,7 +6,6 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import {} from "react-icons/fa";
-import ConvertionF from "./ConvertionF";
 const Footer = () => {
   return (
     <div>

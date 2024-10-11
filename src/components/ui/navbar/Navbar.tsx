@@ -1,19 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useGetToCardLocal } from "../../../hooks/useGetToCardLocal";
-import { FaAngleDown, FaChevronDown, FaSortDown } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 
 const Navbar = () => {
     return (
-        <div className=''>
+        <div className='lg:block hidden'>
             <ul className='flex items-center justify-center border-t border-black'>
-                <li className='text-2xl px-7 py-4'>
+                <li className='text-2xl px-6 py-4'>
                     <NavLink to={"/products/all"}>All</NavLink>
                 </li>
-                <li className='text-2xl px-7 py-4'>
+                <li className='text-2xl px-6 py-4'>
                     <NavLink to={"/products/deals"}>Deals</NavLink>
                 </li>
-                <li className='text-2xl px-7 py-4 relative group'>
+                <li className='text-2xl px-6 py-4 relative group'>
                     <p className={"flex items-center gap-3"}>
                         Topwear{" "}
                         <FaChevronDown className='text-sm mt-2 group-hover:-rotate-180 duration-500' />
@@ -49,15 +47,15 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </li>
-                <li className='text-2xl px-7 py-4'>
+                <li className='text-2xl px-6 py-4'>
                     <NavLink to={"/products/headwear"}>Headwear</NavLink>
                 </li>
 
-                <li className='text-2xl px-7 py-4'>
+                <li className='text-2xl px-6 py-4'>
                     <NavLink to={"/products/bottomwear"}>Bottomwear</NavLink>
                 </li>
 
-                <li className='text-2xl px-7 py-4'>
+                <li className='text-2xl px-6 py-4'>
                     <NavLink to={"/products/accessories"}>Accessories</NavLink>
                 </li>
             </ul>

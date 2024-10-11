@@ -16,7 +16,7 @@ const AccecsarisCard = ({ data }: { data: items[] }) => {
     };
     return (
         <div className=' pt-24'>
-            <div className='grid grid-cols-4 gap-4'>
+            <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
                 {data.map((item) => (
                     <div
                         className='flex rounded-md justify-center w-full my-1'

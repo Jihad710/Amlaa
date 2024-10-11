@@ -269,7 +269,7 @@ const  HighlightsProducts: React.FC = () => {
                         <div>
                             <button
                                 onClick={handleAddToCart}
-                                className='w-full text-xl mt-5 md:mt-0 font-bold border-2 border-[#3c3633] px-4 py-2 md:mr-2 rounded-xl disabled:cursor-not-allowed opacity-40'
+                                className='w-full text-xl mt-5 md:mt-0 font-bold border-2 border-[#3c3633] px-4 py-2 md:mr-2 rounded-xl disabled:cursor-not-allowed disabled:opacity-40'
                                 disabled={
                                     isLoading || details?.status == "sold-out"
                                 }>

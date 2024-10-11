@@ -1,6 +1,6 @@
 import AccecsarisCarosal from "../accecsaris/AccecsarisCarosal";
 import BestDealsCarousel from "../bestdeals/BestDealsCarousel";
-import ShowBag from "../expesiveWare/ShowBag";
+import HighlightsProducts from "../expesiveWare/HighlightsProducts";
 import NewArrivals from "../newarrivals/NewArrivals";
 import AskQutions from "./AskQutions";
 import Banner from "./Banner";
@@ -16,11 +16,11 @@ const Home = () => {
       <Banner></Banner>
       <Category></Category>
       <NewArrivals></NewArrivals>
-
-      
       <SecondBanner></SecondBanner>
       <BestDealsCarousel></BestDealsCarousel>
-      <ShowBag></ShowBag>
+
+      
+      <HighlightsProducts></HighlightsProducts>
       <AccecsarisCarosal></AccecsarisCarosal>
       <AskQutions></AskQutions>
       <Contact></Contact>

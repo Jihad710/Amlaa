@@ -3,7 +3,7 @@ import { TCartItem, TProductDetails } from "../../components/type/Types";
 import toast from "react-hot-toast";
 import { useAddToCartLocal } from "../../hooks/useAddToCartLocal";
 
-const ShowBag: React.FC = () => {
+const  HighlightsProducts: React.FC = () => {
     const [details, setDetails] = useState<TProductDetails>();
     const [link, setLink] = useState("");
     const [loading, setLoading] = useState(true);
@@ -41,6 +41,7 @@ const ShowBag: React.FC = () => {
         }
 
         const cartItem: TCartItem = {
+            localStoreId: 0, // Fixed: Added 'as const' to make the type literal string literal type
             menuItemId: details?._id,
             name: details?.title,
             image: mainImage,
@@ -50,6 +51,7 @@ const ShowBag: React.FC = () => {
             color: selectedColor,
             quantity: 1,
         };
+
 
         addToCart(cartItem);
     };
@@ -107,9 +109,9 @@ const ShowBag: React.FC = () => {
             }
         })();
     }, [link]);
-    console.log(details);
-    console.log(mainImage);
-    if (loading) {
+
+
+    if (loading) { 
         return <div>Loading...</div>;
     }
     return (
@@ -151,7 +153,7 @@ const ShowBag: React.FC = () => {
                         </h3>
                         <div className='mb-8 text-center md:text-start'>
                             <span className='block text-2xl font-bold opacity-90'>
-                                {details?.discount > 0 ? (
+                                {details?.discount && details?.discount > 0 ? (
                                     <p className='mb-5 md:font-medium text-xl gap-1 flex items-center opacity-80'>
                                         {details?.discount &&
                                             details?.price && (
@@ -285,4 +287,4 @@ const ShowBag: React.FC = () => {
     );
 };
 
-export default ShowBag;
+export default HighlightsProducts;

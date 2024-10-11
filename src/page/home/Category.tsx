@@ -59,7 +59,7 @@ const Category = () => {
                 {items.map((item, index) => (
                     <NavLink key={index} to={item?.route}>
                         <div
-                            className='relative h-[350px] rounded-3xl overflow-hidden flex justify-center items-center'
+                            className='relative h-[220px] sm:h-[300px] lg:h-[350px] rounded-3xl overflow-hidden flex justify-center items-center'
                             key={index}>
                             <div className='absolute inset-0 bg-gradient-to-b from-white/0 to-black/50'></div>
                             <img
@@ -67,7 +67,7 @@ const Category = () => {
                                 src={item.image}
                                 alt=''
                             />
-                            <p className='absolute bottom-4 left-5 text-white text-xl  p-2 uppercase'>
+                            <p className='absolute bottom-2 sm:bottom-4 left-3 sm:left-5 text-white text-sm sm:text-xl  p-2 uppercase'>
                                 {item.name}
                             </p>
                         </div>

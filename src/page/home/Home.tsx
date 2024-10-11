@@ -13,6 +13,8 @@ const Home = () => {
   return (
     <div className="bg-[#eeedeb]">
       <Banner></Banner>
+
+      
       <Category></Category>
       <NewArrivals></NewArrivals>
       {/* <AddSection></AddSection> */}

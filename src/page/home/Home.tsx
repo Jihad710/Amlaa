@@ -2,7 +2,6 @@ import AccecsarisCarosal from "../accecsaris/AccecsarisCarosal";
 import BestDealsCarousel from "../bestdeals/BestDealsCarousel";
 import ShowBag from "../expesiveWare/ShowBag";
 import NewArrivals from "../newarrivals/NewArrivals";
-import AddSection from "./SecondBanner";
 import AskQutions from "./AskQutions";
 import Banner from "./Banner";
 import Category from "./Category";

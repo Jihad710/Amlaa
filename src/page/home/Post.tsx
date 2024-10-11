@@ -47,15 +47,14 @@ const Post = () => {
     }, []);
     console.log(posts);
     return (
-        <div className='grid grid-cols-6 w-full'>
+        <div className='grid grid-cols-2 w-fit mx-auto sm:grid-cols-4 md:grid-cols-6 sm:w-full'>
             {posts?.map(
                 (
                     post: {
                         link: string | undefined;
                         image: string | undefined;
                         icon: string;
-                    },
-                    idx: any
+                    }
                 ) => (
                     <a
                         href={post.link}

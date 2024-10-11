@@ -21,10 +21,10 @@ const Home = () => {
       <HighlightsProducts></HighlightsProducts>
       <AccecsarisCarosal></AccecsarisCarosal>
       <AskQutions></AskQutions>
-
-      
       <Contact></Contact>
       <MiddleBanner></MiddleBanner>
+
+      
       <Post></Post>
     </div>
   );

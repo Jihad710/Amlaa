@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation, Autoplay } from "swiper/modules";
 interface Item {
+    discount: number;
     title: string;
     images: string;
     name: string;
@@ -32,12 +33,6 @@ const NewArrivalsItems: React.FC<Props> = ({ items = [] }) => {
             <div className=''>
                 <Swiper
                     slidesPerView={1}
-                    spaceBetween={20}
-                    navigation={true}
-                    autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: false,
-                    }}
                     breakpoints={{
                         460: {
                           slidesPerView: 2,
@@ -49,6 +44,12 @@ const NewArrivalsItems: React.FC<Props> = ({ items = [] }) => {
                           slidesPerView: 4,
                         }
                       }}
+                    spaceBetween={20}
+                    navigation={true}
+                    autoplay={{
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    }}
                     //   scrollbar={{ draggable: true, hide: false }}
                     modules={[Navigation, Autoplay]}
                     className='mySwiper'>

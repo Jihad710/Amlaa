@@ -34,7 +34,18 @@ const BestDealsCarosulCard = ({ data }: { data: Item[] }) => {
         <div className=' pt-24'>
             <div className=''>
                 <Swiper
-                    slidesPerView={4}
+               slidesPerView={1}
+               breakpoints={{
+                   460: {
+                     slidesPerView: 2,
+                   },
+                   540: {
+                     slidesPerView: 3,
+                   },
+                   820: {
+                     slidesPerView: 4,
+                   }
+                 }}
                     spaceBetween={20}
                     navigation={true}
                     autoplay={{
@@ -51,7 +62,7 @@ const BestDealsCarosulCard = ({ data }: { data: Item[] }) => {
                                 key={item._id}
                                 onClick={() => handleClick(item._id)}>
                                 <div>
-                                    <div className='h-[460px] rounded-md overflow-hidden relative'>
+                                    <div className='h-[300px] sm:w-auto w-[220px] sm:h-[460px] rounded-md overflow-hidden relative'>
                                         <img
                                             className='w-full h-full object-cover object-top'
                                             src={item?.images[0]}

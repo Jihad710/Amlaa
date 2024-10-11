@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 
 import NewArrivalsItems from "./NewArrivalsItems";
 const NewArrivals = () => {
-    const { isLoading, data: items } = useQuery(["allProduct"], async () => {
+    const { data: items } = useQuery(["allProduct"], async () => {
         const response = await fetch(
             "https://amlaa.vercel.app/product/newlaunched"
         );

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { TCartItem, TProductDetails } from "../../components/type/Types";
 import toast from "react-hot-toast";
 import { useAddToCartLocal } from "../../hooks/useAddToCartLocal";
@@ -8,7 +7,6 @@ const ShowBag: React.FC = () => {
     const [details, setDetails] = useState<TProductDetails>();
     const [link, setLink] = useState("");
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
     const initialImage = details?.images?.[0] || "";
     const [mainImage, setMainImage] = useState(initialImage);
     const [selectedSize, setSelectedSize] = useState<string>("");

@@ -1,14 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../page/home/Home";
-import AllProduct from "../page/allProducts/Products";
-import BestDeals from "../page/bestdeals/BestDeals";
-import BottomWar from "../page/bottomwar/BottomWar";
-import TShirt from "../page/topOutFit/TShirt";
-import Polo from "../page/topOutFit/Polo";
-import Shirt from "../page/topOutFit/Shirt";
-import Jackets from "../page/topOutFit/Jackets";
-import Headwear from "../page/accecsaris/Headwear";
 
 import Login from "../page/log/Loging";
 import Registation from "../page/log/Registation";
@@ -16,7 +8,6 @@ import Registation from "../page/log/Registation";
 import Cart from "../page/search&cart/SelectedProductCart";
 import { handleBuyProduct } from "../hooks/BuyProduct";
 import ProductDetails from "../page/products/ProductDetails";
-import Accessories from "../page/accecsaris/Accessories";
 import Products from "../page/allProducts/Products";
 
 const router = createBrowserRouter([

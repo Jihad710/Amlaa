@@ -8,6 +8,7 @@ import Category from "./Category";
 import Contact from "./Contact";
 import MiddleBanner from "./MiddleBanner";
 import Post from "./Post";
+import SecondBanner from "./SecondBanner";
 
 const Home = () => {
   return (
@@ -17,7 +18,7 @@ const Home = () => {
       <NewArrivals></NewArrivals>
 
       
-      {/* <AddSection></AddSection> */}
+      <SecondBanner></SecondBanner>
       <BestDealsCarousel></BestDealsCarousel>
       <ShowBag></ShowBag>
       <AccecsarisCarosal></AccecsarisCarosal>

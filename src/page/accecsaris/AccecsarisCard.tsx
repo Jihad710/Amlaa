@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 
 interface items {
+    discount: number;
     title: string;
     images: string;
     name: string;

@@ -19,10 +19,10 @@ const Home = () => {
       <SecondBanner></SecondBanner>
       <BestDealsCarousel></BestDealsCarousel>
       <HighlightsProducts></HighlightsProducts>
-
-      
       <AccecsarisCarosal></AccecsarisCarosal>
       <AskQutions></AskQutions>
+
+      
       <Contact></Contact>
       <MiddleBanner></MiddleBanner>
       <Post></Post>

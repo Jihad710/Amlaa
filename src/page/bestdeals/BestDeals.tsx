@@ -1,8 +1,6 @@
 import { useQuery } from "react-query";
-import DynamicBanner from "../../components/ui/DynamicBanner";
-import ProductCart from "../products/ProductCard";
+import ProductCart from "../products/ProductCart";
 import { TProduct } from "../../components/type/Types";
-import BestDealsCarousel from "./BestDealsCarousel";
 
 const BestDeals = () => {
     const { isLoading, data } = useQuery<TProduct[]>("allProduct", async () => {
@@ -25,7 +23,6 @@ const BestDeals = () => {
     console.log(data);
     return (
         <div>
-            <DynamicBanner title='Deals'></DynamicBanner>
             <ProductCart data={data ?? []}></ProductCart>
         </div>
     );

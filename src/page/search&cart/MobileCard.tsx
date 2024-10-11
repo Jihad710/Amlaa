@@ -15,7 +15,7 @@ interface SingleProductCardProps {
     handleQuantityDecrement: (menuItemId: string) => void;
 }
 
-const SingleProductCard: React.FC<SingleProductCardProps> = ({
+const MobileCard: React.FC<SingleProductCardProps> = ({
     value,
     cartItems,
     setCartItems,
@@ -93,8 +93,8 @@ const SingleProductCard: React.FC<SingleProductCardProps> = ({
 
     const discountedPrice = calculateDiscountedPrice();
     return (
-        <tr className='border-b  border-gray-500 '>
-            <td className=' h-52 w-[150px] relative overflow-hidden rounded'>
+        <div className='border-b pb-5 xsm:flex items-center gap-5 w-full border-gray-500 '>
+            <div className=' h-52 w-[250px] xsm:w-[150px] mx-auto xsm:mx-0  relative overflow-hidden rounded'>
                 <img src={value?.image || pleceholderImage} alt={value?.name} />
                 {(isSoldOut || notAvailable) && (
                     <div className='absolute flex items-center justify-center top-0 left-0 bg-slate-600 bg-opacity-60 text-black font-bold w-full h-full text-center'>
@@ -105,71 +105,82 @@ const SingleProductCard: React.FC<SingleProductCardProps> = ({
                             : null}
                     </div>
                 )}
-            </td>
-            <td className='ps-10'>
-                <div>
-                    <Link
-                        to={`/product/${value.menuItemId}`}
-                        className='text-lg font-semibold hover:underline'>
-                        {value?.name}
-                    </Link>
-                    <p>
-                        <span className='font-medium'>Style:</span>
-                        <span className='ml-1'>{value?.detailsMaterial}</span>
-                    </p>
-                    <p>
-                        <span className='font-medium'>Color:</span>
-                        <span className='ml-1'>{value?.color || "N/A"}</span>
-                    </p>
-                    <p>
-                        <span className='font-medium'>Size:</span>
-                        <span className='ml-1'>{value?.size || "N/A"}</span>
-                    </p>
+            </div>
+            <div className=''>
+                <div className='mt-5 capitalize'>
+                    <div className="">
+                        <Link
+                            to={`/product/${value.menuItemId}`}
+                            className='text-lg font-semibold hover:underline'>
+                            {value?.name}
+                        </Link>
+                        <p>
+                            <span className='font-medium'>Style:</span>
+                            <span className='ml-1'>
+                                {value?.detailsMaterial}
+                            </span>
+                        </p>
+                        <p>
+                            <span className='font-medium'>Color:</span>
+                            <span className='ml-1'>
+                                {value?.color || "N/A"}
+                            </span>
+                        </p>
+                        <p>
+                            <span className='font-medium'>Size:</span>
+                            <span className='ml-1'>{value?.size || "N/A"}</span>
+                        </p>
+                    </div>
                 </div>
-            </td>
-            <td className='p-2 text-center'>
-                <div className='flex justify-center items-center gap-4'>
-                    <FiMinus
-                        onClick={() =>
-                            handleQuantityDecrement(value.localStoreId)
-                        }
-                        className='cursor-pointer'
-                    />
-                    <p>{cartItem.quantity}</p>
-                    <FiPlus
-                        onClick={() =>
-                            handleQuantityIncrement(value.localStoreId)
-                        }
-                        className='cursor-pointer'
-                    />
+                <div className='flex items-center flex-wrap justify-between'>
+                    <div className='p-2 text-center'>
+                        <div className='flex justify-center items-center gap-2'>
+                            <FiMinus
+                                onClick={() =>
+                                    handleQuantityDecrement(value.localStoreId)
+                                }
+                                className='cursor-pointer'
+                            />
+                            <p>{cartItem.quantity}</p>
+                            <FiPlus
+                                onClick={() =>
+                                    handleQuantityIncrement(value.localStoreId)
+                                }
+                                className='cursor-pointer'
+                            />
+                        </div>
+                    </div>
+                    <div className=' text-center'>
+                        &#x09F3;
+                        {value.price ? (
+                            <span
+                                className={`${
+                                    (notAvailable || isSoldOut) &&
+                                    "line-through"
+                                }`}>
+                                {discountedPrice
+                                    ? discountedPrice
+                                    : parseFloat(
+                                          value.price * cartItem.quantity
+                                      ).toFixed(2)}
+                            </span>
+                        ) : (
+                            "00"
+                        )}
+                    </div>
+                    <div className='flex items-center justify-center'>
+                        <button
+                            className='text-3xl text-red-500 '
+                            onClick={() =>
+                                handleRemoveFromCart(value.localStoreId)
+                            }>
+                            <MdDelete />
+                        </button>
+                    </div>
                 </div>
-            </td>
-            <td className=' text-center'>
-                &#x09F3;
-                {value.price ? (
-                    <span
-                        className={`${
-                            (notAvailable || isSoldOut) && "line-through"
-                        }`}>
-                        {discountedPrice
-                            ? discountedPrice
-                            : parseFloat(
-                                  value.price * cartItem.quantity
-                              ).toFixed(2)}
-                    </span>
-                ) : (
-                    "00"
-                )}
-            </td>
-            <td className='flex items-center h-52 justify-center'>
-                <button
-                    className='text-3xl text-red-500 mt-5'
-                    onClick={() => handleRemoveFromCart(value.localStoreId)}>
-                    <MdDelete />
-                </button>
-            </td>
-        </tr>
+            </div>
+        </div>
     );
 };
 
-export default SingleProductCard;
+export default MobileCard;

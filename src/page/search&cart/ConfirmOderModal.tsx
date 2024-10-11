@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { Product, TOderFormData } from "../../components/type/Types";
 
 import { AuthContext } from "../../provider/AuthProvider";
-import { useGetToCardLocal } from "../../hooks/useGetToCardLocal";
 import pleceholderImage from "../../assets/pleceholder.png";
 import Swal from "sweetalert2";
 interface ConfirmOrderModalProps {

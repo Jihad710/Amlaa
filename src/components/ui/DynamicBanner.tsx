@@ -20,19 +20,19 @@ const DynamicBanner: React.FC<DynamicBannerProps> = ({
 }) => {
 
     return (
-        <div className=' flex justify-center items-center border-t border-black pt-3'>
+        <div className='flex justify-center items-center border-t border-black pt-3'>
             <div className='text-center'>
-                <h1 className='text-4xl  font-bold capitalize'>{title}</h1>
-                <div className='flex gap-20 mt-8'>
-                    <div>
+                <h1 className='text-4xl font-bold capitalize'>{title}</h1>
+                <div className='sm:flex gap-20 mt-8'>
+                    <div className="text-center sm:text-left">
                         <p>Availability</p>
-                        <div className='flex gap-3'>
+                        <div className='flex gap-3 mt-3'>
                             {/* <input
                                 type='checkbox'
                                 name='stockin'
                                 id='stockin'
                             /> */}
-                            <p>In stock ({(stockQuantity as { inStock: number }).inStock})</p>
+                            <p className="">In stock ({(stockQuantity as { inStock: number }).inStock})</p>
                         </div>
                         <div className='flex gap-3'>
                             {/* <input
@@ -43,7 +43,7 @@ const DynamicBanner: React.FC<DynamicBannerProps> = ({
                             <p>Out of stock ({(stockQuantity as { soldOut: number }).soldOut})</p>
                         </div>
                     </div>
-                    <div>
+                    <div className="mt-5 sm:mt-0">
                         <p>Price </p>
                         <form className='w-[200px]'>
                             <span className=''>&#x09F3; {(priceRange as Range).min}</span>{" "}

@@ -1,4 +1,3 @@
-import { useQuery } from "react-query";
 import DynamicBanner from "../../components/ui/DynamicBanner";
 import ProductCart from "../products/ProductCart";
 import { Range } from "react-input-range";
@@ -14,8 +13,8 @@ const Products = () => {
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0);
     const [priceRange, setPriceRange] = useState<Range>({
-        min: null,
-        max: null,
+        min: 0,
+        max: 0,
     });
     const [stockQuantity, setStockQuantity] = useState({
         inStock: 0,
@@ -51,7 +50,9 @@ const Products = () => {
             setIsLoading(true);
             setData([]);
             const response = await fetch(
-                `https://amlaa.vercel.app/products/${category}?minPrice=${priceRange.min}&maxPrice=${priceRange.max}`
+            `https://amlaa.vercel.app/products/${category}?minPrice=${
+                    priceRange.min == 0 ? null : priceRange.min
+                }&maxPrice=${priceRange.max == 0 ? null : priceRange.max}`
             );
             const data = await response.json();
             if (data) {

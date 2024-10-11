@@ -74,7 +74,7 @@ const Banner = () => {
             <div>
                 <Marquee
                     pauseOnHover={true}
-                    className='  text-2xl py-2  text-[#3c3633]'>
+                    className='  sm:text-2xl py-2   text-[#3c3633]'>
                     {repeatedData.map((item, index) => (
                         <p key={index} className='mx-10 font-4xl font-semibold'>
                             {" "}

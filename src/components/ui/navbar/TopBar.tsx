@@ -13,7 +13,7 @@ const TopBar = () => {
     const repeatedData = Array(3).fill(text);
     return (
         <div>
-            <div className='text-center bg-[#3c3633] text-white py-3 font-light'>
+            <div className='text-center text-sm sm:text-base bg-[#3c3633] text-white py-3 font-light'>
                 <Marquee pauseOnHover={true} speed={40}>
                     {repeatedData.map((item, index) => (
                         <p className='mx-20' key={index}>

@@ -73,7 +73,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ data: data }) => {
     };
 
     return (
-        <div className='grid w-11/12 mt-14 mx-auto grid-cols-1 md:grid-cols-4 md:gap-10 text-[#3c3633]'>
+        <div className='grid w-11/12 mt-14 gap-5 mx-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-10 text-[#3c3633]'>
             {data?.length > 0 ? (
                 data.map((data, index) => (
                     <div
@@ -91,12 +91,12 @@ const ProductCart: React.FC<ProductCartProps> = ({ data: data }) => {
                                 <img
                                     src={data.images[imageIndexes[index]]}
                                     alt={`Image ${data.title}`}
-                                    className='w-full mx-auto md:w-[256px] h-[372px] transition-opacity duration-100 ease-out'
+                                    className='w-full mx-auto md:w-[256px] lg:h-[372px] transition-opacity duration-100 ease-out'
                                 />
                             </div>
                         </div>
                         <div>
-                            <p className='text-[22px] py-1 text-center font-semibold'>
+                            <p className='text-[22px] py-1 capitalize md:text-center font-semibold'>
                                 {data.title}
                             </p>
                             <p className='text-center font-medium text-xl tracking-wide'>

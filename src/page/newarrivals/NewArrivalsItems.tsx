@@ -31,13 +31,24 @@ const NewArrivalsItems: React.FC<Props> = ({ items = [] }) => {
         <div className=' pt-24'>
             <div className=''>
                 <Swiper
-                    slidesPerView={4}
+                    slidesPerView={1}
                     spaceBetween={20}
                     navigation={true}
                     autoplay={{
                         delay: 5000,
                         disableOnInteraction: false,
                     }}
+                    breakpoints={{
+                        460: {
+                          slidesPerView: 2,
+                        },
+                        540: {
+                          slidesPerView: 3,
+                        },
+                        820: {
+                          slidesPerView: 4,
+                        }
+                      }}
                     //   scrollbar={{ draggable: true, hide: false }}
                     modules={[Navigation, Autoplay]}
                     className='mySwiper'>
@@ -48,7 +59,7 @@ const NewArrivalsItems: React.FC<Props> = ({ items = [] }) => {
                                 key={item._id}
                                 onClick={() => handleClick(item._id)}>
                                 <div>
-                                    <div className='h-[460px] rounded-md overflow-hidden relative'>
+                                    <div className='h-[300px] sm:w-auto w-[220px] sm:h-[460px] rounded-md overflow-hidden relative'>
                                         <img
                                             className='w-full h-full object-cover object-top'
                                             src={item?.images[0]}

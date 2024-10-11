@@ -13,9 +13,9 @@ const Home = () => {
   return (
     <div className="bg-[#eeedeb]">
       <Banner></Banner>
+      <Category></Category>
 
       
-      <Category></Category>
       <NewArrivals></NewArrivals>
       {/* <AddSection></AddSection> */}
       <BestDealsCarousel></BestDealsCarousel>

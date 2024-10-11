@@ -14,7 +14,7 @@ const NewArrivals = () => {
     });
 
     return (
-        <div className='hidden md:block my-14'>
+        <div className=' my-14'>
             <div>
                 <div className='text-center'>
                     <h1 className='mb-4 text-center font-bold text-3xl text-[#3c3633]'>

@@ -6,13 +6,21 @@ import { Link } from "react-router-dom";
 import { useGetToCardLocal } from "../../../hooks/useGetToCardLocal";
 import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
-import { Product } from "../../type/Types";
-
+interface Item {
+    discount: number;
+    title: string;
+    images: string;
+    name: string;
+    price: number;
+    status: string;
+    _id: string;
+    collectionStatus: string;
+}
 const MiddleNav = () => {
     const { data } = useGetToCardLocal();
     const [quantity, setQuantity] = useState(0);
     const [searchModal, setSearchModal] = useState(false);
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<Item[]>([]);
 
     const [searchText, setSearchText] = useState("");
 
@@ -90,7 +98,7 @@ const MiddleNav = () => {
                     value={searchText}
                     className='block w-4/5 mx-auto mt-14 p-4 bg-[#f3f4f6] mb-2 border-[#3c3633] rounded-md shadow-sm outline-none border-b-2  '
                 />
-                <div className='w-4/5 mx-auto grid grid-cols-3 mt-10 gap-4'>
+                <div className='w-4/5 mx-auto grid sm:grid-cols-2 md:grid-cols-3 mt-10 gap-4'>
                     {products.length > 0
                         ? products?.map((item) => (
                               <Link
@@ -98,7 +106,7 @@ const MiddleNav = () => {
                                   key={item._id}
                                   to={`/product/${item._id}`}>
                                   <div>
-                                      <div className='h-[460px] rounded-md overflow-hidden relative'>
+                                      <div className='sm:h-[360px] h-[400px] lg:h-[460px] rounded-md overflow-hidden relative'>
                                           <img
                                               className='w-full h-full object-cover object-top'
                                               src={item?.images[0]}
@@ -110,7 +118,43 @@ const MiddleNav = () => {
                                               {item?.title}
                                           </p>
                                           <p className='barlow-semibold mt-1 text-lg'>
-                                              ${item?.price}
+                                              {item?.discount > 0 ? (
+                                                  <p className='mb-5 md:font-medium text-xl gap-1 flex items-center opacity-80'>
+                                                      {item?.discount &&
+                                                          item.price && (
+                                                              <>
+                                                                  <span className='line-through'>
+                                                                      {" "}
+                                                                      &#x09F3;
+                                                                      {
+                                                                          item.price
+                                                                      }
+                                                                  </span>
+                                                                  {" - "}
+                                                                  <span>
+                                                                      {" "}
+                                                                      &#x09F3;{" "}
+                                                                      {item.price -
+                                                                          (item.price *
+                                                                              item.discount) /
+                                                                              100}
+                                                                  </span>
+                                                                  <span className='text-sm rounded p-px bg-red-200 text-red-700'>
+                                                                      -
+                                                                      {
+                                                                          item?.discount
+                                                                      }
+                                                                      %
+                                                                  </span>
+                                                              </>
+                                                          )}
+                                                  </p>
+                                              ) : (
+                                                  <span>
+                                                      {" "}
+                                                      &#x09F3; {item.price}
+                                                  </span>
+                                              )}
                                           </p>
                                       </div>
                                   </div>

@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
-import { Product, TOderFormData } from "../../components/type/Types";
+import { TCartItem, TOderFormData } from "../../components/type/Types";
 
 import { AuthContext } from "../../provider/AuthProvider";
 import pleceholderImage from "../../assets/pleceholder.png";
 import Swal from "sweetalert2";
 interface ConfirmOrderModalProps {
     //+
-    cartItems: Product[];
+    cartItems: TCartItem[];
     setCartItems: Function;
 } //+
 //+
@@ -259,7 +259,7 @@ const ConfirmOrderModal: React.FC<ConfirmOrderModalProps> = ({
                                         Order Summary
                                     </h1>
                                     <div className='border rounded p-1'>
-                                        {cartItems.map((product: Product) => (
+                                        {cartItems.map((product) => (
                                             <div
                                                 key={product.menuItemId}
                                                 className='flex justify-between items-center mb-4'>
@@ -319,7 +319,7 @@ const ConfirmOrderModal: React.FC<ConfirmOrderModalProps> = ({
                                                 {cartItems.reduce(
                                                     (
                                                         total: number,
-                                                        product: Product
+                                                        product
                                                     ) => {
                                                         let productPrice =
                                                             product?.price || 0;

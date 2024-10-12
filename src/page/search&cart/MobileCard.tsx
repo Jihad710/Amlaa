@@ -3,11 +3,13 @@ import { FiMinus, FiPlus } from "react-icons/fi";
 import pleceholderImage from "../../assets/pleceholder.png";
 import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
-import { Product, TCartItem } from "../../components/type/Types";
+import { TCartItem } from "../../components/type/Types";
 import Swal from "sweetalert2";
 interface SingleProductCardProps {
     value: TCartItem;
-    cartItems: { menuItemId: string; quantity: number }[];
+    cartItems: {
+        localStoreId: number; menuItemId: string; quantity: number 
+}[];
     buyAvailProducts: { menuItemId: string; quantity: number }[];
     setBuyAvailProducts: Function;
     setCartItems: Function;
@@ -65,7 +67,7 @@ const MobileCard: React.FC<SingleProductCardProps> = ({
         }).then((result: { isConfirmed: any }) => {
             if (result.isConfirmed) {
                 const restProducts = cartItems.filter(
-                    (item) => item.localStoreId !== menuItemId
+                    (item) => item?.localStoreId !== menuItemId
                 );
                 console.log(menuItemId);
                 if (restProducts) {
@@ -137,14 +139,14 @@ const MobileCard: React.FC<SingleProductCardProps> = ({
                         <div className='flex justify-center items-center gap-2'>
                             <FiMinus
                                 onClick={() =>
-                                    handleQuantityDecrement(value.localStoreId)
+                                    handleQuantityDecrement(String(value?.localStoreId))
                                 }
                                 className='cursor-pointer'
                             />
                             <p>{cartItem.quantity}</p>
                             <FiPlus
                                 onClick={() =>
-                                    handleQuantityIncrement(value.localStoreId)
+                                    handleQuantityIncrement(String(value.localStoreId))
                                 }
                                 className='cursor-pointer'
                             />
@@ -161,7 +163,7 @@ const MobileCard: React.FC<SingleProductCardProps> = ({
                                 {discountedPrice
                                     ? discountedPrice
                                     : parseFloat(
-                                          value.price * cartItem.quantity
+                                        String(value.price * cartItem.quantity)
                                       ).toFixed(2)}
                             </span>
                         ) : (

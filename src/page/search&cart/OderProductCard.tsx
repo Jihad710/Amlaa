@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { FiMinus, FiPlus } from "react-icons/fi";
+import { useState, useEffect } from "react";
 import ResponsiveDialog from "./ConfirmOderModal";
 import { Product, TCartItem } from "../../components/type/Types";
 import SingleProductCard from "./SingleProductCard";
@@ -9,7 +8,7 @@ interface OderProductCardProps {
     data: Product[];
 }
 
-const OderProductCard = ({ data }: OderProductCardProps) => {
+const OderProductCard = ({}: OderProductCardProps) => {
     const [cartItems, setCartItems] = useState<TCartItem[]>([]);
     const [buyAvailProducts, setBuyAvailProducts] = useState<Product[]>([]);
     useEffect(() => {
@@ -21,7 +20,7 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
 
     const handleQuantityIncrement = (id: string) => {
         const updatedItems = cartItems.map((item) => {
-            if (item.localStoreId == id) {
+            if (String(item.localStoreId) == id) {
                 return { ...item, quantity: item.quantity + 1 };
             }
             return item;
@@ -33,7 +32,7 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
     };
     const handleQuantityDecrement = (id: string) => {
         const updatedItems = cartItems.map((item) => {
-            if (item.localStoreId == id && item.quantity > 1) {
+            if (String(item.localStoreId) == id && item.quantity > 1) {
                 return { ...item, quantity: item.quantity - 1 };
             }
             return item;
@@ -119,81 +118,3 @@ const OderProductCard = ({ data }: OderProductCardProps) => {
 };
 
 export default OderProductCard;
-// <div
-//     key={value._id}
-//     className='border border-gray-200 p-4 rounded-lg shadow-md flex flex-col items-center'>
-//     <div className='w-full h-52'>
-//         <img
-//             src={
-//                 value.image ||
-//                 "placeholder.jpg"
-//             }
-//             alt={value.name}
-//             className='object-cover w-full h-full rounded-md'
-//         />
-//     </div>
-//     <div className='w-full p-4 flex flex-col justify-between'>
-//         <div>
-//             <p className='text-lg font-semibold'>
-//                 {value.name}
-//             </p>
-//             <p>
-//                 <span className='font-medium'>
-//                     Style:
-//                 </span>
-//                 <span className='ml-1'>
-//                     {value.detailsMaterial}
-//                 </span>
-//             </p>
-//             <p>
-//                 <span className='font-medium'>
-//                     Color:
-//                 </span>
-//                 <span className='ml-1'>
-//                     {value.color?.[0] ||
-//                         "N/A"}
-//                 </span>
-//             </p>
-//             <p>
-//                 <span className='font-medium'>
-//                     Size:
-//                 </span>
-//                 <span className='ml-1'>
-//                     {value?.size || "N/A"}
-//                 </span>
-//             </p>
-//         </div>
-//         <div className='flex justify-between items-center mt-4'>
-//             <div className='flex items-center gap-4'>
-//                 <FiMinus
-//                     onClick={() =>
-//                         handleQuantityDecrement(
-//                             value.menuItemId
-//                         )
-//                     }
-//                     className='cursor-pointer'
-//                 />
-//                 <p>{cartItem.quantity}</p>
-//                 <FiPlus
-//                     onClick={() =>
-//                         handleQuantityIncrement(
-//                             value.menuItemId
-//                         )
-//                     }
-//                     className='cursor-pointer'
-//                 />
-//             </div>
-//             <p className='text-xl font-semibold'>
-//                 $
-//                 {value.price
-//                     ? (
-//                           parseFloat(
-//                               value.price
-//                           ) *
-//                           cartItem.quantity
-//                       ).toFixed(2)
-//                     : "00"}
-//             </p>
-//         </div>
-//     </div>
-// </div>

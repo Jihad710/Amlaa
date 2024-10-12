@@ -78,7 +78,7 @@ export interface TAddProduct {
 }
 
 export interface TCartItem {
-  detailsMaterial: ReactNode;
+  detailsMaterial: string;
   notAvailable: any;
   localStoreId: number;
   menuItemId: string;

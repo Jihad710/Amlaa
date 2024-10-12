@@ -50,6 +50,8 @@ const  HighlightsProducts: React.FC = () => {
             size: selectedSize,
             color: selectedColor,
             quantity: 1,
+            detailsMaterial: "",
+            notAvailable: undefined
         };
 
 

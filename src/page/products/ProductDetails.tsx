@@ -47,6 +47,9 @@ const ProductDetails: React.FC = () => {
             size: selectedSize,
             color: selectedColor,
             quantity: 1,
+            detailsMaterial: "",
+            notAvailable: undefined,
+            localStoreId: 0
         };
 
         addToCart(cartItem);

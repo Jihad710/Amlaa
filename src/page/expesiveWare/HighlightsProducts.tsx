@@ -150,10 +150,10 @@ const  HighlightsProducts: React.FC = () => {
                         </div>
                     </div>
                     <div className='md:w-6/12 md:ps-10 w-11/12 mx-auto'>
-                        <h3 className='font-bold text-4xl mb-4 text-center md:text-start'>
+                        <h3 className='font-bold text-4xl mb-4 md:text-start'>
                             {details?.title}
                         </h3>
-                        <div className='mb-8 text-center md:text-start'>
+                        <div className='mb-8 md:text-start'>
                             <span className='block text-2xl font-bold opacity-90'>
                                 {details?.discount && details?.discount > 0 ? (
                                     <p className='mb-5 md:font-medium text-xl gap-1 flex items-center opacity-80'>

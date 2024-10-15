@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TCartItem } from "../components/type/Types";
+import { useGetToCardLocal } from "./useGetToCardLocal";
 
 export const useAddToCartLocal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
+  const { ReFetching,data } = useGetToCardLocal();
+  console.log(data);
   const addToCart = (cartItem: TCartItem) => {
     setIsLoading(true);
 
@@ -27,10 +29,13 @@ export const useAddToCartLocal = () => {
       }
 
       localStorage.setItem("product", JSON.stringify(localData));
+      ReFetching()
       navigate("/cart");
     } catch (error) {
+      ReFetching()
       console.error("Failed to add item to cart", error);
     } finally {
+      ReFetching()
       setIsLoading(false);
     }
   };

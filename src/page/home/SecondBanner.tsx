@@ -7,7 +7,7 @@ const SecondBanner = () => {
             <div className='w-full h-[110vh] relative'>
                 <div className='w-full h-full absolute top-0 left-0'>
                     <img
-                        className='w-full h-full object-cover'
+                        className='w-full h-full object-top object-cover'
                         src={image}
                         alt=''
                     />

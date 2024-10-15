@@ -34,6 +34,7 @@ export interface Product {
 }
 
 export interface TProductDetails {
+  description: any;
   _id: string;
   title: string;
   price: number;

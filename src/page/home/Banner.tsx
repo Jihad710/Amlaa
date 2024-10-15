@@ -51,9 +51,9 @@ const Banner = () => {
                 className='mySwiper'>
                 {bannerData.map((data, index) => (
                     <SwiperSlide key={index}>
-                        <div className='w-full h-screen relative'>
+                        <div className='w-full max-h-[500px] sm:max-h-screen h-screen relative'>
                             <img
-                                className='w-full h-full'
+                                className='w-full object-cover h-full'
                                 src={data.image}
                                 alt=''
                             />

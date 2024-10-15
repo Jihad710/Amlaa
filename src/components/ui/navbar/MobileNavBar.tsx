@@ -14,7 +14,7 @@ const MobileNavBar = () => {
     return (
         <div className='lg:hidden'>
             <nav
-                className={`bg-[#3c3633] w-10/12 fixed left-1/2 transform -translate-x-1/2 bottom-8 z-20 py-3 px-4 flex flex-col items-center rounded-2xl backdrop-blur-lg transition-all duration-300 ${
+                className={`bg-[#3c3633] w-10/12 fixed left-1/2 transform -translate-x-1/2 bottom-8 z-20 py-2 px-4 flex flex-col items-center rounded-2xl backdrop-blur-lg transition-all duration-300 ${
                     expanded ? "h-auto" : "h-[40px]"
                 }`}>
                 {expanded && (
@@ -60,9 +60,10 @@ const MobileNavBar = () => {
                         expanded ? "border-t pt-2" : ""
                     }`}>
                     <button
-                        className=' px-4 rounded text-white'
+                        className=' px-4 flex items-center gap-2 rounded text-white'
                         onClick={handleNavToggle}>
-                        {expanded ? <IoMdClose /> : <GiHamburgerMenu />}
+                        {expanded ? <IoMdClose /> : <GiHamburgerMenu />}{" "}
+                        <span>Menu</span>
                     </button>
                 </div>
             </nav>

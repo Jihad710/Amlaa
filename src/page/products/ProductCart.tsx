@@ -96,10 +96,10 @@ const ProductCart: React.FC<ProductCartProps> = ({ data: data }) => {
                             </div>
                         </div>
                         <div>
-                            <p className='text-[22px] py-1 capitalize md:text-center font-semibold'>
+                            <p className='text-lg py-1 capitalize font-semibold'>
                                 {data.title}
                             </p>
-                            <p className='text-center font-medium text-xl tracking-wide'>
+                            <p className=' font-medium text-xl tracking-wide'>
                                 {data.discount > 0 ? (
                                     <p className='mb-5 md:font-medium text-xl gap-1 flex items-center opacity-80'>
                                         {data?.discount && data.price && (

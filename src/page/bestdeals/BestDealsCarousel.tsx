@@ -27,7 +27,7 @@ const BestDealsCarousel = () => {
     }
 
     return (
-        <div className='my-14'>
+        <div className=' my-8 sm:my-14'>
             <div className='text-center'>
                 <h1 className='mb-4 font-bold text-3xl text-[#3c3633]'>
                     DEALS

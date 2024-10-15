@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { TCartItem } from "../../components/type/Types";
 import Swal from "sweetalert2";
+import { useGetToCardLocal } from "../../hooks/useGetToCardLocal";
 interface SingleProductCardProps {
     value: TCartItem;
     cartItems: {
@@ -24,6 +25,8 @@ const SingleProductCard: React.FC<SingleProductCardProps> = ({
     handleQuantityIncrement,
     handleQuantityDecrement,
 }) => {
+    const { ReFetching } = useGetToCardLocal();
+
     const [isSoldOut, setIsSoldOut] = useState(false);
     const [notAvailable, setNotAvailable] = useState(true);
     useEffect(() => {
@@ -77,6 +80,7 @@ const SingleProductCard: React.FC<SingleProductCardProps> = ({
                     );
                     setCartItems(restProducts);
                 }
+                ReFetching();
                 Swal.fire({
                     title: "Deleted!",
                     text: "Your product has been deleted.",

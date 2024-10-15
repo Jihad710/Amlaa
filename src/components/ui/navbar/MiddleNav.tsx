@@ -2,7 +2,7 @@ import { FaRegUser } from "react-icons/fa";
 import logo from "../../../assets/logo.png";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetToCardLocal } from "../../../hooks/useGetToCardLocal";
 import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
@@ -17,16 +17,16 @@ interface Item {
     collectionStatus: string;
 }
 const MiddleNav = () => {
-    const { data } = useGetToCardLocal();
+    const { data,refetch } = useGetToCardLocal();
     const [quantity, setQuantity] = useState(0);
     const [searchModal, setSearchModal] = useState(false);
     const [products, setProducts] = useState<Item[]>([]);
-
+    const navigate = useNavigate()
     const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
         setQuantity(data.length);
-    }, [data]);
+    }, [data,refetch]);
     const handleSearch = async (searchText: string) => {
         setSearchText(searchText);
     };
@@ -47,16 +47,20 @@ const MiddleNav = () => {
             }
         })();
     }, [searchText]);
+    const handleClickProduct = (id: string) => {
+        navigate(`/product/${id}`)
+        handleCloseModal()
+    }
     return (
         <div className='flex items-center my-4'>
-            <div className='w-full flex justify-center'>
+            <div className='w-full flex sm:justify-center'>
                 <Link to='/'>
                     {" "}
                     <img src={logo} />
                 </Link>
             </div>
-            <div className='bg-[#ccc] p-3 px-4 pr-6'>
-                <ul className='flex items-center gap-3 text-xl justify-evenly'>
+            <div className=' p-3 px-4 pr-6'>
+                <ul className='flex items-center gap-1 sm:gap-3 text-xl justify-evenly'>
                     <li className='cursor-pointer'>
                         <Link to={"/login"}>
                             <FaRegUser />
@@ -101,10 +105,11 @@ const MiddleNav = () => {
                 <div className='w-4/5 mx-auto grid sm:grid-cols-2 md:grid-cols-3 mt-10 gap-4'>
                     {products.length > 0
                         ? products?.map((item) => (
-                              <Link
+                              <div
                                   className='flex rounded-md justify-center w-full my-1'
                                   key={item._id}
-                                  to={`/product/${item._id}`}>
+                                  onClick={()=> handleClickProduct(item._id)}
+                                  >
                                   <div>
                                       <div className='sm:h-[360px] h-[400px] lg:h-[460px] rounded-md overflow-hidden relative'>
                                           <img
@@ -158,7 +163,7 @@ const MiddleNav = () => {
                                           </p>
                                       </div>
                                   </div>
-                              </Link>
+                              </div>
                           ))
                         : "No match found"}
                 </div>

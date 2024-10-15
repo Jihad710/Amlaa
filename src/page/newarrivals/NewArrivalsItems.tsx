@@ -29,22 +29,22 @@ const NewArrivalsItems: React.FC<Props> = ({ items = [] }) => {
         navigate(`/product/${id}`);
     };
     return (
-        <div className=' pt-24'>
+        <div className=' pt-5 sm:pt-14 md:pt-24'>
             <div className=''>
                 <Swiper
                     slidesPerView={1}
+                    spaceBetween={20}
                     breakpoints={{
                         460: {
-                          slidesPerView: 2,
+                            slidesPerView: 2,
                         },
                         540: {
-                          slidesPerView: 3,
+                            slidesPerView: 3,
                         },
                         820: {
-                          slidesPerView: 4,
-                        }
-                      }}
-                    spaceBetween={20}
+                            slidesPerView: 4,
+                        },
+                    }}
                     navigation={true}
                     autoplay={{
                         delay: 5000,
@@ -60,14 +60,16 @@ const NewArrivalsItems: React.FC<Props> = ({ items = [] }) => {
                                 key={item._id}
                                 onClick={() => handleClick(item._id)}>
                                 <div>
-                                    <div className='h-[300px] sm:w-auto w-[220px] sm:h-[460px] rounded-md overflow-hidden relative'>
+                                    <div className='h-[300px] w-[300px] mx-auto sm:w-auto xsm:w-[220px] sm:h-[460px] rounded-md overflow-hidden relative'>
                                         <img
-                                            className='w-full h-full object-cover object-top'
+                                            className='w-full max-w-[300px] h-full object-contain sm:object-cover object-top'
                                             src={item?.images[0]}
                                             alt=''
                                         />
                                         <p className='absolute top-0 right-0 bg-[#3c3633] text-white p-2 px-4 capitalize pt-1'>
-                                            {item.status === 'sold-out' ? "Sold Out" : "New"}
+                                            {item.status === "sold-out"
+                                                ? "Sold Out"
+                                                : "New"}
                                         </p>
                                     </div>
                                     <div className='mt-4 px-3 .barlow-regular'>
@@ -76,7 +78,7 @@ const NewArrivalsItems: React.FC<Props> = ({ items = [] }) => {
                                         </p>
                                         <p className='barlow-semibold mt-1 text-lg'>
                                             {item.discount > 0 ? (
-                                                <p className='mb-5 md:font-medium text-xl gap-1 flex items-center opacity-80'>
+                                                <p className=' md:font-medium text-xl gap-1 flex items-center opacity-80'>
                                                     {item?.discount &&
                                                         item.price && (
                                                             <>
@@ -119,7 +121,7 @@ const NewArrivalsItems: React.FC<Props> = ({ items = [] }) => {
                 </Swiper>
             </div>
 
-            <div className='w-32 rounded-full mt-10 mx-auto text-center'>
+            <div className='w-32 rounded-full mt-3 sm:mt-10 mx-auto text-center'>
                 <NavLink to={"/products/all"}>
                     <button className='text-white uppercase font-semibold bg-[#3c3633] w-full py-3 px-4 text-center rounded-full'>
                         View All

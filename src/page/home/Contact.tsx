@@ -32,7 +32,7 @@ const Contact = () => {
         console.log(data);
     };
     return (
-        <div className=' rounded-3xl w-11/12  mx-auto mb-14 bg-[#3C3633] p-5 sm:p-14 text-white'>
+        <div className=' rounded-3xl w-11/12  mx-auto sm:mb-14 mb-8 bg-[#3C3633] p-5 sm:p-14 text-white'>
             <h1 className=' font-bold text-2xl sm:text-4xl sm:mb-5'>Contact With Us</h1>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>

@@ -7,8 +7,8 @@ const AskQutions = () => {
   const [secondOpen, setSecondOpen] = useState(false);
   const [thiredOpen, setThirdOpen] = useState(false);
   return (
-    <div className="sm:my-14 my-5 md:w-9/12 w-10/12 mx-auto pb-5 sm:pb-10">
-      <h1 className="text-center font-bold text-4xl pb-10">FAQs</h1>
+    <div className="sm:my-15 my-5 md:w-9/12 w-10/12  mx-auto pb-5 sm:pb-10">
+      <h1 className="text-center font-bold text-4xl pt-3 pb-5">FAQs</h1>
       <div>
         <div>
           <p
@@ -83,7 +83,7 @@ const AskQutions = () => {
               We highly recommend checking the size guide before placing an
               order. The size guide is available on every product page for your
               reference. In case you are still confused, you can always call us
-              at +91 9830983103 for any size related queries. Our team will be
+              at 01773239086 for any size related queries. Our team will be
               there to help you out :
             </p>
             <p>
@@ -112,10 +112,10 @@ const AskQutions = () => {
               <span>Free Standard Shipping :</span> 4-8 business days
             </p>
             <p>
-              <span>Paid Express Shipping (₹200) : </span>2-4 business days
+              <span>Paid Express Shipping (150) : </span>2-4 business days
             </p>
 
-            <p>Cash on delivery is Rs.100 extra.</p>
+            <p>Cash on delivery is Taka.100 extra.</p>
           </div>
         </div>
       </div>

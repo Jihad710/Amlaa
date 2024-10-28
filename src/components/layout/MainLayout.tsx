@@ -11,7 +11,7 @@ import { Toaster } from "react-hot-toast";
 const MainLayout = () => {
   const { openModalRs } = useContext(AuthContext);
   return (
-    <div className="bg-[#eeedeb]">
+    <div className="">
       <TopBar></TopBar>
       <MiddleNav></MiddleNav>
       <Navbar></Navbar>

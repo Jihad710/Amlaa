@@ -11,7 +11,7 @@ const SelectedProductCart = () => {
     <div>
       <h1 className="text-4xl font-bold text-center text-[#423e3c]">Cart</h1>
       {loading ? (
-        <Loader/>
+        <Loader />
       ) : (
         <div>
           <OderProductCard data={data} />
@@ -21,7 +21,7 @@ const SelectedProductCart = () => {
               <button
                 className={`${
                   data.length
-                    ? "md:flex md:justify-center md:items-center text-xl capitalize font-semibold hover:text-blue-500"
+                    ? "md:flex md:justify-center md:items-center sm:text-xl capitalize sm:font-sans hover:text-blue-500"
                     : "md:mt-10 p-4 px-10 tracking-widest font-semibold text-xl text-white bg-[#3c3633] rounded-full"
                 }`}
               >
